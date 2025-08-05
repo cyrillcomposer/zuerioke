@@ -14,7 +14,7 @@ export default function Buchen() {
       <div className="max-w-2xl mx-auto space-y-8 mt-10">
         <h1 className="text-4xl font-extrabold text-center mb-6 font-[cursive]">📅 Buchungsanfrage</h1>
 
-        <form className="space-y-6" action="https://formspree.io/f/xwkgygdv" method="POST">
+        <form className="space-y-6" action="https://formspree.io/f/mkgzqvdr" method="POST">
           <div>
             <label className="block font-semibold mb-1">Dein Name</label>
             <input type="text" name="name" required className="w-full p-2 rounded border border-gray-300" />
