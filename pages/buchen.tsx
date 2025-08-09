@@ -15,6 +15,7 @@ export default function Buchen() {
         <h1 className="text-4xl font-extrabold text-center mb-6 font-[cursive]">📅 Buchungsanfrage</h1>
 
         <form className="space-y-6" action="https://formspree.io/f/mkgzqvdr" method="POST">
+        <input type="hidden" name="_redirect" value="https://zuerioke.ch/thank-you" />
           <div>
             <label className="block font-semibold mb-1">Dein Name</label>
             <input type="text" name="name" required className="w-full p-2 rounded border border-gray-300" />
