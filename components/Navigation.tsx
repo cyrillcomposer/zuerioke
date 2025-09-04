@@ -1,48 +1,78 @@
-// components/Navigation.tsx
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/angebot", label: "Angebot" },
+  { href: "/buchen", label: "Buchen" },
+  { href: "/testimonials", label: "Stimmen" },
+  { href: "/ueber-uns", label: "Über uns" },
+];
 
 export default function Navigation() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useRouter();
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed top-4 right-4 z-50">
-      <button
-        className="flex flex-col items-center justify-center space-y-1 p-3 bg-yellow-400 hover:bg-yellow-500 rounded-md shadow-md min-w-[48px] min-h-[48px]"
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Menü öffnen"
-      >
-        {menuOpen ? (
-          <span className="text-black font-extrabold text-2xl leading-none">×</span>
-        ) : (
-          <>
-            <span className="block w-6 h-1 bg-black"></span>
-            <span className="block w-6 h-1 bg-black"></span>
-            <span className="block w-6 h-1 bg-black"></span>
-          </>
-        )}
-      </button>
+    <header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white/80 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <Link href="/" className="font-semibold tracking-tight text-xl">ZÜRIOKE</Link>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.3 }}
-            className="absolute right-0 mt-3 w-48 bg-yellow-100 text-black rounded-lg shadow-xl text-center"
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-8 text-sm">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`transition hover:opacity-70 underline-offset-8 ${
+                pathname === l.href ? "underline" : "no-underline"
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            href="/buchen"
+            className="inline-flex items-center rounded-full border border-gray-900 px-4 py-2 text-sm font-medium hover:bg-gray-900 hover:text-white transition"
           >
-            <Link href="/" className="block px-4 py-2 hover:bg-yellow-200" onClick={() => setMenuOpen(false)}>Startseite</Link>
-            <Link href="/angebot" className="block px-4 py-2 hover:bg-yellow-200" onClick={() => setMenuOpen(false)}>Angebot</Link>
-            <Link href="/buchen" className="block px-4 py-2 hover:bg-yellow-200" onClick={() => setMenuOpen(false)}>Buchen</Link>
-            <Link href="/ueber-uns" className="block px-4 py-2 hover:bg-yellow-200" onClick={() => setMenuOpen(false)}>Über uns</Link>
-            <Link href="/testimonials" className="block px-4 py-2 hover:bg-yellow-200" onClick={() => setMenuOpen(false)}>Testimonials</Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+            Jetzt anfragen
+          </Link>
+        </nav>
+
+        {/* Mobile */}
+        <button
+          aria-label="Menü öffnen"
+          className="md:hidden inline-flex items-center justify-center rounded-full border border-gray-300 w-10 h-10"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span className="i-heroicons-bars-3 w-5 h-5">≡</span>
+        </button>
+      </div>
+
+      {open && (
+        <div className="md:hidden border-t border-gray-200 bg-white">
+          <nav className="mx-auto max-w-6xl px-4 py-4 grid gap-3">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={`py-1 ${pathname === l.href ? "font-semibold underline" : ""}`}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              href="/buchen"
+              onClick={() => setOpen(false)}
+              className="inline-flex w-max items-center rounded-full border border-gray-900 px-4 py-2 text-sm font-medium hover:bg-gray-900 hover:text-white transition"
+            >
+              Jetzt anfragen
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }

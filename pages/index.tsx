@@ -1,72 +1,61 @@
-// pages/index.tsx
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
-import Navigation from "../components/Navigation";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-300 via-purple-400 to-blue-500 text-white font-sans">
+    <>
       <Head>
         <title>Zürioke – Karaoke für deinen Event</title>
+        <meta name="description" content="Karaoke für Firmenanlässe & Partys in Zürich – inkl. Technik, Moderation und Songauswahl." />
       </Head>
 
-      <Navigation />
-
-      <header className="text-center py-10">
-        <Image src="/logo.png" alt="Zürioke Logo" width={380} height={380} className="mx-auto mb-4 drop-shadow-lg" />
-        <p className="text-xl font-light italic">Karaoke für Firmenanlässe & Partys in Zürich</p>
-      </header>
-
-      <main className="max-w-4xl mx-auto px-4 space-y-20">
-        <section className="text-center">
-          <h2 className="text-4xl font-extrabold mb-4 text-pink-100 font-[cursive] drop-shadow">🎤 Was ist Zürioke?</h2>
-          <p className="text-lg">
-            Wir bringen die Karaoke-Party zu dir! Mit kompletter Infrastruktur, Technik
-            und auf Wunsch einem charmanten Moderator – für unvergessliche Firmenanlässe,
-            Geburtstage oder andere Feiern.
+      {/* HERO */}
+      <section className="py-8 sm:py-12">
+        <div className="mx-auto max-w-4xl text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight font-serif">Karaoke, die deinen Event trägt.</h1>
+          <p className="mt-6 text-lg text-gray-600">
+            Wir bringen Bühne, Technik und Stimmung – für Teams, Hochzeiten und private Feiern im Raum Zürich.
           </p>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Link href="/angebot">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">🎁 Angebot</h3>
-              <p>Alles rund um Technik, Optionen und Preise</p>
-            </div>
-          </Link>
-          <Link href="/buchen">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">📝 Buchen</h3>
-              <p>Formular zur unkomplizierten Anfrage</p>
-            </div>
-          </Link>
-          <Link href="/ueber-uns">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">👋 Über uns</h3>
-              <p>Marcel & Cyrill – wer steckt hinter Zürioke?</p>
-            </div>
-          </Link>
-          <Link href="/testimonials">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">🌟 Stimmen</h3>
-              <p>Was unsere Gäste über uns sagen</p>
-            </div>
-          </Link>
-        </section>
-
-        <section className="flex justify-center">
-          <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 text-center max-w-md">
-            <h2 className="text-3xl font-bold mb-4 font-[cursive]">📍 Kontakt</h2>
-            <p className="mb-2">Email: <a className="underline text-white hover:text-yellow-300" href="mailto:hello@zuerioke.ch">hello@zuerioke.ch</a></p>
-            <p>Instagram: <a className="underline text-white hover:text-pink-200" href="https://instagram.com/zuerioke">@zuerioke</a></p>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <Link href="/buchen" className="inline-flex items-center rounded-full border border-gray-900 px-5 py-3 text-sm font-medium hover:bg-gray-900 hover:text-white transition">Verfügbarkeit prüfen</Link>
+            <Link href="/angebot" className="inline-flex items-center rounded-full px-5 py-3 text-sm font-medium underline underline-offset-8">Angebot ansehen</Link>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <footer className="text-center text-sm py-6 opacity-70">
-        © 2025 Zürioke – Karaoke made in Zürich 🎶
-      </footer>
-    </div>
+      {/* FEATURES */}
+      <section className="mt-16 grid gap-8 md:grid-cols-3">
+        {[
+          {
+            title: "Alles aus einer Hand",
+            text: "Komplette Infrastruktur mit Profi-Sound, Monitor, Mikrofonen und auf Wunsch Moderation.",
+          },
+          {
+            title: "Schnell & unkompliziert",
+            text: "Aufbau in kurzer Zeit, flexible Setups – vom kleinen Office bis zur grossen Bühne.",
+          },
+          {
+            title: "Riesige Songauswahl",
+            text: "Aktuelle Hits bis Klassiker. Wunschlisten im Voraus möglich.",
+          },
+        ].map((f) => (
+          <div key={f.title} className="border border-gray-200 rounded-2xl p-6">
+            <h3 className="text-lg font-semibold">{f.title}</h3>
+            <p className="mt-2 text-sm text-gray-600">{f.text}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* CTA */}
+      <section className="mt-20 text-center">
+        <div className="inline-flex items-center rounded-2xl border border-gray-200 p-6">
+          <div className="text-left">
+            <h4 className="text-xl font-semibold">Bereit zu singen?</h4>
+            <p className="text-sm text-gray-600 mt-1">Sag uns Datum, Ort und ungefähre Dauer – wir melden uns mit einem passenden Vorschlag.</p>
+          </div>
+          <Link href="/buchen" className="ml-6 inline-flex items-center rounded-full border border-gray-900 px-5 py-3 text-sm font-medium hover:bg-gray-900 hover:text-white transition">Jetzt anfragen</Link>
+        </div>
+      </section>
+    </>
   );
 }
