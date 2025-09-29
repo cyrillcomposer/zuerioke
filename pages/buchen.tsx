@@ -31,8 +31,34 @@ export default function Buchen() {
   return (
     <>
       <Head>
-        <title>Buchungsanfrage – Zürioke</title>
-        <meta name="description" content="Buchen Sie jetzt Ihre unvergessliche Karaoke-Party. Schnell, einfach und unverbindlich." />
+        <title>Karaoke Zürich buchen | Anfrage & Kontakt</title>
+        <meta name="description" content="Mobile Karaoke in Zürich buchen für Ihr Event. Einfache Online-Anfrage, Antwort in 24h. Für Firmenevents, Hochzeiten & private Feiern." />
+        <meta property="og:title" content="Karaoke Zürich buchen | Zürioke" />
+        <meta property="og:description" content="Jetzt mobile Karaoke für Ihr Event in Zürich anfragen. Schnell, einfach, unverbindlich." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "name": "Karaoke Buchungsanfrage",
+              "description": "Kontaktformular für mobile Karaoke Buchungen in Zürich",
+              "url": "https://zuerioke.ch/buchen",
+              "mainEntity": {
+                "@type": "LocalBusiness",
+                "name": "Zürioke",
+                "telephone": "+41791234567",
+                "email": "hello@zuerioke.ch",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Zürich",
+                  "addressRegion": "ZH",
+                  "addressCountry": "CH"
+                }
+              }
+            })
+          }}
+        />
       </Head>
 
       <motion.div
@@ -223,17 +249,12 @@ export default function Buchen() {
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Art des Events
                   </label>
-                  <select 
+                  <input 
+                    type="text" 
                     name="event_typ" 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:border-[#D4AF37] focus:outline-none transition-colors"
-                  >
-                    <option value="">Bitte wählen...</option>
-                    <option value="Firmenevent">Firmenevent</option>
-                    <option value="Geburtstag">Geburtstag</option>
-                    <option value="Hochzeit">Hochzeit</option>
-                    <option value="Privatparty">Privatparty</option>
-                    <option value="Andere">Andere</option>
-                  </select>
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
+                    placeholder="z.B. Firmenevent, Geburtstag, Hochzeit..."
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">

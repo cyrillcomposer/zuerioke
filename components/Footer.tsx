@@ -19,8 +19,8 @@ export default function Footer() {
               />
             </div>
             <p className="mt-4 text-sm text-gray-400 max-w-sm">
-              Mobile Karaoke für unvergessliche Events. Professionelle Technik, 
-              mitreissende Stimmung und Spass garantiert im Raum Zürich.
+              Mobile Karaoke für unvergessliche Events. Wir kommen zu Ihnen - 
+              mit professioneller Technik und Spass garantiert im Raum Zürich.
             </p>
             <div className="mt-6 flex gap-4">
               <a 

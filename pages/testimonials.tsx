@@ -50,8 +50,53 @@ export default function Testimonials() {
   return (
     <>
       <Head>
-        <title>Kundenstimmen – Zürioke</title>
-        <meta name="description" content="Das sagen unsere Kunden über Zürioke. Echte Bewertungen von echten Events." />
+        <title>Karaoke Zürich Bewertungen | Kundenstimmen</title>
+        <meta name="description" content="Echte Bewertungen unserer Karaoke Events in Zürich. 500+ zufriedene Kunden, 5-Sterne Service für Firmenevents, Hochzeiten & Partys." />
+        <meta property="og:title" content="Kundenbewertungen | Zürioke Karaoke Zürich" />
+        <meta property="og:description" content="Was unsere Kunden über ihre Karaoke-Events sagen. 98% Zufriedenheit." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Zürioke",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "reviewCount": "500",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "review": [
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Sandra M."
+                  },
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                  },
+                  "reviewBody": "Die beste Karaoke-Nacht ever für unsere Firmenfeier!"
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Jonas K."
+                  },
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                  },
+                  "reviewBody": "Professionell, sympathisch und einfach total fun."
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <motion.div

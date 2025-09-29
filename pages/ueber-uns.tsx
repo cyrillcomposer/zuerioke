@@ -46,8 +46,42 @@ export default function UeberUns() {
   return (
     <>
       <Head>
-        <title>Über uns – Zürioke</title>
-        <meta name="description" content="Lernen Sie das Team hinter Zürioke kennen. Zwei Freunde, eine Leidenschaft: Unvergessliche Karaoke-Events." />
+        <title>Mobile Karaoke Zürich Team | Über Zürioke</title>
+        <meta name="description" content="Das Team hinter Zürioke: Mobile Karaoke in Zürich seit 2020. 500+ Events, professionelles Equipment, persönlicher Service für Ihren Anlass." />
+        <meta property="og:title" content="Über uns | Zürioke Mobile Karaoke Zürich" />
+        <meta property="og:description" content="Lernen Sie das Team hinter Zürioke kennen. Ihre Experten für mobile Karaoke-Events in Zürich." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "AboutPage",
+              "name": "Über Zürioke",
+              "description": "Mobile Karaoke Service in Zürich seit 2020",
+              "url": "https://zuerioke.ch/ueber-uns",
+              "mainEntity": {
+                "@type": "Organization",
+                "name": "Zürioke",
+                "foundingDate": "2020",
+                "founders": [
+                  {
+                    "@type": "Person",
+                    "name": "Marcel",
+                    "jobTitle": "Sound Engineer & DJ"
+                  },
+                  {
+                    "@type": "Person",
+                    "name": "Cyrill",
+                    "jobTitle": "Entertainment Manager"
+                  }
+                ],
+                "numberOfEmployees": 2,
+                "areaServed": "Zürich",
+                "knowsAbout": ["Karaoke", "Event-Technik", "Sound Engineering", "Entertainment"]
+              }
+            })
+          }}
+        />
       </Head>
 
       <motion.div
@@ -221,7 +255,7 @@ export default function UeberUns() {
                       "Zufriedenheitsgarantie"
                     ].map((item) => (
                       <li key={item} className="flex items-center text-gray-300">
-                        <svg className="w-5 h-5 text-pink-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-[#D4AF37] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         {item}

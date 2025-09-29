@@ -16,8 +16,7 @@ export default function Angebot() {
         "Monitor für Songtexte",
         "50.000+ Songs Auswahl",
         "Technischer Support",
-        "An- und Abreise inkl.",
-        "Auf- und Abbau inkl."
+        "Auf-/Abbau & Anfahrt inkl."
       ]
     },
     {
@@ -33,8 +32,7 @@ export default function Angebot() {
         "100.000+ Songs Auswahl",
         "Lichteffekte & Ambience",
         "Playlist-Vorbereitung",
-        "An- und Abreise inkl.",
-        "Auf- und Abbau inkl."
+        "Auf-/Abbau & Anfahrt inkl."
       ]
     },
     {
@@ -51,8 +49,7 @@ export default function Angebot() {
         "Profi-Lichtshow",
         "Video-Aufnahme möglich",
         "Playlist-Kuration",
-        "An- und Abreise inkl.",
-        "Auf- und Abbau inkl."
+        "Auf-/Abbau & Anfahrt inkl."
       ]
     }
   ];
@@ -69,8 +66,64 @@ export default function Angebot() {
   return (
     <>
       <Head>
-        <title>Angebot & Preise – Zürioke</title>
-        <meta name="description" content="Unsere Karaoke-Pakete und Preise. Von Basic bis Premium - finden Sie das perfekte Paket für Ihren Event." />
+        <title>Karaoke Zürich Preise & Pakete | Ab CHF 599</title>
+        <meta name="description" content="Karaoke mieten in Zürich: Basic, Party & Premium Pakete. Mobile Karaoke für Firmenevent, Hochzeit, Geburtstag. Transparente Preise ab CHF 599." />
+        <meta property="og:title" content="Karaoke Zürich Preise & Pakete | Zürioke" />
+        <meta property="og:description" content="Mobile Karaoke Pakete für jeden Anlass. Transparente Preise, professionelles Equipment." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Mobile Karaoke Pakete",
+              "provider": {
+                "@type": "LocalBusiness",
+                "name": "Zürioke"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Zürich"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Karaoke Pakete",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Basic Karaoke Paket",
+                      "description": "2 Stunden mobile Karaoke mit Grundausstattung"
+                    },
+                    "price": "599",
+                    "priceCurrency": "CHF"
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Party Karaoke Paket",
+                      "description": "3 Stunden mobile Karaoke mit Beamer und Lichtshow"
+                    },
+                    "price": "899",
+                    "priceCurrency": "CHF"
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Premium Karaoke Paket",
+                      "description": "4 Stunden mobile Karaoke mit Profi-Equipment"
+                    },
+                    "price": "1299",
+                    "priceCurrency": "CHF"
+                  }
+                ]
+              }
+            })
+          }}
+        />
       </Head>
 
       <motion.div

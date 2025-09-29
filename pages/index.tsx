@@ -35,9 +35,74 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Zürioke – Premium Karaoke für deinen Event</title>
-        <meta name="description" content="Mobile Karaoke für unvergessliche Events in Zürich. Professionelle Technik, mitreissende Stimmung und Spass garantiert." />
+        <title>Karaoke Zürich mieten | Mobile Karaoke - Zürioke</title>
+        <meta name="description" content="Mobile Karaoke in Zürich mieten für Firmenevent, Hochzeit & Party. Wir kommen zu Ihnen! ✓ 100.000+ Songs ✓ Profi-Equipment ✓ Ab CHF 599" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="Karaoke Zürich mieten | Mobile Karaoke - Zürioke" />
+        <meta property="og:description" content="Mobile Karaoke in Zürich mieten für Firmenevent, Hochzeit & Party. Wir kommen zu Ihnen!" />
+        <meta property="og:image" content="/zurioke-logo.png" />
+        <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Zürioke - Mobile Karaoke Zürich",
+              "image": "/zurioke-logo.png",
+              "@id": "https://zuerioke.ch",
+              "url": "https://zuerioke.ch",
+              "telephone": "+41791234567",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Zürich",
+                "addressRegion": "ZH",
+                "addressCountry": "CH"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 47.3769,
+                "longitude": 8.5417
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+              },
+              "sameAs": ["https://instagram.com/zuerioke"],
+              "priceRange": "CHF 599 - CHF 1299",
+              "description": "Mobile Karaoke Service in Zürich. Wir kommen zu Ihrem Event mit professionellem Equipment und über 100.000 Songs.",
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Karaoke Pakete",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "name": "Basic Paket",
+                    "price": "599",
+                    "priceCurrency": "CHF",
+                    "description": "2 Stunden Karaoke mit 2 Mikrofonen und PA-Anlage"
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Party Paket",
+                    "price": "899",
+                    "priceCurrency": "CHF",
+                    "description": "3 Stunden Karaoke mit Beamer und Lichtshow"
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Premium Paket",
+                    "price": "1299",
+                    "priceCurrency": "CHF",
+                    "description": "4 Stunden Entertainment mit Profi-Equipment"
+                  }
+                ]
+              }
+            })
+          }}
+        />
       </Head>
 
       {/* HERO SECTION */}
@@ -45,7 +110,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative py-20 md:py-32"
+        className="relative py-12 md:py-20"
       >
         {/* Background effects */}
         <div className="absolute inset-0 -z-10">

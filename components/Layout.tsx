@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </div>
       <div className="relative z-10">
         <Navigation />
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           {children}
         </main>
         <Footer />

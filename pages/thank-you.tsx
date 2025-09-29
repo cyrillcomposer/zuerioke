@@ -19,8 +19,9 @@ export default function ThankYou() {
   return (
     <>
       <Head>
-        <title>Danke für Ihre Anfrage – Zürioke</title>
-        <meta name="description" content="Vielen Dank für Ihre Buchungsanfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen." />
+        <title>Danke für Ihre Anfrage | Karaoke Zürich</title>
+        <meta name="description" content="Ihre Karaoke-Anfrage wurde erfolgreich übermittelt. Wir melden uns innerhalb von 24 Stunden bei Ihnen." />
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
 
       <div className="relative min-h-[80vh] flex items-center justify-center">
