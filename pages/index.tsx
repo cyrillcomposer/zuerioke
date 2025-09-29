@@ -1,72 +1,265 @@
-// pages/index.tsx
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
-import Navigation from "../components/Navigation";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+
+  const features = [
+    {
+      icon: "🎤",
+      title: "Profi-Equipment",
+      text: "Hochwertige Soundanlagen, Funkmikrofone und modernste Karaoke-Technik für kristallklaren Sound."
+    },
+    {
+      icon: "🎵",
+      title: "100.000+ Songs",
+      text: "Riesige Auswahl von aktuellen Charts bis zu zeitlosen Klassikern in allen Sprachen."
+    },
+    {
+      icon: "🚀",
+      title: "Rundum-Service",
+      text: "Aufbau, Betreuung und Moderation - wir kümmern uns um alles, ihr geniesst die Party."
+    }
+  ];
+
+  const stats = [
+    { number: "500+", label: "Events" },
+    { number: "100K+", label: "Songs" },
+    { number: "5★", label: "Bewertung" },
+    { number: "24h", label: "Support" }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-300 via-purple-400 to-blue-500 text-white font-sans">
+    <>
       <Head>
-        <title>Zürioke – Karaoke für deinen Event</title>
+        <title>Zürioke – Premium Karaoke für deinen Event</title>
+        <meta name="description" content="Mobile Karaoke für unvergessliche Events in Zürich. Professionelle Technik, mitreissende Stimmung und Spass garantiert." />
       </Head>
 
-      <Navigation />
+      {/* HERO SECTION */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative py-20 md:py-32"
+      >
+        {/* Background effects */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-4000"></div>
+        </div>
 
-      <header className="text-center py-10">
-        <Image src="/logo.png" alt="Zürioke Logo" width={380} height={380} className="mx-auto mb-4 drop-shadow-lg" />
-        <p className="text-xl font-light italic">Karaoke für Firmenanlässe & Partys in Zürich</p>
-      </header>
+        <div className="mx-auto max-w-5xl text-center">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-pink-500/10 text-pink-400 border border-pink-500/20 mb-6">
+              <span className="animate-pulse mr-2">●</span> Verfügbar für Events in Zürich
+            </span>
+          </motion.div>
 
-      <main className="max-w-4xl mx-auto px-4 space-y-20">
-        <section className="text-center">
-          <h2 className="text-4xl font-extrabold mb-4 text-pink-100 font-[cursive] drop-shadow">🎤 Was ist Zürioke?</h2>
-          <p className="text-lg">
-            Wir bringen die Karaoke-Party zu dir! Mit kompletter Infrastruktur, Technik
-            und auf Wunsch einem charmanten Moderator – für unvergessliche Firmenanlässe,
-            Geburtstage oder andere Feiern.
+          <motion.h1 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight"
+          >
+            <span className="block text-white mb-2">Karaoke, die</span>
+            <span className="block gradient-text">rockt & begeistert</span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mt-8 text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          >
+            Verwandeln Sie Ihren Event in eine unvergessliche Karaoke-Party. 
+            Mit Profi-Equipment, 100.000+ Songs und mitreissender Moderation.
+          </motion.p>
+
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Link 
+              href="/buchen" 
+              className="group relative px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow"
+            >
+              <span className="relative z-10 flex items-center">
+                Jetzt Verfügbarkeit prüfen
+                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </Link>
+            <Link 
+              href="/angebot" 
+              className="px-8 py-4 text-white font-semibold border border-white/20 rounded-full hover:bg-white/10 transition-all duration-300"
+            >
+              Pakete ansehen
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Stats */}
+        <motion.div 
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+        >
+          {stats.map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl md:text-4xl font-bold gradient-text">{stat.number}</div>
+              <div className="mt-2 text-sm text-gray-400">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.section>
+
+      {/* FEATURES */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-20"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Was uns besonders macht
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Professionelle Karaoke-Unterhaltung auf höchstem Niveau
           </p>
-        </section>
+        </div>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Link href="/angebot">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">🎁 Angebot</h3>
-              <p>Alles rund um Technik, Optionen und Preise</p>
-            </div>
-          </Link>
-          <Link href="/buchen">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">📝 Buchen</h3>
-              <p>Formular zur unkomplizierten Anfrage</p>
-            </div>
-          </Link>
-          <Link href="/ueber-uns">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">👋 Über uns</h3>
-              <p>Marcel & Cyrill – wer steckt hinter Zürioke?</p>
-            </div>
-          </Link>
-          <Link href="/testimonials">
-            <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 cursor-pointer text-center">
-              <h3 className="text-2xl font-semibold font-[cursive] mb-2">🌟 Stimmen</h3>
-              <p>Was unsere Gäste über uns sagen</p>
-            </div>
-          </Link>
-        </section>
+        <div className="grid gap-6 md:grid-cols-3">
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+              onMouseEnter={() => setHoveredFeature(i)}
+              onMouseLeave={() => setHoveredFeature(null)}
+              className="relative group"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 rounded-2xl blur-xl transition-opacity duration-300 ${
+                hoveredFeature === i ? 'opacity-100' : 'opacity-0'
+              }`}></div>
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 card-hover">
+                <div className="text-5xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{feature.text}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        <section className="flex justify-center">
-          <div className="bg-white/20 hover:bg-white/30 p-6 rounded-2xl shadow-xl backdrop-blur-md transition transform hover:scale-105 text-center max-w-md">
-            <h2 className="text-3xl font-bold mb-4 font-[cursive]">📍 Kontakt</h2>
-            <p className="mb-2">Email: <a className="underline text-white hover:text-yellow-300" href="mailto:hello@zuerioke.ch">hello@zuerioke.ch</a></p>
-            <p>Instagram: <a className="underline text-white hover:text-pink-200" href="https://instagram.com/zuerioke">@zuerioke</a></p>
+      {/* SERVICE HIGHLIGHTS */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-20"
+      >
+        <div className="relative bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-3xl p-12 md:p-16 backdrop-blur-sm border border-white/10">
+          <div className="absolute top-0 right-0 w-40 h-40 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          
+          <div className="relative grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Perfekt für jeden <span className="gradient-text">Anlass</span>
+              </h2>
+              <ul className="space-y-4">
+                {[
+                  'Firmenevents & Weihnachtsfeiern',
+                  'Geburtstage & Jubiläen',
+                  'Hochzeiten & Polterabende',
+                  'Private Partys & Vereinsfeste',
+                  'Team-Building Events'
+                ].map((item, i) => (
+                  <motion.li 
+                    key={i}
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center text-gray-300"
+                  >
+                    <svg className="w-5 h-5 text-pink-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+            <div className="relative">
+              <div className="aspect-video bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">🎤</div>
+                  <p className="text-white font-semibold">Live Demo Video</p>
+                  <p className="text-gray-400 text-sm mt-2">Coming Soon</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </motion.section>
 
-      <footer className="text-center text-sm py-6 opacity-70">
-        © 2025 Zürioke – Karaoke made in Zürich 🎶
-      </footer>
-    </div>
+      {/* CTA */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-20 text-center"
+      >
+        <div className="relative">
+          <motion.div
+            animate={{ 
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ 
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 blur-3xl"
+          ></motion.div>
+          <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-12 md:p-16 border border-white/10 max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Bereit für die <span className="gradient-text">beste Karaoke-Party</span> deines Lebens?
+            </h2>
+            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+              Sichere dir jetzt deinen Wunschtermin. Wir melden uns innerhalb von 24 Stunden bei dir.
+            </p>
+            <Link 
+              href="/buchen" 
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow pulse"
+            >
+              <span className="relative z-10">Unverbindliche Anfrage stellen</span>
+            </Link>
+            <p className="mt-6 text-sm text-gray-500">
+              Keine versteckten Kosten • Transparente Preise • Zufriedenheitsgarantie
+            </p>
+          </div>
+        </div>
+      </motion.section>
+    </>
   );
 }
