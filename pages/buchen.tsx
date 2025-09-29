@@ -4,12 +4,29 @@ import { useState } from "react";
 
 export default function Buchen() {
   const [formData, setFormData] = useState({
-    package: ""
+    package: "",
+    extras: [] as string[]
   });
 
   const handlePackageSelect = (pkg: string) => {
     setFormData({ ...formData, package: pkg });
   };
+
+  const handleExtraToggle = (extra: string) => {
+    const newExtras = formData.extras.includes(extra)
+      ? formData.extras.filter(e => e !== extra)
+      : [...formData.extras, extra];
+    setFormData({ ...formData, extras: newExtras });
+  };
+
+  const addons = [
+    { name: "Zusatzstunde", price: "CHF 199" },
+    { name: "Extra Mikrofon", price: "CHF 49" },
+    { name: "Nebelmaschine", price: "CHF 79" },
+    { name: "Video-Recording", price: "CHF 299" },
+    { name: "Custom Branding", price: "CHF 149" },
+    { name: "DJ-Set (1h)", price: "CHF 249" }
+  ];
 
   return (
     <>
@@ -79,6 +96,48 @@ export default function Buchen() {
                   </label>
                 ))}
               </div>
+            </div>
+
+            {/* Extras Selection */}
+            <div>
+              <label className="block text-sm font-semibold text-white mb-4">
+                Zusatzoptionen (optional)
+              </label>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {addons.map((addon) => (
+                  <label
+                    key={addon.name}
+                    className={`relative flex flex-col p-4 rounded-xl border cursor-pointer transition-all ${
+                      formData.extras.includes(addon.name)
+                        ? "bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 border-[#D4AF37]"
+                        : "bg-white/5 border-white/10 hover:border-[#D4AF37]/50"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      name="extras"
+                      value={addon.name}
+                      checked={formData.extras.includes(addon.name)}
+                      onChange={() => handleExtraToggle(addon.name)}
+                      className="sr-only"
+                    />
+                    <span className="text-white font-medium text-sm">{addon.name}</span>
+                    <span className="text-[#D4AF37] text-xs mt-1">{addon.price}</span>
+                    {formData.extras.includes(addon.name) && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="absolute top-2 right-2"
+                      >
+                        <svg className="w-4 h-4 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                    )}
+                  </label>
+                ))}
+              </div>
+              <input type="hidden" name="extras_selected" value={formData.extras.join(', ')} />
             </div>
 
             {/* Contact Information */}

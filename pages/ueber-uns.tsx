@@ -74,7 +74,7 @@ export default function UeberUns() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <div className="bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-3xl p-10 md:p-12 backdrop-blur-sm border border-white/10">
+          <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-3xl p-10 md:p-12 backdrop-blur-sm border border-[#D4AF37]/20">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Unsere <span className="gradient-text">Geschichte</span>
             </h2>
@@ -117,20 +117,20 @@ export default function UeberUns() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.2 }}
                 viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-pink-500/30 transition-all duration-300"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <div className="flex flex-col items-center text-center">
                   <div className="relative w-32 h-32 mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur-lg opacity-50"></div>
-                    <div className="relative w-32 h-32 overflow-hidden rounded-full border-2 border-white/20">
-                      <div className="w-full h-full bg-gradient-to-br from-pink-500/20 to-purple-600/20 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full blur-lg opacity-50"></div>
+                    <div className="relative w-32 h-32 overflow-hidden rounded-full border-2 border-[#D4AF37]/20">
+                      <div className="w-full h-full bg-gradient-to-br from-[#D4AF37]/20 to-[#B8941F]/20 flex items-center justify-center">
                         <span className="text-5xl">{i === 0 ? "🎧" : "🎤"}</span>
                       </div>
                     </div>
                   </div>
                   
                   <h3 className="text-2xl font-bold text-white mb-1">{member.name}</h3>
-                  <p className="text-pink-500 font-medium mb-4">{member.role}</p>
+                  <p className="text-[#D4AF37] font-medium mb-4">{member.role}</p>
                   <p className="text-gray-300 mb-6">{member.text}</p>
                   
                   <div className="flex flex-wrap gap-2 justify-center">
@@ -187,8 +187,8 @@ export default function UeberUns() {
           className="mb-20"
         >
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 blur-3xl"></div>
-            <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-10 md:p-12 border border-white/10">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 blur-3xl"></div>
+            <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-10 md:p-12 border border-[#D4AF37]/20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
                 Warum <span className="gradient-text">Zürioke</span>?
               </h2>
@@ -203,7 +203,7 @@ export default function UeberUns() {
                       "Flexible Lösungen"
                     ].map((item) => (
                       <li key={item} className="flex items-center text-gray-300">
-                        <svg className="w-5 h-5 text-pink-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-[#D4AF37] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         {item}
@@ -252,7 +252,7 @@ export default function UeberUns() {
             href="/buchen"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
           >
             Jetzt Kontakt aufnehmen
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

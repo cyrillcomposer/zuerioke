@@ -9,9 +9,9 @@ export default function Home() {
 
   const features = [
     {
-      icon: "🎤",
-      title: "Profi-Equipment",
-      text: "Hochwertige Soundanlagen, Funkmikrofone und modernste Karaoke-Technik für kristallklaren Sound."
+      icon: "🚐",
+      title: "Mobile Karaoke",
+      text: "Wir kommen zu Ihnen - egal ob Büro, Restaurant oder private Location. Kompletter Auf- und Abbau inklusive."
     },
     {
       icon: "🎵",
@@ -19,9 +19,9 @@ export default function Home() {
       text: "Riesige Auswahl von aktuellen Charts bis zu zeitlosen Klassikern in allen Sprachen."
     },
     {
-      icon: "🍾",
-      title: "Rundum-Service",
-      text: "Aufbau, Betreuung und Moderation - wir kümmern uns um alles, ihr geniesst die Party."
+      icon: "🎤",
+      title: "Profi-Equipment",
+      text: "Hochwertige PA-Anlage, Funkmikrofone und Grossleinwand mit Beamer für das ultimative Karaoke-Erlebnis."
     }
   ];
 
@@ -88,8 +88,8 @@ export default function Home() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight"
           >
-            <span className="block text-white mb-2">Karaoke, die</span>
-            <span className="block gradient-text">rockt & begeistert</span>
+            <span className="block text-white mb-2">Mobile Karaoke</span>
+            <span className="block gradient-text">Wir kommen zu dir!</span>
           </motion.h1>
 
           <motion.p 
@@ -99,7 +99,7 @@ export default function Home() {
             className="mt-8 text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
             Verwandeln Sie Ihren Event in eine unvergessliche Karaoke-Party. 
-            Mit Profi-Equipment, 100.000+ Songs und mitreissender Moderation.
+            Wir bringen alles mit: Profi-Equipment, 100.000+ Songs und gute Stimmung - direkt zu Ihrer Location.
           </motion.p>
 
           <motion.div 

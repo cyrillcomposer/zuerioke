@@ -41,7 +41,7 @@ export default function ThankYou() {
                 repeat: Infinity,
                 ease: "linear"
               }}
-              className="absolute w-2 h-2 bg-gradient-to-r from-pink-500 to-purple-600"
+              className="absolute w-2 h-2 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37]"
               style={{ left: `${particle.x}%` }}
             />
           ))}
@@ -60,8 +60,8 @@ export default function ThankYou() {
           className="absolute top-20"
         >
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur-2xl opacity-50 animate-pulse"></div>
-            <div className="relative w-24 h-24 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full blur-2xl opacity-50 animate-pulse"></div>
+            <div className="relative w-24 h-24 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full flex items-center justify-center">
               <motion.svg
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
@@ -105,7 +105,7 @@ export default function ThankYou() {
             </p>
             <p>
               Wir haben Ihre Nachricht erhalten und werden uns innerhalb von 
-              <span className="text-pink-500 font-semibold"> 24 Stunden </span>
+              <span className="text-[#D4AF37] font-semibold"> 24 Stunden </span>
               bei Ihnen melden.
             </p>
           </motion.div>
@@ -115,7 +115,7 @@ export default function ThankYou() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="mt-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
+            className="mt-12 bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-2xl p-8"
           >
             <h2 className="text-xl font-semibold text-white mb-4">
               Was passiert als Nächstes?
@@ -134,7 +134,7 @@ export default function ThankYou() {
                   transition={{ delay: 0.8 + i * 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                  <div className="w-8 h-8 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full flex items-center justify-center text-black text-sm font-bold flex-shrink-0">
                     {item.step}
                   </div>
                   <span className="text-gray-300">{item.text}</span>
@@ -152,13 +152,13 @@ export default function ThankYou() {
           >
             <Link 
               href="/" 
-              className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow"
+              className="px-6 py-3 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
             >
               Zur Startseite
             </Link>
             <Link 
               href="/angebot" 
-              className="px-6 py-3 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+              className="px-6 py-3 border border-[#D4AF37]/30 text-white font-semibold rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
             >
               Pakete ansehen
             </Link>
@@ -174,7 +174,7 @@ export default function ThankYou() {
             <p className="mb-2">Bei dringenden Fragen erreichen Sie uns unter:</p>
             <a 
               href="mailto:hello@zuerioke.ch" 
-              className="text-pink-500 hover:text-pink-400 transition-colors"
+              className="text-[#D4AF37] hover:text-[#F4E5A3] transition-colors"
             >
               hello@zuerioke.ch
             </a>
@@ -191,7 +191,7 @@ export default function ThankYou() {
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full border-2 border-black flex items-center justify-center text-white text-xs font-bold"
+                  className="w-8 h-8 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full border-2 border-black flex items-center justify-center text-black text-xs font-bold"
                 >
                   {String.fromCharCode(65 + i)}
                 </div>

@@ -16,7 +16,8 @@ export default function Angebot() {
         "Monitor für Songtexte",
         "50.000+ Songs Auswahl",
         "Technischer Support",
-        "An- und Abreise inkl."
+        "An- und Abreise inkl.",
+        "Auf- und Abbau inkl."
       ]
     },
     {
@@ -26,14 +27,14 @@ export default function Angebot() {
       popular: true,
       features: [
         "3 Stunden Karaoke-Party",
-        "2-4 Funkmikrofone",
+        "2 Funkmikrofone",
         "Premium PA-System",
-        "Grosser LED-Monitor",
+        "Grossleinwand mit Beamer",
         "100.000+ Songs Auswahl",
-        "Professionelle Moderation",
         "Lichteffekte & Ambience",
         "Playlist-Vorbereitung",
-        "An- und Abreise inkl."
+        "An- und Abreise inkl.",
+        "Auf- und Abbau inkl."
       ]
     },
     {
@@ -43,16 +44,15 @@ export default function Angebot() {
       popular: false,
       features: [
         "4 Stunden Entertainment",
-        "4+ Funkmikrofone",
+        "2+ Funkmikrofone",
         "High-End Sound System",
-        "Multiple Displays",
+        "Grossleinwand mit Beamer",
         "100.000+ Songs + Requests",
-        "Star-Moderation",
         "Profi-Lichtshow",
-        "DJ-Set inklusive",
         "Video-Aufnahme möglich",
-        "VIP-Betreuung",
-        "An- und Abreise inkl."
+        "Playlist-Kuration",
+        "An- und Abreise inkl.",
+        "Auf- und Abbau inkl."
       ]
     }
   ];

@@ -96,7 +96,7 @@ export default function Testimonials() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="group"
             >
-              <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-pink-500/30 transition-all duration-300 card-hover">
+              <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-[#D4AF37]/30 transition-all duration-300 card-hover">
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(quote.rating)].map((_, j) => (
@@ -113,7 +113,7 @@ export default function Testimonials() {
                 
                 {/* Author */}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                  <div className="w-10 h-10 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full flex items-center justify-center text-black font-bold">
                     {quote.name.charAt(0)}
                   </div>
                   <div>
@@ -136,7 +136,7 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-3xl p-10 backdrop-blur-sm border border-white/10">
+          <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-3xl p-10 backdrop-blur-sm border border-[#D4AF37]/20">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
               Zahlen, die für sich sprechen
             </h2>
@@ -183,7 +183,7 @@ export default function Testimonials() {
           >
             <a 
               href="/buchen" 
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
             >
               Jetzt Ihre Party planen
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
