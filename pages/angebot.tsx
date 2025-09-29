@@ -79,8 +79,8 @@ export default function Angebot() {
         transition={{ duration: 0.6 }}
       >
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">
-            Unsere Pakete
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+            <span className="gradient-text">Unsere Pakete</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Massgeschneiderte Karaoke-Erlebnisse für jeden Anlass und jedes Budget
@@ -99,16 +99,16 @@ export default function Angebot() {
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                  <span className="px-4 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm font-semibold rounded-full">
+                  <span className="px-4 py-1 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black text-sm font-semibold rounded-full">
                     BELIEBTESTE WAHL
                   </span>
                 </div>
               )}
               <div className={`relative h-full bg-white/5 backdrop-blur-sm rounded-2xl p-8 border ${
                 pkg.popular 
-                  ? 'border-pink-500/50 shadow-lg shadow-pink-500/20' 
+                  ? 'border-[#D4AF37]/50 shadow-lg shadow-yellow-500/20' 
                   : 'border-white/10'
-              } hover:border-pink-500/30 transition-all duration-300 card-hover`}>
+              } hover:border-[#D4AF37]/30 transition-all duration-300 card-hover`}>
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
                   <div className="text-4xl font-bold gradient-text mb-1">{pkg.price}</div>
@@ -118,7 +118,7 @@ export default function Angebot() {
                 <ul className="space-y-3 mb-8">
                   {pkg.features.map((feature, j) => (
                     <li key={j} className="flex items-start text-gray-300">
-                      <svg className="w-5 h-5 text-pink-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-[#D4AF37] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-sm">{feature}</span>
@@ -130,8 +130,8 @@ export default function Angebot() {
                   href="/buchen"
                   className={`block w-full text-center py-3 rounded-full font-semibold transition-all duration-300 ${
                     pkg.popular
-                      ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:shadow-lg hover:shadow-pink-500/30'
-                      : 'border border-white/20 text-white hover:bg-white/10'
+                      ? 'bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black hover:shadow-lg hover:shadow-yellow-500/30'
+                      : 'border border-[#D4AF37]/30 text-white hover:bg-[#D4AF37]/10'
                   }`}
                 >
                   Paket wählen
@@ -166,10 +166,10 @@ export default function Angebot() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <div className="font-semibold text-white mb-1">{addon.name}</div>
-                <div className="text-pink-500">{addon.price}</div>
+                <div className="text-[#D4AF37]">{addon.price}</div>
               </motion.div>
             ))}
           </div>
@@ -212,7 +212,7 @@ export default function Angebot() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-[#D4AF37]/20 transition-colors"
               >
                 <h3 className="text-lg font-semibold text-white mb-2">{faq.q}</h3>
                 <p className="text-gray-400">{faq.a}</p>
@@ -229,7 +229,7 @@ export default function Angebot() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <div className="bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-3xl p-10 backdrop-blur-sm border border-white/10">
+          <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-3xl p-10 backdrop-blur-sm border border-[#D4AF37]/20">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Noch Fragen zu unseren Paketen?
             </h2>
@@ -239,13 +239,13 @@ export default function Angebot() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/buchen" 
-                className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+                className="px-6 py-3 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300"
               >
                 Jetzt anfragen
               </Link>
               <a 
                 href="mailto:hello@zuerioke.ch" 
-                className="px-6 py-3 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+                className="px-6 py-3 border border-[#D4AF37]/30 text-white font-semibold rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
               >
                 E-Mail schreiben
               </a>

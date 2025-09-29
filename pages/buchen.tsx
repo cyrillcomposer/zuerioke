@@ -25,15 +25,15 @@ export default function Buchen() {
         className="max-w-4xl mx-auto"
       >
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">
-            Buchungsanfrage
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+            <span className="gradient-text">Buchungsanfrage</span>
           </h1>
           <p className="text-xl text-gray-300">
             Füllen Sie das Formular aus – wir melden uns innerhalb von 24 Stunden bei Ihnen.
           </p>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12">
+        <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/10 rounded-3xl p-8 md:p-12">
           <form 
             className="space-y-8" 
             action="https://formspree.io/f/mkgzqvdr" 
@@ -52,8 +52,8 @@ export default function Buchen() {
                     key={pkg}
                     className={`relative flex items-center justify-center p-4 rounded-xl border cursor-pointer transition-all ${
                       formData.package === pkg
-                        ? "bg-gradient-to-r from-pink-500/20 to-purple-600/20 border-pink-500"
-                        : "bg-white/5 border-white/10 hover:border-pink-500/50"
+                        ? "bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 border-[#D4AF37]"
+                        : "bg-white/5 border-white/10 hover:border-[#D4AF37]/50"
                     }`}
                   >
                     <input
@@ -71,7 +71,7 @@ export default function Buchen() {
                         animate={{ scale: 1 }}
                         className="absolute top-2 right-2"
                       >
-                        <svg className="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                       </motion.div>
@@ -93,7 +93,7 @@ export default function Buchen() {
                     type="text" 
                     name="name" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="Ihr Name"
                   />
                 </div>
@@ -105,7 +105,7 @@ export default function Buchen() {
                     type="email" 
                     name="email" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="ihre.email@beispiel.ch"
                   />
                 </div>
@@ -116,7 +116,7 @@ export default function Buchen() {
                   <input 
                     type="tel" 
                     name="telefon" 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="+41 79 123 45 67"
                   />
                 </div>
@@ -127,7 +127,7 @@ export default function Buchen() {
                   <input 
                     type="text" 
                     name="firma" 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="Firmenname"
                   />
                 </div>
@@ -146,7 +146,7 @@ export default function Buchen() {
                     type="date" 
                     name="datum" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
@@ -157,7 +157,7 @@ export default function Buchen() {
                     type="time" 
                     name="zeit" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
@@ -166,7 +166,7 @@ export default function Buchen() {
                   </label>
                   <select 
                     name="event_typ" 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:border-[#D4AF37] focus:outline-none transition-colors"
                   >
                     <option value="">Bitte wählen...</option>
                     <option value="Firmenevent">Firmenevent</option>
@@ -183,7 +183,7 @@ export default function Buchen() {
                   <input 
                     type="number" 
                     name="gaeste" 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="50"
                   />
                 </div>
@@ -202,7 +202,7 @@ export default function Buchen() {
                     type="text" 
                     name="ort_name" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="Restaurant, Club, Privatadresse..."
                   />
                 </div>
@@ -214,7 +214,7 @@ export default function Buchen() {
                     type="text" 
                     name="adresse" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="Musterstrasse 123"
                   />
                 </div>
@@ -226,7 +226,7 @@ export default function Buchen() {
                     type="text" 
                     name="plz" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="8000"
                   />
                 </div>
@@ -238,7 +238,7 @@ export default function Buchen() {
                     type="text" 
                     name="stadt" 
                     required 
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                     placeholder="Zürich"
                   />
                 </div>
@@ -253,7 +253,7 @@ export default function Buchen() {
               <textarea 
                 name="nachricht" 
                 rows={4} 
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors resize-none"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors resize-none"
                 placeholder="Teilen Sie uns Ihre besonderen Wünsche oder Fragen mit..."
               ></textarea>
             </div>
@@ -264,7 +264,7 @@ export default function Buchen() {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow"
+                className="px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
               >
                 Anfrage senden
               </motion.button>
@@ -272,7 +272,7 @@ export default function Buchen() {
                 type="reset"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+                className="px-8 py-4 border border-[#D4AF37]/30 text-white font-semibold rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
               >
                 Formular zurücksetzen
               </motion.button>
@@ -287,7 +287,7 @@ export default function Buchen() {
           transition={{ delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <div className="bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-2xl p-6 backdrop-blur-sm border border-white/10">
+          <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-2xl p-6 backdrop-blur-sm border border-[#D4AF37]/20">
             <h3 className="text-lg font-semibold text-white mb-2">
               Was passiert nach Ihrer Anfrage?
             </h3>

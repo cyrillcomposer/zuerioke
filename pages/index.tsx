@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
@@ -18,7 +19,7 @@ export default function Home() {
       text: "Riesige Auswahl von aktuellen Charts bis zu zeitlosen Klassikern in allen Sprachen."
     },
     {
-      icon: "🚀",
+      icon: "🍾",
       title: "Rundum-Service",
       text: "Aufbau, Betreuung und Moderation - wir kümmern uns um alles, ihr geniesst die Party."
     }
@@ -36,6 +37,7 @@ export default function Home() {
       <Head>
         <title>Zürioke – Premium Karaoke für deinen Event</title>
         <meta name="description" content="Mobile Karaoke für unvergessliche Events in Zürich. Professionelle Technik, mitreissende Stimmung und Spass garantiert." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {/* HERO SECTION */}
@@ -47,18 +49,35 @@ export default function Home() {
       >
         {/* Background effects */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
-          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#D4AF37] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-[#B8941F] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-[#F4E5A3] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-4000"></div>
         </div>
 
         <div className="mx-auto max-w-5xl text-center">
+          {/* Logo Hero */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="mb-8"
+          >
+            <Image 
+              src="/zurioke-logo.png" 
+              alt="ZÜRIOKE" 
+              width={280} 
+              height={120}
+              className="h-32 w-auto object-contain mx-auto"
+              priority
+            />
+          </motion.div>
+
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-pink-500/10 text-pink-400 border border-pink-500/20 mb-6">
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 mb-6">
               <span className="animate-pulse mr-2">●</span> Verfügbar für Events in Zürich
             </span>
           </motion.div>
@@ -91,7 +110,7 @@ export default function Home() {
           >
             <Link 
               href="/buchen" 
-              className="group relative px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow"
+              className="group relative px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
             >
               <span className="relative z-10 flex items-center">
                 Jetzt Verfügbarkeit prüfen
@@ -102,7 +121,7 @@ export default function Home() {
             </Link>
             <Link 
               href="/angebot" 
-              className="px-8 py-4 text-white font-semibold border border-white/20 rounded-full hover:bg-white/10 transition-all duration-300"
+              className="px-8 py-4 text-white font-semibold border border-[#D4AF37]/30 rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
             >
               Pakete ansehen
             </Link>
@@ -154,10 +173,10 @@ export default function Home() {
               onMouseLeave={() => setHoveredFeature(null)}
               className="relative group"
             >
-              <div className={`absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 rounded-2xl blur-xl transition-opacity duration-300 ${
+              <div className={`absolute inset-0 bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 rounded-2xl blur-xl transition-opacity duration-300 ${
                 hoveredFeature === i ? 'opacity-100' : 'opacity-0'
               }`}></div>
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 card-hover">
+              <div className="relative bg-white/5 backdrop-blur-sm border border-[#D4AF37]/10 rounded-2xl p-8 hover:bg-white/10 hover:border-[#D4AF37]/30 transition-all duration-300 card-hover">
                 <div className="text-5xl mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{feature.text}</p>
@@ -175,9 +194,9 @@ export default function Home() {
         viewport={{ once: true }}
         className="py-20"
       >
-        <div className="relative bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-3xl p-12 md:p-16 backdrop-blur-sm border border-white/10">
-          <div className="absolute top-0 right-0 w-40 h-40 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-          <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="relative bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-3xl p-12 md:p-16 backdrop-blur-sm border border-[#D4AF37]/20">
+          <div className="absolute top-0 right-0 w-40 h-40 bg-[#D4AF37] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#B8941F] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
           
           <div className="relative grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -200,7 +219,7 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="flex items-center text-gray-300"
                   >
-                    <svg className="w-5 h-5 text-pink-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-[#D4AF37] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     {item}
@@ -209,7 +228,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="relative">
-              <div className="aspect-video bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10">
+              <div className="aspect-video bg-gradient-to-br from-[#D4AF37]/20 to-[#B8941F]/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-[#D4AF37]/20">
                 <div className="text-center">
                   <div className="text-6xl mb-4">🎤</div>
                   <p className="text-white font-semibold">Live Demo Video</p>
@@ -239,9 +258,9 @@ export default function Home() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 blur-3xl"
+            className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 blur-3xl"
           ></motion.div>
-          <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-12 md:p-16 border border-white/10 max-w-4xl mx-auto">
+          <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-12 md:p-16 border border-[#D4AF37]/20 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Bereit für die <span className="gradient-text">beste Karaoke-Party</span> deines Lebens?
             </h2>
@@ -250,7 +269,7 @@ export default function Home() {
             </p>
             <Link 
               href="/buchen" 
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow pulse"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow pulse"
             >
               <span className="relative z-10">Unverbindliche Anfrage stellen</span>
             </Link>

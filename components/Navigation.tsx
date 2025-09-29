@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const links = [
   { href: "/", label: "Home" },
@@ -29,20 +30,23 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled 
-          ? 'bg-black/90 backdrop-blur-xl shadow-lg shadow-pink-500/10' 
+          ? 'bg-black/95 backdrop-blur-xl shadow-lg shadow-yellow-500/10' 
           : 'bg-transparent'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link 
           href="/" 
-          className="relative group"
+          className="relative group flex items-center"
         >
-          <span className="text-2xl font-bold text-white tracking-wider relative z-10">
-            ZÜRI<span className="text-pink-500">OKE</span>
-          </span>
-          <motion.div 
-            className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500 w-0 group-hover:w-full transition-all duration-300"
+          {/* Logo Image */}
+          <Image 
+            src="/zurioke-logo.png" 
+            alt="ZÜRIOKE" 
+            width={140} 
+            height={60}
+            className="h-14 w-auto object-contain"
+            priority
           />
         </Link>
 
@@ -52,22 +56,22 @@ export default function Navigation() {
             <Link
               key={l.href}
               href={l.href}
-              className="relative text-sm font-medium text-gray-300 hover:text-white transition-colors group"
+              className="relative text-sm font-medium text-gray-300 hover:text-[#D4AF37] transition-colors group"
             >
               <span className="relative z-10">{l.label}</span>
               {pathname === l.href && (
                 <motion.div 
                   layoutId="navbar-indicator"
-                  className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500"
+                  className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37]"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <div className={`absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${pathname === l.href ? 'hidden' : ''}`} />
+              <div className={`absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${pathname === l.href ? 'hidden' : ''}`} />
             </Link>
           ))}
           <Link
             href="/buchen"
-            className="relative overflow-hidden px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 btn-glow"
+            className="relative overflow-hidden px-6 py-2.5 text-sm font-semibold text-black bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
           >
             <span className="relative z-10">Jetzt anfragen</span>
           </Link>
@@ -76,21 +80,21 @@ export default function Navigation() {
         {/* Mobile menu button */}
         <button
           aria-label="Menü öffnen"
-          className="md:hidden relative w-10 h-10 flex items-center justify-center text-white"
+          className="md:hidden relative w-10 h-10 flex items-center justify-center text-[#D4AF37]"
           onClick={() => setOpen(!open)}
         >
           <div className="space-y-1.5">
             <motion.span 
               animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }}
-              className="block w-6 h-0.5 bg-white"
+              className="block w-6 h-0.5 bg-[#D4AF37]"
             />
             <motion.span 
               animate={{ opacity: open ? 0 : 1 }}
-              className="block w-6 h-0.5 bg-white"
+              className="block w-6 h-0.5 bg-[#D4AF37]"
             />
             <motion.span 
               animate={{ rotate: open ? -45 : 0, y: open ? -6 : 0 }}
-              className="block w-6 h-0.5 bg-white"
+              className="block w-6 h-0.5 bg-[#D4AF37]"
             />
           </div>
         </button>
@@ -103,7 +107,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10"
+            className="md:hidden bg-black/95 backdrop-blur-xl border-t border-[#D4AF37]/20"
           >
             <nav className="mx-auto max-w-7xl px-4 py-6 grid gap-4">
               {links.map((l) => (
@@ -113,8 +117,8 @@ export default function Navigation() {
                   onClick={() => setOpen(false)}
                   className={`py-2 text-lg font-medium transition-colors ${
                     pathname === l.href 
-                      ? 'text-pink-500' 
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-[#D4AF37]' 
+                      : 'text-gray-300 hover:text-[#D4AF37]'
                   }`}
                 >
                   {l.label}
@@ -123,7 +127,7 @@ export default function Navigation() {
               <Link
                 href="/buchen"
                 onClick={() => setOpen(false)}
-                className="inline-flex w-max items-center px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-full hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+                className="inline-flex w-max items-center px-6 py-3 text-sm font-semibold text-black bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300"
               >
                 Jetzt anfragen
               </Link>
