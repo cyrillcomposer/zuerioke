@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "../translations";
 
 export default function Footer() {
+  const t = useTranslations();
   return (
     <footer className="relative border-t border-[#D4AF37]/20 bg-black/50 backdrop-blur-xl">
       <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
@@ -19,8 +21,7 @@ export default function Footer() {
               />
             </div>
             <p className="mt-4 text-sm text-gray-400 max-w-sm">
-              Mobile Karaoke für unvergessliche Events. Wir kommen zu Ihnen - 
-              mit professioneller Technik und Spass garantiert im Raum Zürich.
+              {t.footer.description}
             </p>
             <div className="mt-6 flex gap-4">
               <a 
@@ -45,48 +46,48 @@ export default function Footer() {
           </div>
           
           <div>
-            <div className="text-sm font-semibold text-white mb-4">Seiten</div>
+            <div className="text-sm font-semibold text-white mb-4">{t.footer.pagesTitle}</div>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/angebot" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
-                  Angebot
+                  {t.nav.angebot}
                 </Link>
               </li>
               <li>
                 <Link href="/buchen" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
-                  Buchen
+                  {t.nav.buchen}
                 </Link>
               </li>
               <li>
                 <Link href="/testimonials" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
-                  Stimmen
+                  {t.nav.testimonials}
                 </Link>
               </li>
               <li>
                 <Link href="/ueber-uns" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
-                  Über uns
+                  {t.nav.uberUns}
                 </Link>
               </li>
             </ul>
           </div>
-          
+
           <div>
-            <div className="text-sm font-semibold text-white mb-4">Kontakt</div>
+            <div className="text-sm font-semibold text-white mb-4">{t.footer.contactTitle}</div>
             <ul className="space-y-3 text-sm">
               <li className="text-gray-400">
-                Email: 
+                {t.footer.email}
                 <a className="text-[#D4AF37] hover:text-[#F4E5A3] ml-1 transition-colors" href="mailto:hello@zuerioke.ch">
                   hello@zuerioke.ch
                 </a>
               </li>
               <li className="text-gray-400">
-                Instagram: 
+                {t.footer.instagram}
                 <a className="text-[#D4AF37] hover:text-[#F4E5A3] ml-1 transition-colors" href="https://instagram.com/zuerioke">
                   @zuerioke
                 </a>
               </li>
               <li className="text-gray-400">
-                Standort: Zürich
+                {t.footer.location}
               </li>
             </ul>
           </div>
@@ -94,15 +95,15 @@ export default function Footer() {
         
         <div className="mt-12 pt-8 border-t border-[#D4AF37]/20 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-xs text-gray-500">
-            © {new Date().getFullYear()} Zürioke. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} {t.footer.copyright}
           </div>
-          <motion.div 
+          <motion.div
             className="text-xs text-gray-500"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Made with <span className="text-[#D4AF37]">♪</span> in Zürich
+            {t.footer.madeWith} <span className="text-[#D4AF37]">♪</span> in Zürich
           </motion.div>
         </div>
       </div>

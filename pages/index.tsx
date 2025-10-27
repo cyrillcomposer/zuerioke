@@ -3,43 +3,45 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "../translations";
 
 export default function Home() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const t = useTranslations();
 
   const features = [
     {
       icon: "🚐",
-      title: "Mobile Karaoke",
-      text: "Wir kommen zu Ihnen - egal ob Büro, Restaurant oder private Location. Kompletter Auf- und Abbau inklusive."
+      title: t.home.features[0].title,
+      text: t.home.features[0].text
     },
     {
       icon: "🎵",
-      title: "100.000+ Songs",
-      text: "Riesige Auswahl von aktuellen Charts bis zu zeitlosen Klassikern in allen Sprachen."
+      title: t.home.features[1].title,
+      text: t.home.features[1].text
     },
     {
       icon: "🎤",
-      title: "Profi-Equipment",
-      text: "Hochwertige PA-Anlage, Funkmikrofone und Grossleinwand mit Beamer für das ultimative Karaoke-Erlebnis."
+      title: t.home.features[2].title,
+      text: t.home.features[2].text
     }
   ];
 
   const stats = [
-    { number: "500+", label: "Events" },
-    { number: "100K+", label: "Songs" },
-    { number: "5★", label: "Bewertung" },
-    { number: "24h", label: "Support" }
+    { number: "500+", label: t.home.stats.events },
+    { number: "100K+", label: t.home.stats.songs },
+    { number: "5★", label: t.home.stats.rating },
+    { number: "24h", label: t.home.stats.support }
   ];
 
   return (
     <>
       <Head>
-        <title>Karaoke Zürich mieten | Mobile Karaoke - Zürioke</title>
-        <meta name="description" content="Mobile Karaoke in Zürich mieten für Firmenevent, Hochzeit & Party. Wir kommen zu Ihnen! ✓ 100.000+ Songs ✓ Profi-Equipment ✓ Ab CHF 599" />
+        <title>{t.home.meta.title}</title>
+        <meta name="description" content={t.home.meta.description} />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:title" content="Karaoke Zürich mieten | Mobile Karaoke - Zürioke" />
-        <meta property="og:description" content="Mobile Karaoke in Zürich mieten für Firmenevent, Hochzeit & Party. Wir kommen zu Ihnen!" />
+        <meta property="og:title" content={t.home.meta.title} />
+        <meta property="og:description" content={t.home.meta.description} />
         <meta property="og:image" content="/zurioke-logo.png" />
         <meta property="og:type" content="website" />
         <script
@@ -143,28 +145,27 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 mb-6">
-              <span className="animate-pulse mr-2">●</span> Verfügbar für Events in Zürich
+              <span className="animate-pulse mr-2">●</span> {t.home.badge}
             </span>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight"
           >
-            <span className="block text-white mb-2">Mobile Karaoke</span>
-            <span className="block gradient-text">Wir kommen zu dir!</span>
+            <span className="block text-white mb-2">{t.home.heroTitle1}</span>
+            <span className="block gradient-text">{t.home.heroTitle2}</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
             className="mt-8 text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Verwandeln Sie Ihren Event in eine unvergessliche Karaoke-Party. 
-            Wir bringen alles mit: Profi-Equipment, 100.000+ Songs und gute Stimmung - direkt zu Ihrer Location.
+            {t.home.heroDescription}
           </motion.p>
 
           <motion.div 
@@ -173,22 +174,22 @@ export default function Home() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link 
-              href="/buchen" 
+            <Link
+              href="/buchen"
               className="group relative px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
             >
               <span className="relative z-10 flex items-center">
-                Jetzt Verfügbarkeit prüfen
+                {t.home.ctaPrimary}
                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
             </Link>
-            <Link 
-              href="/angebot" 
+            <Link
+              href="/angebot"
               className="px-8 py-4 text-white font-semibold border border-[#D4AF37]/30 rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
             >
-              Pakete ansehen
+              {t.home.ctaSecondary}
             </Link>
           </motion.div>
         </div>
@@ -219,10 +220,10 @@ export default function Home() {
       >
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Was uns besonders macht
+            {t.home.featuresTitle}
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Professionelle Karaoke-Unterhaltung auf höchstem Niveau
+            {t.home.featuresSubtitle}
           </p>
         </div>
 
@@ -266,16 +267,10 @@ export default function Home() {
           <div className="relative grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Perfekt für jeden <span className="gradient-text">Anlass</span>
+                {t.home.highlightsTitle} <span className="gradient-text">{t.home.highlightsTitle === 'Perfekt für jeden' ? 'Anlass' : 'occasion'}</span>
               </h2>
               <ul className="space-y-4">
-                {[
-                  'Firmenevents & Weihnachtsfeiern',
-                  'Geburtstage & Jubiläen',
-                  'Hochzeiten & Polterabende',
-                  'Private Partys & Vereinsfeste',
-                  'Team-Building Events'
-                ].map((item, i) => (
+                {t.home.occasions.map((item: string, i: number) => (
                   <motion.li 
                     key={i}
                     initial={{ x: -20, opacity: 0 }}
@@ -296,8 +291,8 @@ export default function Home() {
               <div className="aspect-video bg-gradient-to-br from-[#D4AF37]/20 to-[#B8941F]/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-[#D4AF37]/20">
                 <div className="text-center">
                   <div className="text-6xl mb-4">🎤</div>
-                  <p className="text-white font-semibold">Live Demo Video</p>
-                  <p className="text-gray-400 text-sm mt-2">Coming Soon</p>
+                  <p className="text-white font-semibold">{t.home.videoPlaceholder}</p>
+                  <p className="text-gray-400 text-sm mt-2">{t.home.videoComingSoon}</p>
                 </div>
               </div>
             </div>
@@ -327,19 +322,19 @@ export default function Home() {
           ></motion.div>
           <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-12 md:p-16 border border-[#D4AF37]/20 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Bereit für die <span className="gradient-text">beste Karaoke-Party</span> deines Lebens?
+              {t.home.ctaTitle.split('beste Karaoke-Party')[0]}<span className="gradient-text">{t.home.ctaTitle.includes('beste Karaoke-Party') ? 'beste Karaoke-Party' : 'best karaoke party'}</span>{t.home.ctaTitle.split('beste Karaoke-Party')[1] || t.home.ctaTitle.split('best karaoke party')[1]}
             </h2>
             <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Sichere dir jetzt deinen Wunschtermin. Wir melden uns innerhalb von 24 Stunden bei dir.
+              {t.home.ctaDescription}
             </p>
-            <Link 
-              href="/buchen" 
+            <Link
+              href="/buchen"
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow pulse"
             >
-              <span className="relative z-10">Unverbindliche Anfrage stellen</span>
+              <span className="relative z-10">{t.home.ctaButton}</span>
             </Link>
             <p className="mt-6 text-sm text-gray-500">
-              Keine versteckten Kosten • Transparente Preise • Zufriedenheitsgarantie
+              {t.home.ctaFooter}
             </p>
           </div>
         </div>

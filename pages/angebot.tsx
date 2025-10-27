@@ -1,75 +1,24 @@
 import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useTranslations } from "../translations";
 
 export default function Angebot() {
-  const packages = [
-    {
-      name: "Basic",
-      price: "CHF 599",
-      duration: "2 Stunden",
-      popular: false,
-      features: [
-        "2 Stunden Karaoke-Party",
-        "2 Funkmikrofone",
-        "Professionelle PA-Anlage",
-        "Monitor für Songtexte",
-        "50.000+ Songs Auswahl",
-        "Technischer Support",
-        "Auf-/Abbau & Anfahrt inkl."
-      ]
-    },
-    {
-      name: "Party",
-      price: "CHF 899",
-      duration: "3 Stunden",
-      popular: true,
-      features: [
-        "3 Stunden Karaoke-Party",
-        "2 Funkmikrofone",
-        "Premium PA-System",
-        "Grossleinwand mit Beamer",
-        "100.000+ Songs Auswahl",
-        "Lichteffekte & Ambience",
-        "Playlist-Vorbereitung",
-        "Auf-/Abbau & Anfahrt inkl."
-      ]
-    },
-    {
-      name: "Premium",
-      price: "CHF 1299",
-      duration: "4 Stunden",
-      popular: false,
-      features: [
-        "4 Stunden Entertainment",
-        "2+ Funkmikrofone",
-        "High-End Sound System",
-        "Grossleinwand mit Beamer",
-        "100.000+ Songs + Requests",
-        "Profi-Lichtshow",
-        "Video-Aufnahme möglich",
-        "Playlist-Kuration",
-        "Auf-/Abbau & Anfahrt inkl."
-      ]
-    }
-  ];
+  const t = useTranslations();
+  const packages = t.angebot.packages.map((pkg: { name: string; price: string; duration: string; features: string[] }, i: number) => ({
+    ...pkg,
+    popular: i === 1
+  }));
+  const addons = t.angebot.addons;
 
-  const addons = [
-    { name: "Zusatzstunde", price: "CHF 199" },
-    { name: "Extra Mikrofon", price: "CHF 49" },
-    { name: "Nebelmaschine", price: "CHF 79" },
-    { name: "Video-Recording", price: "CHF 299" },
-    { name: "Custom Branding", price: "CHF 149" },
-    { name: "DJ-Set (1h)", price: "CHF 249" }
-  ];
 
   return (
     <>
       <Head>
-        <title>Karaoke Zürich Preise & Pakete | Ab CHF 599</title>
-        <meta name="description" content="Karaoke mieten in Zürich: Basic, Party & Premium Pakete. Mobile Karaoke für Firmenevent, Hochzeit, Geburtstag. Transparente Preise ab CHF 599." />
-        <meta property="og:title" content="Karaoke Zürich Preise & Pakete | Zürioke" />
-        <meta property="og:description" content="Mobile Karaoke Pakete für jeden Anlass. Transparente Preise, professionelles Equipment." />
+        <title>{t.angebot.meta.title}</title>
+        <meta name="description" content={t.angebot.meta.description} />
+        <meta property="og:title" content={t.angebot.meta.title} />
+        <meta property="og:description" content={t.angebot.meta.description} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -133,16 +82,16 @@ export default function Angebot() {
       >
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-            <span className="gradient-text">Unsere Pakete</span>
+            <span className="gradient-text">{t.angebot.title}</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Massgeschneiderte Karaoke-Erlebnisse für jeden Anlass und jedes Budget
+            {t.angebot.subtitle}
           </p>
         </div>
 
         {/* Packages */}
         <div className="grid gap-8 md:grid-cols-3 mb-20">
-          {packages.map((pkg, i) => (
+          {packages.map((pkg: any, i: number) => (
             <motion.div
               key={pkg.name}
               initial={{ opacity: 0, y: 30 }}
@@ -153,7 +102,7 @@ export default function Angebot() {
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
                   <span className="px-4 py-1 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black text-sm font-semibold rounded-full">
-                    BELIEBTESTE WAHL
+                    {t.angebot.popular}
                   </span>
                 </div>
               )}
@@ -169,7 +118,7 @@ export default function Angebot() {
                 </div>
                 
                 <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature, j) => (
+                  {pkg.features.map((feature: string, j: number) => (
                     <li key={j} className="flex items-start text-gray-300">
                       <svg className="w-5 h-5 text-[#D4AF37] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -187,7 +136,7 @@ export default function Angebot() {
                       : 'border border-[#D4AF37]/30 text-white hover:bg-[#D4AF37]/10'
                   }`}
                 >
-                  Paket wählen
+                  {t.angebot.selectPackage}
                 </Link>
               </div>
             </motion.div>
@@ -204,15 +153,15 @@ export default function Angebot() {
         >
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Zusatzoptionen
+              {t.angebot.addonsTitle}
             </h2>
             <p className="text-gray-400">
-              Erweitern Sie Ihr Paket mit unseren beliebten Extras
+              {t.angebot.addonsSubtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {addons.map((addon, i) => (
+            {addons.map((addon: { name: string; price: string }, i: number) => (
               <motion.div
                 key={addon.name}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -237,28 +186,11 @@ export default function Angebot() {
           className="max-w-4xl mx-auto"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
-            Häufige Fragen
+            {t.angebot.faqTitle}
           </h2>
-          
+
           <div className="space-y-4">
-            {[
-              {
-                q: "Wie weit im Voraus sollte ich buchen?",
-                a: "Wir empfehlen eine Buchung mindestens 2-4 Wochen im Voraus, besonders für Wochenenden und Feiertage."
-              },
-              {
-                q: "Ist die Anfahrt im Preis inbegriffen?",
-                a: "Ja, die Anfahrt innerhalb des Grossraums Zürich ist in allen Paketen inklusive."
-              },
-              {
-                q: "Können spezielle Songs angefragt werden?",
-                a: "Absolut! Mit über 100.000 Songs haben wir fast alles. Spezielle Wünsche können vorab besprochen werden."
-              },
-              {
-                q: "Wie viel Platz wird benötigt?",
-                a: "Für unser Basic-Setup reichen etwa 4m². Für grössere Setups mit Lichtshow empfehlen wir 10-15m²."
-              }
-            ].map((faq, i) => (
+            {t.angebot.faqs.map((faq: { q: string; a: string }, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
@@ -284,23 +216,23 @@ export default function Angebot() {
         >
           <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-3xl p-10 backdrop-blur-sm border border-[#D4AF37]/20">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Noch Fragen zu unseren Paketen?
+              {t.angebot.ctaTitle}
             </h2>
             <p className="text-gray-300 mb-6">
-              Wir beraten Sie gerne und erstellen ein massgeschneidertes Angebot für Ihren Event.
+              {t.angebot.ctaDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/buchen" 
+              <Link
+                href="/buchen"
                 className="px-6 py-3 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300"
               >
-                Jetzt anfragen
+                {t.angebot.ctaButton}
               </Link>
-              <a 
-                href="mailto:hello@zuerioke.ch" 
+              <a
+                href="mailto:hello@zuerioke.ch"
                 className="px-6 py-3 border border-[#D4AF37]/30 text-white font-semibold rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
               >
-                E-Mail schreiben
+                {t.angebot.ctaEmail}
               </a>
             </div>
           </div>

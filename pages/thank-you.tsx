@@ -2,8 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useTranslations } from "../translations";
 
 export default function ThankYou() {
+  const t = useTranslations();
   const [confetti, setConfetti] = useState<Array<{id: number, x: number, delay: number}>>([]);
 
   useEffect(() => {
@@ -19,8 +21,8 @@ export default function ThankYou() {
   return (
     <>
       <Head>
-        <title>Danke für Ihre Anfrage | Karaoke Zürich</title>
-        <meta name="description" content="Ihre Karaoke-Anfrage wurde erfolgreich übermittelt. Wir melden uns innerhalb von 24 Stunden bei Ihnen." />
+        <title>{t.thankYou.meta.title}</title>
+        <meta name="description" content={t.thankYou.meta.description} />
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
@@ -91,8 +93,8 @@ export default function ThankYou() {
           className="relative text-center px-4 max-w-2xl mx-auto"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">Vielen Dank</span>
-            <span className="block text-white mt-2">für Ihre Anfrage!</span>
+            <span className="gradient-text">{t.thankYou.title}</span>
+            <span className="block text-white mt-2">{t.thankYou.subtitle}</span>
           </h1>
 
           <motion.div
@@ -102,12 +104,12 @@ export default function ThankYou() {
             className="space-y-4 text-gray-300"
           >
             <p className="text-xl">
-              Ihre Buchungsanfrage wurde erfolgreich übermittelt.
+              {t.thankYou.message1}
             </p>
             <p>
-              Wir haben Ihre Nachricht erhalten und werden uns innerhalb von 
-              <span className="text-[#D4AF37] font-semibold"> 24 Stunden </span>
-              bei Ihnen melden.
+              {t.thankYou.message2}{' '}
+              <span className="text-[#D4AF37] font-semibold">{t.thankYou.timeframe}</span>{' '}
+              {t.thankYou.message2.includes('innerhalb von') ? 'bei Ihnen melden.' : 'contact you.'}
             </p>
           </motion.div>
 
@@ -119,15 +121,10 @@ export default function ThankYou() {
             className="mt-12 bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-2xl p-8"
           >
             <h2 className="text-xl font-semibold text-white mb-4">
-              Was passiert als Nächstes?
+              {t.thankYou.nextStepsTitle}
             </h2>
             <div className="space-y-3 text-left max-w-md mx-auto">
-              {[
-                { step: "1", text: "Wir prüfen Ihre Anfrage und Verfügbarkeit" },
-                { step: "2", text: "Sie erhalten eine persönliche Rückmeldung" },
-                { step: "3", text: "Gemeinsame Besprechung aller Details" },
-                { step: "4", text: "Bestätigung und let's party!" }
-              ].map((item, i) => (
+              {t.thankYou.steps.map((item: { text: string }, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
@@ -136,7 +133,7 @@ export default function ThankYou() {
                   className="flex items-center gap-3"
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full flex items-center justify-center text-black text-sm font-bold flex-shrink-0">
-                    {item.step}
+                    {i + 1}
                   </div>
                   <span className="text-gray-300">{item.text}</span>
                 </motion.div>
@@ -151,17 +148,17 @@ export default function ThankYou() {
             transition={{ delay: 1.2 }}
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="px-6 py-3 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
             >
-              Zur Startseite
+              {t.thankYou.homeButton}
             </Link>
-            <Link 
-              href="/angebot" 
+            <Link
+              href="/angebot"
               className="px-6 py-3 border border-[#D4AF37]/30 text-white font-semibold rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
             >
-              Pakete ansehen
+              {t.thankYou.packagesButton}
             </Link>
           </motion.div>
 
@@ -172,9 +169,9 @@ export default function ThankYou() {
             transition={{ delay: 1.4 }}
             className="mt-12 text-sm text-gray-400"
           >
-            <p className="mb-2">Bei dringenden Fragen erreichen Sie uns unter:</p>
-            <a 
-              href="mailto:hello@zuerioke.ch" 
+            <p className="mb-2">{t.thankYou.urgentText}</p>
+            <a
+              href="mailto:hello@zuerioke.ch"
               className="text-[#D4AF37] hover:text-[#F4E5A3] transition-colors"
             >
               hello@zuerioke.ch
@@ -199,7 +196,7 @@ export default function ThankYou() {
               ))}
             </div>
             <span className="text-sm text-gray-400 ml-3">
-              <span className="text-white font-semibold">500+</span> zufriedene Kunden
+              <span className="text-white font-semibold">500+</span> {t.thankYou.socialProof}
             </span>
           </motion.div>
         </motion.div>

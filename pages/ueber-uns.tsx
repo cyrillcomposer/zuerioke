@@ -1,55 +1,22 @@
 import Head from "next/head";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "../translations";
 
 export default function UeberUns() {
-  const team = [
-    {
-      name: "Marcel",
-      role: "Sound Engineer & DJ",
-      img: "/marcel.jpg",
-      text: "Technikliebhaber, Sound-Enthusiast und unser Karaoke-DJ Nr. 1. Er bringt jede Box zum Klingen und sorgt für die perfekte Stimmung.",
-      skills: ["Sound Engineering", "DJ-ing", "Event-Technik"],
-    },
-    {
-      name: "Cyrill",
-      role: "Entertainment Manager",
-      img: "/cyrill.jpg",
-      text: "Musiker durch und durch – mit Gespür für Töne, Texte und Emotion. Er bringt Herz in jedes Mikrofon und lässt jeden Auftritt glänzen.",
-      skills: ["Moderation", "Musik-Kuration", "Crowd Animation"],
-    }
-  ];
+  const t = useTranslations();
+  const team = t.uberUns.team;
+  const values = t.uberUns.values;
 
-  const values = [
-    {
-      icon: "💜",
-      title: "Leidenschaft",
-      text: "Wir lieben was wir tun und das spürt man bei jedem Event."
-    },
-    {
-      icon: "⭐",
-      title: "Qualität",
-      text: "Nur das beste Equipment und professioneller Service für unsere Kunden."
-    },
-    {
-      icon: "🎯",
-      title: "Zuverlässigkeit",
-      text: "Pünktlich, vorbereitet und immer mit einem Plan B in der Tasche."
-    },
-    {
-      icon: "🎉",
-      title: "Spass",
-      text: "Bei uns steht der Spass im Vordergrund - für uns und unsere Gäste."
-    }
-  ];
+  const valueIcons = ["💜", "⭐", "🎯", "🎉"];
 
   return (
     <>
       <Head>
-        <title>Mobile Karaoke Zürich Team | Über Zürioke</title>
-        <meta name="description" content="Das Team hinter Zürioke: Mobile Karaoke in Zürich seit 2020. 500+ Events, professionelles Equipment, persönlicher Service für Ihren Anlass." />
-        <meta property="og:title" content="Über uns | Zürioke Mobile Karaoke Zürich" />
-        <meta property="og:description" content="Lernen Sie das Team hinter Zürioke kennen. Ihre Experten für mobile Karaoke-Events in Zürich." />
+        <title>{t.uberUns.meta.title}</title>
+        <meta name="description" content={t.uberUns.meta.description} />
+        <meta property="og:title" content={t.uberUns.meta.title} />
+        <meta property="og:description" content={t.uberUns.meta.description} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -92,11 +59,10 @@ export default function UeberUns() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-6">
-            Über Zürioke
+            {t.uberUns.title}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Zwei Freunde, eine Mission: Wir bringen die Bühne zu dir und machen 
-            jeden zum Star seiner eigenen Show.
+            {t.uberUns.subtitle}
           </p>
         </div>
 
@@ -110,24 +76,12 @@ export default function UeberUns() {
         >
           <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-3xl p-10 md:p-12 backdrop-blur-sm border border-[#D4AF37]/20">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Unsere <span className="gradient-text">Geschichte</span>
+              {t.uberUns.storyTitle} <span className="gradient-text">{t.uberUns.storyTitle === 'Unsere' ? 'Geschichte' : 'story'}</span>
             </h2>
             <div className="space-y-4 text-gray-300 leading-relaxed">
-              <p>
-                Was als spontane Idee an einem lauen Sommerabend in Zürich begann, 
-                ist heute zu einer der gefragtesten mobilen Karaoke-Services der Region geworden.
-              </p>
-              <p>
-                Marcel und Cyrill, beide leidenschaftliche Musikliebhaber, erkannten schnell, 
-                dass Karaoke mehr ist als nur Singen – es ist ein Erlebnis, das Menschen 
-                verbindet, Hemmungen abbaut und unvergessliche Momente schafft.
-              </p>
-              <p>
-                Mit dieser Vision starteten wir 2020 Zürioke. Seitdem haben wir über 500 Events 
-                begleitet und Tausende von Menschen zum Strahlen gebracht. Von intimen 
-                Geburtstagsfeiern bis zu grossen Firmenevents – jeder Auftritt ist für uns 
-                eine neue Chance, Magie zu erschaffen.
-              </p>
+              {t.uberUns.story.map((paragraph: string, i: number) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -141,10 +95,10 @@ export default function UeberUns() {
           className="mb-20"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
-            Das Team
+            {t.uberUns.teamTitle}
           </h2>
           <div className="grid gap-12 md:grid-cols-2">
-            {team.map((member, i) => (
+            {team.map((member: { name: string; role: string; text: string; skills: string[] }, i: number) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
@@ -168,7 +122,7 @@ export default function UeberUns() {
                   <p className="text-gray-300 mb-6">{member.text}</p>
                   
                   <div className="flex flex-wrap gap-2 justify-center">
-                    {member.skills.map((skill) => (
+                    {member.skills.map((skill: string) => (
                       <span 
                         key={skill}
                         className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300"
@@ -192,10 +146,10 @@ export default function UeberUns() {
           className="mb-20"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
-            Unsere Werte
+            {t.uberUns.valuesTitle}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {values.map((value, i) => (
+            {values.map((value: { title: string; text: string }, i: number) => (
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -204,7 +158,7 @@ export default function UeberUns() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="text-4xl mb-3">{value.icon}</div>
+                <div className="text-4xl mb-3">{valueIcons[i]}</div>
                 <h3 className="font-semibold text-white mb-2">{value.title}</h3>
                 <p className="text-sm text-gray-400">{value.text}</p>
               </motion.div>
@@ -224,18 +178,13 @@ export default function UeberUns() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 blur-3xl"></div>
             <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-10 md:p-12 border border-[#D4AF37]/20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
-                Warum <span className="gradient-text">Zürioke</span>?
+                {t.uberUns.whyTitle} <span className="gradient-text">Zürioke</span>?
               </h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-4">Erfahrung & Expertise</h3>
+                  <h3 className="text-xl font-semibold text-white mb-4">{t.uberUns.experienceTitle}</h3>
                   <ul className="space-y-3">
-                    {[
-                      "500+ erfolgreiche Events",
-                      "Professionelles Equipment",
-                      "Geschultes Personal",
-                      "Flexible Lösungen"
-                    ].map((item) => (
+                    {t.uberUns.experienceItems.map((item: string) => (
                       <li key={item} className="flex items-center text-gray-300">
                         <svg className="w-5 h-5 text-[#D4AF37] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -246,14 +195,9 @@ export default function UeberUns() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-4">Service & Support</h3>
+                  <h3 className="text-xl font-semibold text-white mb-4">{t.uberUns.serviceTitle}</h3>
                   <ul className="space-y-3">
-                    {[
-                      "24h Antwortzeit",
-                      "Kostenlose Beratung",
-                      "Transparente Preise",
-                      "Zufriedenheitsgarantie"
-                    ].map((item) => (
+                    {t.uberUns.serviceItems.map((item: string) => (
                       <li key={item} className="flex items-center text-gray-300">
                         <svg className="w-5 h-5 text-[#D4AF37] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -277,10 +221,10 @@ export default function UeberUns() {
           className="text-center"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Bereit für deine Karaoke-Party?
+            {t.uberUns.ctaTitle}
           </h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Lass uns gemeinsam deinen Event zu einem unvergesslichen Erlebnis machen.
+            {t.uberUns.ctaDescription}
           </p>
           <motion.a
             href="/buchen"
@@ -288,7 +232,7 @@ export default function UeberUns() {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
           >
-            Jetzt Kontakt aufnehmen
+            {t.uberUns.ctaButton}
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

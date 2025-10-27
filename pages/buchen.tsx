@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "../translations";
 
 export default function Buchen() {
+  const t = useTranslations();
   const [formData, setFormData] = useState({
     package: "",
     extras: [] as string[]
@@ -19,22 +21,15 @@ export default function Buchen() {
     setFormData({ ...formData, extras: newExtras });
   };
 
-  const addons = [
-    { name: "Zusatzstunde", price: "CHF 199" },
-    { name: "Extra Mikrofon", price: "CHF 49" },
-    { name: "Nebelmaschine", price: "CHF 79" },
-    { name: "Video-Recording", price: "CHF 299" },
-    { name: "Custom Branding", price: "CHF 149" },
-    { name: "DJ-Set (1h)", price: "CHF 249" }
-  ];
+  const addons = t.angebot.addons;
 
   return (
     <>
       <Head>
-        <title>Karaoke Zürich buchen | Anfrage & Kontakt</title>
-        <meta name="description" content="Mobile Karaoke in Zürich buchen für Ihr Event. Einfache Online-Anfrage, Antwort in 24h. Für Firmenevents, Hochzeiten & private Feiern." />
-        <meta property="og:title" content="Karaoke Zürich buchen | Zürioke" />
-        <meta property="og:description" content="Jetzt mobile Karaoke für Ihr Event in Zürich anfragen. Schnell, einfach, unverbindlich." />
+        <title>{t.buchen.meta.title}</title>
+        <meta name="description" content={t.buchen.meta.description} />
+        <meta property="og:title" content={t.buchen.meta.title} />
+        <meta property="og:description" content={t.buchen.meta.description} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -69,10 +64,10 @@ export default function Buchen() {
       >
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-            <span className="gradient-text">Buchungsanfrage</span>
+            <span className="gradient-text">{t.buchen.title}</span>
           </h1>
           <p className="text-xl text-gray-300">
-            Füllen Sie das Formular aus – wir melden uns innerhalb von 24 Stunden bei Ihnen.
+            {t.buchen.subtitle}
           </p>
         </div>
 
@@ -87,10 +82,10 @@ export default function Buchen() {
             {/* Package Selection */}
             <div>
               <label className="block text-sm font-semibold text-white mb-4">
-                Gewünschtes Paket
+                {t.buchen.package}
               </label>
               <div className="grid md:grid-cols-3 gap-4">
-                {["Basic (2h)", "Party (3h)", "Premium (4h)"].map((pkg) => (
+                {t.buchen.packages.map((pkg: string) => (
                   <label
                     key={pkg}
                     className={`relative flex items-center justify-center p-4 rounded-xl border cursor-pointer transition-all ${
@@ -127,10 +122,10 @@ export default function Buchen() {
             {/* Extras Selection */}
             <div>
               <label className="block text-sm font-semibold text-white mb-4">
-                Zusatzoptionen (optional)
+                {t.buchen.extrasTitle}
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {addons.map((addon) => (
+                {addons.map((addon: { name: string; price: string }) => (
                   <label
                     key={addon.name}
                     className={`relative flex flex-col p-4 rounded-xl border cursor-pointer transition-all ${
@@ -168,52 +163,52 @@ export default function Buchen() {
 
             {/* Contact Information */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Kontaktdaten</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t.buchen.contactTitle}</h3>
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Name *
+                    {t.buchen.name} *
                   </label>
-                  <input 
-                    type="text" 
-                    name="name" 
-                    required 
+                  <input
+                    type="text"
+                    name="name"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="Ihr Name"
+                    placeholder={t.buchen.namePlaceholder}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    E-Mail *
+                    {t.buchen.email} *
                   </label>
-                  <input 
-                    type="email" 
-                    name="email" 
-                    required 
+                  <input
+                    type="email"
+                    name="email"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="ihre.email@beispiel.ch"
+                    placeholder={t.buchen.emailPlaceholder}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Telefon
+                    {t.buchen.phone}
                   </label>
-                  <input 
-                    type="tel" 
-                    name="telefon" 
+                  <input
+                    type="tel"
+                    name="telefon"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="+41 79 123 45 67"
+                    placeholder={t.buchen.phonePlaceholder}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Firma (optional)
+                    {t.buchen.company}
                   </label>
-                  <input 
-                    type="text" 
-                    name="firma" 
+                  <input
+                    type="text"
+                    name="firma"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="Firmenname"
+                    placeholder={t.buchen.companyPlaceholder}
                   />
                 </div>
               </div>
@@ -221,50 +216,50 @@ export default function Buchen() {
 
             {/* Event Details */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Event-Details</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t.buchen.eventDetailsTitle}</h3>
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Datum *
+                    {t.buchen.date} *
                   </label>
-                  <input 
-                    type="date" 
-                    name="datum" 
-                    required 
+                  <input
+                    type="date"
+                    name="datum"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Uhrzeit *
+                    {t.buchen.time} *
                   </label>
-                  <input 
-                    type="time" 
-                    name="zeit" 
-                    required 
+                  <input
+                    type="time"
+                    name="zeit"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Art des Events
+                    {t.buchen.eventType}
                   </label>
-                  <input 
-                    type="text" 
-                    name="event_typ" 
+                  <input
+                    type="text"
+                    name="event_typ"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="z.B. Firmenevent, Geburtstag, Hochzeit..."
+                    placeholder={t.buchen.eventTypePlaceholder}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Anzahl Gäste (ca.)
+                    {t.buchen.guestCount}
                   </label>
-                  <input 
-                    type="number" 
-                    name="gaeste" 
+                  <input
+                    type="number"
+                    name="gaeste"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="50"
+                    placeholder={t.buchen.guestCountPlaceholder}
                   />
                 </div>
               </div>
@@ -272,54 +267,54 @@ export default function Buchen() {
 
             {/* Location */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Veranstaltungsort</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t.buchen.locationTitle}</h3>
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Name der Location *
+                    {t.buchen.locationName} *
                   </label>
-                  <input 
-                    type="text" 
-                    name="ort_name" 
-                    required 
+                  <input
+                    type="text"
+                    name="ort_name"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="Restaurant, Club, Privatadresse..."
+                    placeholder={t.buchen.locationNamePlaceholder}
                   />
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Strasse und Hausnummer *
+                    {t.buchen.address} *
                   </label>
-                  <input 
-                    type="text" 
-                    name="adresse" 
-                    required 
+                  <input
+                    type="text"
+                    name="adresse"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="Musterstrasse 123"
+                    placeholder={t.buchen.addressPlaceholder}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    PLZ *
+                    {t.buchen.plz} *
                   </label>
-                  <input 
-                    type="text" 
-                    name="plz" 
-                    required 
+                  <input
+                    type="text"
+                    name="plz"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="8000"
+                    placeholder={t.buchen.plzPlaceholder}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Ort *
+                    {t.buchen.city} *
                   </label>
-                  <input 
-                    type="text" 
-                    name="stadt" 
-                    required 
+                  <input
+                    type="text"
+                    name="stadt"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                    placeholder="Zürich"
+                    placeholder={t.buchen.cityPlaceholder}
                   />
                 </div>
               </div>
@@ -328,13 +323,13 @@ export default function Buchen() {
             {/* Message */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Nachricht / Spezielle Wünsche
+                {t.buchen.message}
               </label>
-              <textarea 
-                name="nachricht" 
-                rows={4} 
+              <textarea
+                name="nachricht"
+                rows={4}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors resize-none"
-                placeholder="Teilen Sie uns Ihre besonderen Wünsche oder Fragen mit..."
+                placeholder={t.buchen.messagePlaceholder}
               ></textarea>
             </div>
 
@@ -346,7 +341,7 @@ export default function Buchen() {
                 whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 btn-glow"
               >
-                Anfrage senden
+                {t.buchen.submitButton}
               </motion.button>
               <motion.button
                 type="reset"
@@ -354,7 +349,7 @@ export default function Buchen() {
                 whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 border border-[#D4AF37]/30 text-white font-semibold rounded-full hover:bg-[#D4AF37]/10 transition-all duration-300"
               >
-                Formular zurücksetzen
+                {t.buchen.resetButton}
               </motion.button>
             </div>
           </form>
@@ -369,14 +364,12 @@ export default function Buchen() {
         >
           <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-2xl p-6 backdrop-blur-sm border border-[#D4AF37]/20">
             <h3 className="text-lg font-semibold text-white mb-2">
-              Was passiert nach Ihrer Anfrage?
+              {t.buchen.infoTitle}
             </h3>
             <ol className="text-sm text-gray-300 space-y-2 max-w-2xl mx-auto text-left list-decimal list-inside">
-              <li>Wir prüfen Ihre Anfrage und die Verfügbarkeit</li>
-              <li>Sie erhalten innerhalb von 24 Stunden eine Rückmeldung</li>
-              <li>Wir besprechen alle Details telefonisch oder per E-Mail</li>
-              <li>Sie erhalten ein massgeschneidertes Angebot</li>
-              <li>Nach Ihrer Bestätigung ist der Termin fix gebucht</li>
+              {t.buchen.infoSteps.map((step: string, i: number) => (
+                <li key={i}>{step}</li>
+              ))}
             </ol>
           </div>
         </motion.div>
