@@ -332,9 +332,6 @@ export const translations: Record<Language, Translations> = {
         { name: 'Zusatzstunde', price: 'CHF 199' },
         { name: 'Extra Mikrofon', price: 'CHF 49' },
         { name: 'Nebelmaschine', price: 'CHF 79' },
-        { name: 'Video-Recording', price: 'CHF 299' },
-        { name: 'Custom Branding', price: 'CHF 149' },
-        { name: 'DJ-Set (1h)', price: 'CHF 249' },
       ],
       faqTitle: 'Häufige Fragen',
       faqs: [
@@ -692,9 +689,6 @@ export const translations: Record<Language, Translations> = {
         { name: 'Extra hour', price: 'CHF 199' },
         { name: 'Extra microphone', price: 'CHF 49' },
         { name: 'Fog machine', price: 'CHF 79' },
-        { name: 'Video recording', price: 'CHF 299' },
-        { name: 'Custom branding', price: 'CHF 149' },
-        { name: 'DJ set (1h)', price: 'CHF 249' },
       ],
       faqTitle: 'Frequently Asked Questions',
       faqs: [
