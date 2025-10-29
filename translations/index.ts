@@ -207,6 +207,7 @@ export interface Translations {
     pagesTitle: string;
     contactTitle: string;
     email: string;
+    whatsapp: string;
     instagram: string;
     location: string;
     copyright: string;
@@ -565,6 +566,7 @@ export const translations: Record<Language, Translations> = {
       pagesTitle: 'Seiten',
       contactTitle: 'Kontakt',
       email: 'Email:',
+      whatsapp: 'WhatsApp:',
       instagram: 'Instagram:',
       location: 'Standort: Zürich',
       copyright: 'Zürioke. Alle Rechte vorbehalten.',
@@ -922,6 +924,7 @@ export const translations: Record<Language, Translations> = {
       pagesTitle: 'Pages',
       contactTitle: 'Contact',
       email: 'Email:',
+      whatsapp: 'WhatsApp:',
       instagram: 'Instagram:',
       location: 'Location: Zurich',
       copyright: 'Zürioke. All rights reserved.',
