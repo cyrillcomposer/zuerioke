@@ -13,8 +13,22 @@ export default function Testimonials() {
       <Head>
         <title>{t.testimonials.meta.title}</title>
         <meta name="description" content={t.testimonials.meta.description} />
-        <meta property="og:title" content={t.testimonials.meta.title} />
-        <meta property="og:description" content={t.testimonials.meta.description} />
+
+        {/* Open Graph / Social Media */}
+        <meta property="og:title" content="Zürioke – Kundenstimmen" />
+        <meta property="og:description" content="Über 500 zufriedene Kunden – Erfahre, was unsere Kunden über ihre Karaoke-Events sagen." />
+        <meta property="og:url" content="https://zuerioke.ch/testimonials" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Zürioke Logo auf hellem Hintergrund" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Zürioke – Kundenstimmen" />
+        <meta name="twitter:description" content="Über 500 zufriedene Kunden – Erfahre, was unsere Kunden über ihre Karaoke-Events sagen." />
+        <meta name="twitter:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

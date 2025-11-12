@@ -28,8 +28,22 @@ export default function Buchen() {
       <Head>
         <title>{t.buchen.meta.title}</title>
         <meta name="description" content={t.buchen.meta.description} />
-        <meta property="og:title" content={t.buchen.meta.title} />
-        <meta property="og:description" content={t.buchen.meta.description} />
+
+        {/* Open Graph / Social Media */}
+        <meta property="og:title" content="Zürioke – Jetzt buchen" />
+        <meta property="og:description" content="Buche jetzt deine mobile Karaoke Party in Zürich – einfach und schnell." />
+        <meta property="og:url" content="https://zuerioke.ch/buchen" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Zürioke Logo auf hellem Hintergrund" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Zürioke – Jetzt buchen" />
+        <meta name="twitter:description" content="Buche jetzt deine mobile Karaoke Party in Zürich – einfach und schnell." />
+        <meta name="twitter:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

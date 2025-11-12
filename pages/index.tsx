@@ -40,10 +40,22 @@ export default function Home() {
         <title>{t.home.meta.title}</title>
         <meta name="description" content={t.home.meta.description} />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:title" content={t.home.meta.title} />
-        <meta property="og:description" content={t.home.meta.description} />
-        <meta property="og:image" content="/zurioke-logo.png" />
+
+        {/* Open Graph / Social Media */}
+        <meta property="og:title" content="Zürioke – Mobile Karaoke in Zürich" />
+        <meta property="og:description" content="Wir bringen Karaoke zu deinem Event – Profi-Sound, 100'000+ Songs, Licht & Moderation." />
+        <meta property="og:url" content="https://zuerioke.ch/" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Zürioke Logo auf hellem Hintergrund" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Zürioke – Mobile Karaoke in Zürich" />
+        <meta name="twitter:description" content="Wir bringen Karaoke zu deinem Event – Profi-Sound, 100'000+ Songs, Licht & Moderation." />
+        <meta name="twitter:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

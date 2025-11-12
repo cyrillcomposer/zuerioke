@@ -24,6 +24,22 @@ export default function ThankYou() {
         <title>{t.thankYou.meta.title}</title>
         <meta name="description" content={t.thankYou.meta.description} />
         <meta name="robots" content="noindex, nofollow" />
+
+        {/* Open Graph / Social Media */}
+        <meta property="og:title" content="Zürioke – Danke für deine Anfrage" />
+        <meta property="og:description" content="Wir haben deine Buchungsanfrage erhalten und melden uns bald bei dir!" />
+        <meta property="og:url" content="https://zuerioke.ch/thank-you" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Zürioke Logo auf hellem Hintergrund" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Zürioke – Danke für deine Anfrage" />
+        <meta name="twitter:description" content="Wir haben deine Buchungsanfrage erhalten und melden uns bald bei dir!" />
+        <meta name="twitter:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
       </Head>
 
       <div className="relative min-h-[80vh] flex items-center justify-center">

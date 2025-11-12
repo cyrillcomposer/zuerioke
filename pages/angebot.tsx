@@ -17,8 +17,22 @@ export default function Angebot() {
       <Head>
         <title>{t.angebot.meta.title}</title>
         <meta name="description" content={t.angebot.meta.description} />
-        <meta property="og:title" content={t.angebot.meta.title} />
-        <meta property="og:description" content={t.angebot.meta.description} />
+
+        {/* Open Graph / Social Media */}
+        <meta property="og:title" content="Zürioke – Mobile Karaoke Pakete" />
+        <meta property="og:description" content="Wähle dein perfektes Karaoke-Paket – von Basic bis Premium mit Profi-Equipment." />
+        <meta property="og:url" content="https://zuerioke.ch/angebot" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Zürioke Logo auf hellem Hintergrund" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Zürioke – Mobile Karaoke Pakete" />
+        <meta name="twitter:description" content="Wähle dein perfektes Karaoke-Paket – von Basic bis Premium mit Profi-Equipment." />
+        <meta name="twitter:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
