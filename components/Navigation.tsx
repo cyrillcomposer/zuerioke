@@ -10,6 +10,7 @@ const getLinks = (t: ReturnType<typeof useTranslations>) => [
   { href: "/angebot", label: t.nav.angebot },
   { href: "/buchen", label: t.nav.buchen },
   { href: "/testimonials", label: t.nav.testimonials },
+  { href: "/empfehlungen", label: t.nav.empfehlungen },
   { href: "/ueber-uns", label: t.nav.uberUns },
 ];
 

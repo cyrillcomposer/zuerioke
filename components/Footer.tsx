@@ -75,6 +75,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/empfehlungen" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
+                  {t.nav.empfehlungen}
+                </Link>
+              </li>
+              <li>
                 <Link href="/ueber-uns" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
                   {t.nav.uberUns}
                 </Link>

@@ -7,6 +7,7 @@ export interface Translations {
     angebot: string;
     buchen: string;
     testimonials: string;
+    empfehlungen: string;
     uberUns: string;
     ctaButton: string;
   };
@@ -201,6 +202,31 @@ export interface Translations {
     };
   };
 
+  // Recommendations page
+  empfehlungen: {
+    title: string;
+    subtitle: string;
+    downloadPdf: string;
+    categories: {
+      classics: string;
+      dance: string;
+      swissGerman: string;
+      latin: string;
+      techno: string;
+      hardRock: string;
+      allTimeHits: string;
+      pop: string;
+      sixties: string;
+      nineties: string;
+      frenchItalian: string;
+      christmas: string;
+    };
+    meta: {
+      title: string;
+      description: string;
+    };
+  };
+
   // Footer
   footer: {
     description: string;
@@ -222,6 +248,7 @@ export const translations: Record<Language, Translations> = {
       angebot: 'Angebot',
       buchen: 'Buchen',
       testimonials: 'Stimmen',
+      empfehlungen: 'Empfehlungen',
       uberUns: 'Über uns',
       ctaButton: 'Jetzt anfragen',
     },
@@ -561,6 +588,30 @@ export const translations: Record<Language, Translations> = {
       },
     },
 
+    empfehlungen: {
+      title: 'Song Empfehlungen',
+      subtitle: 'Unsere Top-Picks für jede Stimmung und jeden Anlass – von Klassikern bis zu den neuesten Hits.',
+      downloadPdf: 'PDF herunterladen',
+      categories: {
+        classics: 'Zürioke - Classics',
+        dance: 'Zürioke - Dance',
+        swissGerman: 'Zürioke - Swiss / German',
+        latin: 'Zürioke - Latin',
+        techno: 'Zürioke - Techno',
+        hardRock: 'Zürioke - Hard Rock',
+        allTimeHits: 'Zürioke - All Time Karaoke Hits',
+        pop: 'Zürioke - Pop',
+        sixties: 'Zürioke - Best of the 60s 70s',
+        nineties: 'Zürioke - Best of the 90s',
+        frenchItalian: 'Zürioke - French / Italian',
+        christmas: 'Zürioke - Christmas / Halloween',
+      },
+      meta: {
+        title: 'Song Empfehlungen | Karaoke Zürich',
+        description: 'Entdecke unsere handverlesenen Karaoke-Song-Empfehlungen – Klassiker, Dance-Hits, Swiss Classics und mehr für dein Event.',
+      },
+    },
+
     footer: {
       description: 'Mobile Karaoke für unvergessliche Events. Wir kommen zu Ihnen - mit professioneller Technik und Spass garantiert im Raum Zürich.',
       pagesTitle: 'Seiten',
@@ -580,6 +631,7 @@ export const translations: Record<Language, Translations> = {
       angebot: 'Packages',
       buchen: 'Book',
       testimonials: 'Reviews',
+      empfehlungen: 'Recommendations',
       uberUns: 'About Us',
       ctaButton: 'Request now',
     },
@@ -916,6 +968,30 @@ export const translations: Record<Language, Translations> = {
       meta: {
         title: 'Thank you for your inquiry | Karaoke Zurich',
         description: 'Your karaoke inquiry has been successfully submitted. We will contact you within 24 hours.',
+      },
+    },
+
+    empfehlungen: {
+      title: 'Song Recommendations',
+      subtitle: 'Our top picks for every mood and occasion – from classics to the latest hits.',
+      downloadPdf: 'Download PDF',
+      categories: {
+        classics: 'Zürioke - Classics',
+        dance: 'Zürioke - Dance',
+        swissGerman: 'Zürioke - Swiss / German',
+        latin: 'Zürioke - Latin',
+        techno: 'Zürioke - Techno',
+        hardRock: 'Zürioke - Hard Rock',
+        allTimeHits: 'Zürioke - All Time Karaoke Hits',
+        pop: 'Zürioke - Pop',
+        sixties: 'Zürioke - Best of the 60s 70s',
+        nineties: 'Zürioke - Best of the 90s',
+        frenchItalian: 'Zürioke - French / Italian',
+        christmas: 'Zürioke - Christmas / Halloween',
+      },
+      meta: {
+        title: 'Song Recommendations | Karaoke Zurich',
+        description: 'Discover our hand-picked karaoke song recommendations – classics, dance hits, Swiss favorites and more for your event.',
       },
     },
 
