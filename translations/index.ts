@@ -213,12 +213,12 @@ export interface Translations {
       swissGerman: string;
       latin: string;
       techno: string;
-      hardRock: string;
+      rock: string;
       allTimeHits: string;
       pop: string;
       sixties: string;
       nineties: string;
-      frenchItalian: string;
+      italianFrench: string;
       christmas: string;
     };
     meta: {
@@ -598,12 +598,12 @@ export const translations: Record<Language, Translations> = {
         swissGerman: 'Zürioke - Swiss / German',
         latin: 'Zürioke - Latin',
         techno: 'Zürioke - Techno',
-        hardRock: 'Zürioke - Hard Rock',
+        rock: 'Zürioke - Rock',
         allTimeHits: 'Zürioke - All Time Karaoke Hits',
         pop: 'Zürioke - Pop',
         sixties: 'Zürioke - Best of the 60s 70s',
         nineties: 'Zürioke - Best of the 90s',
-        frenchItalian: 'Zürioke - French / Italian',
+        italianFrench: 'Zürioke - Italian / French',
         christmas: 'Zürioke - Christmas / Halloween',
       },
       meta: {
@@ -981,12 +981,12 @@ export const translations: Record<Language, Translations> = {
         swissGerman: 'Zürioke - Swiss / German',
         latin: 'Zürioke - Latin',
         techno: 'Zürioke - Techno',
-        hardRock: 'Zürioke - Hard Rock',
+        rock: 'Zürioke - Rock',
         allTimeHits: 'Zürioke - All Time Karaoke Hits',
         pop: 'Zürioke - Pop',
         sixties: 'Zürioke - Best of the 60s 70s',
         nineties: 'Zürioke - Best of the 90s',
-        frenchItalian: 'Zürioke - French / Italian',
+        italianFrench: 'Zürioke - Italian / French',
         christmas: 'Zürioke - Christmas / Halloween',
       },
       meta: {
