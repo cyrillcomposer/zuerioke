@@ -15,6 +15,7 @@ export interface Translations {
   // Home page
   home: {
     badge: string;
+    promoStamp?: string;
     heroTitle1: string;
     heroTitle2: string;
     heroDescription: string;
@@ -51,9 +52,12 @@ export interface Translations {
     title: string;
     subtitle: string;
     popular: string;
+    promoBanner?: string;
+    savingsText?: string;
     packages: Array<{
       name: string;
       price: string;
+      originalPrice?: string;
       duration: string;
       features: string[];
     }>;
@@ -255,6 +259,7 @@ export const translations: Record<Language, Translations> = {
 
     home: {
       badge: 'Verfügbar für Events in Zürich',
+      promoStamp: 'Holiday Promotion: Pakete ab CHF 499',
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: 'Wir kommen zu dir!',
       heroDescription: 'Verwandeln Sie Ihren Event in eine unvergessliche Karaoke-Party. Wir bringen alles mit: Profi-Equipment, 100.000+ Songs und gute Stimmung - direkt zu Ihrer Location.',
@@ -306,10 +311,13 @@ export const translations: Record<Language, Translations> = {
       title: 'Unsere Pakete',
       subtitle: 'Massgeschneiderte Karaoke-Erlebnisse für jeden Anlass und jedes Budget',
       popular: 'BELIEBTESTE WAHL',
+      promoBanner: '🎄 Dezember Holiday Promotion – Spezialpreise für die Festtage!',
+      savingsText: 'Spare',
       packages: [
         {
           name: 'Basic',
-          price: 'CHF 599',
+          price: 'CHF 499',
+          originalPrice: 'CHF 599',
           duration: '2 Stunden',
           features: [
             '2 Stunden Karaoke-Party',
@@ -323,7 +331,8 @@ export const translations: Record<Language, Translations> = {
         },
         {
           name: 'Party',
-          price: 'CHF 899',
+          price: 'CHF 699',
+          originalPrice: 'CHF 899',
           duration: '3 Stunden',
           features: [
             '3 Stunden Karaoke-Party',
@@ -338,7 +347,8 @@ export const translations: Record<Language, Translations> = {
         },
         {
           name: 'Premium',
-          price: 'CHF 1299',
+          price: 'CHF 899',
+          originalPrice: 'CHF 1299',
           duration: '4 Stunden',
           features: [
             '4 Stunden Entertainment',
@@ -638,6 +648,7 @@ export const translations: Record<Language, Translations> = {
 
     home: {
       badge: 'Available for events in Zurich',
+      promoStamp: 'Holiday Promotion: Packages starting at CHF 499',
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: "We come to you!",
       heroDescription: 'Transform your event into an unforgettable karaoke party. We bring everything: professional equipment, 100,000+ songs and a great atmosphere - directly to your location.',
@@ -689,10 +700,13 @@ export const translations: Record<Language, Translations> = {
       title: 'Our Packages',
       subtitle: 'Tailored karaoke experiences for every occasion and budget',
       popular: 'MOST POPULAR',
+      promoBanner: '🎄 December Holiday Promotion – Special prices for the festive season!',
+      savingsText: 'Save',
       packages: [
         {
           name: 'Basic',
-          price: 'CHF 599',
+          price: 'CHF 499',
+          originalPrice: 'CHF 599',
           duration: '2 hours',
           features: [
             '2 hours karaoke party',
@@ -706,7 +720,8 @@ export const translations: Record<Language, Translations> = {
         },
         {
           name: 'Party',
-          price: 'CHF 899',
+          price: 'CHF 699',
+          originalPrice: 'CHF 899',
           duration: '3 hours',
           features: [
             '3 hours karaoke party',
@@ -721,7 +736,8 @@ export const translations: Record<Language, Translations> = {
         },
         {
           name: 'Premium',
-          price: 'CHF 1299',
+          price: 'CHF 899',
+          originalPrice: 'CHF 1299',
           duration: '4 hours',
           features: [
             '4 hours entertainment',

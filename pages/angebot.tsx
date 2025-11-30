@@ -59,7 +59,7 @@ export default function Angebot() {
                       "name": "Basic Karaoke Paket",
                       "description": "2 Stunden mobile Karaoke mit Grundausstattung"
                     },
-                    "price": "599",
+                    "price": "499",
                     "priceCurrency": "CHF"
                   },
                   {
@@ -69,7 +69,7 @@ export default function Angebot() {
                       "name": "Party Karaoke Paket",
                       "description": "3 Stunden mobile Karaoke mit Beamer und Lichtshow"
                     },
-                    "price": "899",
+                    "price": "699",
                     "priceCurrency": "CHF"
                   },
                   {
@@ -79,7 +79,7 @@ export default function Angebot() {
                       "name": "Premium Karaoke Paket",
                       "description": "4 Stunden mobile Karaoke mit Profi-Equipment"
                     },
-                    "price": "1299",
+                    "price": "899",
                     "priceCurrency": "CHF"
                   }
                 ]
@@ -101,6 +101,22 @@ export default function Angebot() {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             {t.angebot.subtitle}
           </p>
+
+          {/* Promotional Banner */}
+          {t.angebot.promoBanner && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="mt-8 inline-block"
+            >
+              <div className="px-6 py-3 bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 border-2 border-[#D4AF37] rounded-full">
+                <p className="text-lg font-semibold text-[#F4E5A3]">
+                  {t.angebot.promoBanner}
+                </p>
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Packages */}
@@ -127,7 +143,21 @@ export default function Angebot() {
               } hover:border-[#D4AF37]/30 transition-all duration-300 card-hover`}>
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                  <div className="text-4xl font-bold gradient-text mb-1">{pkg.price}</div>
+                  {pkg.originalPrice ? (
+                    <div className="mb-1">
+                      <div className="text-lg text-gray-500 line-through mb-1">{pkg.originalPrice}</div>
+                      <div className="text-4xl font-bold gradient-text">{pkg.price}</div>
+                      <div className="text-sm text-[#F4E5A3] font-semibold mt-1">
+                        {t.angebot.savingsText} {(() => {
+                          const original = parseInt(pkg.originalPrice.replace(/[^0-9]/g, ''));
+                          const current = parseInt(pkg.price.replace(/[^0-9]/g, ''));
+                          return `CHF ${original - current}`;
+                        })()}!
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-4xl font-bold gradient-text mb-1">{pkg.price}</div>
+                  )}
                   <div className="text-gray-400">{pkg.duration}</div>
                 </div>
                 

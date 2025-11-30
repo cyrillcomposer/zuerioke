@@ -141,15 +141,39 @@ export default function Home() {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="mb-8"
           >
-            <Image 
-              src="/zurioke-logo.png" 
-              alt="ZÜRIOKE" 
-              width={280} 
+            <Image
+              src="/zurioke-logo.png"
+              alt="ZÜRIOKE"
+              width={280}
               height={120}
               className="h-32 w-auto object-contain mx-auto"
               priority
             />
           </motion.div>
+
+          {/* Promotional Stamp */}
+          {t.home.promoStamp && (
+            <motion.div
+              initial={{ scale: 0, rotate: -12 }}
+              animate={{ scale: 1, rotate: -12 }}
+              transition={{
+                delay: 0.15,
+                duration: 0.5,
+                type: "spring",
+                stiffness: 200
+              }}
+              className="mb-6"
+            >
+              <div className="inline-block relative">
+                <div className="relative px-6 py-3 border-4 border-[#D4AF37] rounded-lg bg-gradient-to-br from-[#D4AF37]/10 to-[#B8941F]/10 backdrop-blur-sm transform -rotate-12 hover:rotate-0 transition-transform duration-300">
+                  <div className="absolute inset-0 border-2 border-[#D4AF37]/40 rounded-lg m-1"></div>
+                  <p className="relative text-base md:text-lg font-bold text-[#F4E5A3] uppercase tracking-wider text-center whitespace-nowrap">
+                    {t.home.promoStamp}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
 
           <motion.div
             initial={{ y: 20, opacity: 0 }}
