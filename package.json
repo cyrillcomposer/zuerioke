@@ -10,10 +10,10 @@
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.14",
     "framer-motion": "^12.23.22",
-    "next": "^15.5.4",
+    "next": "^16.0.7",
     "postcss": "^8.4.24",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.1.2",
+    "react-dom": "^19.1.2",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
