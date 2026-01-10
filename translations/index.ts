@@ -259,7 +259,7 @@ export const translations: Record<Language, Translations> = {
 
     home: {
       badge: 'Verfügbar für Events in Zürich',
-      promoStamp: 'Holiday Promotion: Pakete ab CHF 479',
+      promoStamp: 'Neujahrs-Promotion: Pakete ab CHF 479',
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: 'Wir kommen zu dir!',
       heroDescription: 'Verwandeln Sie Ihren Event in eine unvergessliche Karaoke-Party. Wir bringen alles mit: Profi-Equipment, 100.000+ Songs und gute Stimmung - direkt zu Ihrer Location.',
@@ -311,7 +311,7 @@ export const translations: Record<Language, Translations> = {
       title: 'Unsere Pakete',
       subtitle: 'Massgeschneiderte Karaoke-Erlebnisse für jeden Anlass und jedes Budget',
       popular: 'BELIEBTESTE WAHL',
-      promoBanner: '🎄 20% Rabatt für Buchungen 7.-22. Dez.\nJetzt zuschlagen & sparen!',
+      promoBanner: '🎉 20% Rabatt\nJetzt zuschlagen & sparen!',
       savingsText: 'Spare',
       packages: [
         {
@@ -648,7 +648,7 @@ export const translations: Record<Language, Translations> = {
 
     home: {
       badge: 'Available for events in Zurich',
-      promoStamp: 'Holiday Promotion: Packages starting at CHF 479',
+      promoStamp: 'New Year Promotion: Packages starting at CHF 479',
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: "We come to you!",
       heroDescription: 'Transform your event into an unforgettable karaoke party. We bring everything: professional equipment, 100,000+ songs and a great atmosphere - directly to your location.',
@@ -700,7 +700,7 @@ export const translations: Record<Language, Translations> = {
       title: 'Our Packages',
       subtitle: 'Tailored karaoke experiences for every occasion and budget',
       popular: 'MOST POPULAR',
-      promoBanner: '🎄 20% Off for Bookings Dec 7-22\nBook now & save!',
+      promoBanner: '🎉 20% Off\nBook now & save!',
       savingsText: 'Save',
       packages: [
         {
