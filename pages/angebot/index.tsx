@@ -1,15 +1,47 @@
 import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useTranslations } from "../translations";
+import { useTranslations, useLanguage } from "../../translations";
 
 export default function Angebot() {
   const t = useTranslations();
+  const { language } = useLanguage();
   const packages = t.angebot.packages.map((pkg: { name: string; price: string; duration: string; features: string[] }, i: number) => ({
     ...pkg,
     popular: i === 1
   }));
   const addons = t.angebot.addons;
+
+  const getEventLinks = () => {
+    const basePath = language === 'de' ? '/angebot' : '/packages';
+    return [
+      {
+        href: `${basePath}/${language === 'de' ? 'geburtstagsfeiern' : 'birthday-parties'}`,
+        label: t.nav.angebotDropdown.birthdays,
+        description: language === 'de' ? 'Perfekt für unvergessliche Geburtstagsfeiern' : 'Perfect for unforgettable birthday celebrations'
+      },
+      {
+        href: `${basePath}/${language === 'de' ? 'firmenevents-teambuilding' : 'corporate-events-teambuilding'}`,
+        label: t.nav.angebotDropdown.corporate,
+        description: language === 'de' ? 'Stärkt dein Team und sorgt für unvergessliche Momente' : 'Strengthen your team with memorable moments'
+      },
+      {
+        href: `${basePath}/${language === 'de' ? 'hochzeiten-jubilaeen' : 'weddings-anniversaries'}`,
+        label: t.nav.angebotDropdown.weddings,
+        description: language === 'de' ? 'Elegante Unterhaltung für eure Hochzeit' : 'Elegant entertainment for your wedding'
+      },
+      {
+        href: `${basePath}/${language === 'de' ? 'jga-polterabende' : 'bachelor-bachelorette-parties'}`,
+        label: t.nav.angebotDropdown.bachelor,
+        description: language === 'de' ? 'Die ultimative Party vor der Hochzeit' : 'The ultimate pre-wedding party experience'
+      },
+      {
+        href: `${basePath}/${language === 'de' ? 'vereinsanlaesse-dorffeste' : 'club-events-village-festivals'}`,
+        label: t.nav.angebotDropdown.clubs,
+        description: language === 'de' ? 'Bringt eure Community zusammen' : 'Bring your community together'
+      },
+    ];
+  };
 
 
   return (
@@ -118,6 +150,48 @@ export default function Angebot() {
             </motion.div>
           )}
         </div>
+
+        {/* Event Types Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
+            {language === 'de' ? 'Spezialisiert auf deinen Anlass' : 'Specialized for Your Event'}
+          </h2>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {getEventLinks().map((event, i) => (
+              <motion.div
+                key={event.href}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Link
+                  href={event.href}
+                  className="block bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-[#D4AF37]/30 transition-all duration-300 card-hover h-full group"
+                >
+                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#D4AF37] transition-colors">
+                    {event.label}
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-4">
+                    {event.description}
+                  </p>
+                  <span className="text-[#D4AF37] text-sm font-medium inline-flex items-center gap-1">
+                    {language === 'de' ? 'Mehr erfahren' : 'Learn more'}
+                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Packages */}
         <div className="grid gap-8 md:grid-cols-3 mb-20">

@@ -6,8 +6,6 @@ import Image from "next/image";
 import { useLanguage, useTranslations } from "../translations";
 
 const getLinks = (t: ReturnType<typeof useTranslations>) => [
-  { href: "/", label: t.nav.home },
-  { href: "/angebot", label: t.nav.angebot },
   { href: "/buchen", label: t.nav.buchen },
   { href: "/testimonials", label: t.nav.testimonials },
   { href: "/empfehlungen", label: t.nav.empfehlungen },
@@ -18,9 +16,22 @@ export default function Navigation() {
   const { pathname } = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileAngebotExpanded, setMobileAngebotExpanded] = useState(false);
   const { language, setLanguage } = useLanguage();
   const t = useTranslations();
   const links = getLinks(t);
+
+  const getEventLinks = () => {
+    const basePath = language === 'de' ? '/angebot' : '/packages';
+    return [
+      { href: `${basePath}/${language === 'de' ? 'geburtstagsfeiern' : 'birthday-parties'}`, label: t.nav.angebotDropdown.birthdays },
+      { href: `${basePath}/${language === 'de' ? 'firmenevents-teambuilding' : 'corporate-events-teambuilding'}`, label: t.nav.angebotDropdown.corporate },
+      { href: `${basePath}/${language === 'de' ? 'hochzeiten-jubilaeen' : 'weddings-anniversaries'}`, label: t.nav.angebotDropdown.weddings },
+      { href: `${basePath}/${language === 'de' ? 'jga-polterabende' : 'bachelor-bachelorette-parties'}`, label: t.nav.angebotDropdown.bachelor },
+      { href: `${basePath}/${language === 'de' ? 'vereinsanlaesse-dorffeste' : 'club-events-village-festivals'}`, label: t.nav.angebotDropdown.clubs },
+    ];
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -57,6 +68,77 @@ export default function Navigation() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
+          {/* Home Link */}
+          <Link
+            href="/"
+            className="relative text-sm font-medium text-gray-300 hover:text-[#D4AF37] transition-colors group"
+          >
+            <span className="relative z-10">{t.nav.home}</span>
+            {pathname === '/' && (
+              <motion.div
+                layoutId="navbar-indicator"
+                className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37]"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <div className={`absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${pathname === '/' ? 'hidden' : ''}`} />
+          </Link>
+
+          {/* Angebot Dropdown */}
+          <div
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+            className="relative"
+          >
+            <Link
+              href="/angebot"
+              className="relative text-sm font-medium text-gray-300 hover:text-[#D4AF37] transition-colors group flex items-center gap-1"
+            >
+              <span className="relative z-10">{t.nav.angebot}</span>
+              <svg className={`w-4 h-4 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+              {pathname.startsWith('/angebot') && (
+                <motion.div
+                  layoutId="navbar-indicator"
+                  className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37]"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <div className={`absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${pathname.startsWith('/angebot') ? 'hidden' : ''}`} />
+            </Link>
+
+            <AnimatePresence>
+              {dropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 w-64 bg-black/95 backdrop-blur-xl border border-[#D4AF37]/20 rounded-xl shadow-lg overflow-hidden"
+                >
+                  <Link
+                    href="/angebot"
+                    className="block px-4 py-3 text-sm text-gray-300 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-colors"
+                  >
+                    {t.nav.angebotDropdown.overview}
+                  </Link>
+                  <div className="h-px bg-white/10" />
+                  {getEventLinks().map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-3 text-sm text-gray-300 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Other Links */}
           {links.map((l) => (
             <Link
               key={l.href}
@@ -137,6 +219,62 @@ export default function Navigation() {
             className="md:hidden bg-black/95 backdrop-blur-xl border-t border-[#D4AF37]/20"
           >
             <nav className="mx-auto max-w-7xl px-4 py-6 grid gap-4">
+              {/* Home Link */}
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className={`py-2 text-lg font-medium transition-colors ${
+                  pathname === '/'
+                    ? 'text-[#D4AF37]'
+                    : 'text-gray-300 hover:text-[#D4AF37]'
+                }`}
+              >
+                {t.nav.home}
+              </Link>
+
+              {/* Angebot Collapsible */}
+              <div>
+                <button
+                  onClick={() => setMobileAngebotExpanded(!mobileAngebotExpanded)}
+                  className="w-full flex justify-between items-center py-2 text-lg font-medium text-gray-300 hover:text-[#D4AF37] transition-colors"
+                >
+                  {t.nav.angebot}
+                  <svg className={`w-5 h-5 transition-transform ${mobileAngebotExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                <AnimatePresence>
+                  {mobileAngebotExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="pl-4 space-y-2 overflow-hidden"
+                    >
+                      <Link
+                        href="/angebot"
+                        onClick={() => setOpen(false)}
+                        className="block py-2 text-gray-400 hover:text-[#D4AF37] transition-colors"
+                      >
+                        {t.nav.angebotDropdown.overview}
+                      </Link>
+                      {getEventLinks().map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setOpen(false)}
+                          className="block py-2 text-gray-400 hover:text-[#D4AF37] transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Other Links */}
               {links.map((l) => (
                 <Link
                   key={l.href}
