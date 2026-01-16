@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { useTranslations } from '../translations';
@@ -86,12 +87,24 @@ export default function EventPageTemplate({ eventType }: EventPageTemplateProps)
           </div>
         </motion.div>
 
-        {/* Image Placeholder */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="aspect-video rounded-2xl border-2 border-[#D4AF37]/30 flex items-center justify-center bg-gradient-to-br from-black/50 to-[#D4AF37]/10">
-            <span className="text-2xl text-gray-500">{content.imagePlaceholder}</span>
+        {/* Image Section */}
+        {eventType === 'birthdays' ? (
+          <div className="max-w-4xl mx-auto mb-16">
+            <Image
+              src="/birthday_party3.jpg"
+              alt="Birthday party karaoke celebration"
+              width={1920}
+              height={1080}
+              className="aspect-video rounded-2xl w-full h-auto object-cover"
+            />
           </div>
-        </div>
+        ) : (
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="aspect-video rounded-2xl border-2 border-[#D4AF37]/30 flex items-center justify-center bg-gradient-to-br from-black/50 to-[#D4AF37]/10">
+              <span className="text-2xl text-gray-500">{content.imagePlaceholder}</span>
+            </div>
+          </div>
+        )}
 
         {/* Benefits Section */}
         <motion.div
