@@ -91,7 +91,7 @@ export default function Angebot() {
                       "name": "Basic Karaoke Paket",
                       "description": "2 Stunden mobile Karaoke mit Grundausstattung"
                     },
-                    "price": "479",
+                    "price": "599",
                     "priceCurrency": "CHF"
                   },
                   {
@@ -101,7 +101,7 @@ export default function Angebot() {
                       "name": "Party Karaoke Paket",
                       "description": "3 Stunden mobile Karaoke mit Beamer und Lichtshow"
                     },
-                    "price": "719",
+                    "price": "899",
                     "priceCurrency": "CHF"
                   },
                   {
@@ -111,7 +111,7 @@ export default function Angebot() {
                       "name": "Premium Karaoke Paket",
                       "description": "4 Stunden mobile Karaoke mit Profi-Equipment"
                     },
-                    "price": "1039",
+                    "price": "1299",
                     "priceCurrency": "CHF"
                   }
                 ]
@@ -134,21 +134,6 @@ export default function Angebot() {
             {t.angebot.subtitle}
           </p>
 
-          {/* Promotional Banner */}
-          {t.angebot.promoBanner && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="mt-8 inline-block"
-            >
-              <div className="px-6 py-3 bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 border-2 border-[#D4AF37] rounded-full">
-                <p className="text-lg font-semibold text-[#F4E5A3] whitespace-pre-line text-center">
-                  {t.angebot.promoBanner}
-                </p>
-              </div>
-            </motion.div>
-          )}
         </div>
 
         {/* Event Types Section */}
