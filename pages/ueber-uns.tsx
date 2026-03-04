@@ -111,33 +111,39 @@ export default function UeberUns() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
             {t.uberUns.teamTitle}
           </h2>
+
+          {/* Team Photo */}
+          <div className="max-w-3xl mx-auto mb-12">
+            <div className="rounded-2xl overflow-hidden border-2 border-[#D4AF37]/20">
+              <Image
+                src="/mc.png"
+                alt="Cyrill & Marcel – the Zürioke team"
+                width={1200}
+                height={800}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Team Members Info – Cyrill left, Marcel right (matching photo) */}
           <div className="grid gap-12 md:grid-cols-2">
-            {team.map((member: { name: string; role: string; text: string; skills: string[] }, i: number) => (
+            {[team[1], team[0]].map((member: { name: string; role: string; text: string; skills: string[] }, i: number) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.2 }}
                 viewport={{ once: true }}
                 className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className="relative w-32 h-32 mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] rounded-full blur-lg opacity-50"></div>
-                    <div className="relative w-32 h-32 overflow-hidden rounded-full border-2 border-[#D4AF37]/20">
-                      <div className="w-full h-full bg-gradient-to-br from-[#D4AF37]/20 to-[#B8941F]/20 flex items-center justify-center">
-                        <span className="text-5xl">{i === 0 ? "🎧" : "🎤"}</span>
-                      </div>
-                    </div>
-                  </div>
-                  
                   <h3 className="text-2xl font-bold text-white mb-1">{member.name}</h3>
                   <p className="text-[#D4AF37] font-medium mb-4">{member.role}</p>
                   <p className="text-gray-300 mb-6">{member.text}</p>
-                  
+
                   <div className="flex flex-wrap gap-2 justify-center">
                     {member.skills.map((skill: string) => (
-                      <span 
+                      <span
                         key={skill}
                         className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300"
                       >
