@@ -299,13 +299,16 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="relative">
-              <div className="aspect-video bg-gradient-to-br from-[#D4AF37]/20 to-[#B8941F]/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-[#D4AF37]/20">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🎤</div>
-                  <p className="text-white font-semibold">{t.home.videoPlaceholder}</p>
-                  <p className="text-gray-400 text-sm mt-2">{t.home.videoComingSoon}</p>
-                </div>
+            <div className="relative flex justify-center">
+              <div className="w-full max-w-[400px] rounded-2xl overflow-hidden border border-[#D4AF37]/20" style={{ aspectRatio: '4/5' }}>
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  loop
+                  playsInline
+                >
+                  <source src="/livedemo.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
           </div>
