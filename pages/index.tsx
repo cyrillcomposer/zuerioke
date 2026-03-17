@@ -7,6 +7,12 @@ import { useTranslations } from "../translations";
 
 export default function Home() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const galleryImages = [
+    { src: '/gallery1.jpg', alt: 'Zürioke Karaoke Event 1' },
+    { src: '/gallery2.jpeg', alt: 'Zürioke Karaoke Event 2' },
+    { src: '/gallery3.jpeg', alt: 'Zürioke Karaoke Event 3' },
+  ];
   const t = useTranslations();
 
   const features = [
@@ -220,6 +226,52 @@ export default function Home() {
             </div>
           ))}
         </motion.div>
+      </motion.section>
+
+      {/* Gallery Carousel */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="pt-8 pb-8"
+      >
+        <div className="relative max-w-2xl mx-auto">
+          <div className="relative overflow-hidden rounded-2xl border border-[#D4AF37]/20">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {galleryImages.map((img, i) => (
+                <div key={i} className="w-full flex-shrink-0">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-cover"
+                    priority={i === 0}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Dots */}
+          <div className="flex justify-center gap-3 mt-6">
+            {galleryImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveSlide(i)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  activeSlide === i
+                    ? 'bg-[#D4AF37] scale-110'
+                    : 'bg-white/30 hover:bg-white/50'
+                }`}
+                aria-label={`Show image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </motion.section>
 
       {/* FEATURES */}
