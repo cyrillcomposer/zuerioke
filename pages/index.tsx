@@ -328,14 +328,14 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-40 h-40 bg-[#D4AF37] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#B8941F] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
           
-          <div className="relative grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 {t.home.highlightsTitle} <span className="gradient-text">{t.home.highlightsTitle === 'Perfekt für jeden' ? 'Anlass' : 'occasion'}</span>
               </h2>
               <ul className="space-y-4">
                 {t.home.occasions.map((item: string, i: number) => (
-                  <motion.li 
+                  <motion.li
                     key={i}
                     initial={{ x: -20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
@@ -350,18 +350,6 @@ export default function Home() {
                   </motion.li>
                 ))}
               </ul>
-            </div>
-            <div className="relative flex justify-center">
-              <div className="w-full max-w-[400px] rounded-2xl overflow-hidden border border-[#D4AF37]/20" style={{ aspectRatio: '4/5' }}>
-                <video
-                  className="w-full h-full object-cover"
-                  controls
-                  loop
-                  playsInline
-                >
-                  <source src="/livedemo.mp4" type="video/mp4" />
-                </video>
-              </div>
             </div>
           </div>
         </div>
