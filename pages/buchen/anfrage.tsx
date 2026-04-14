@@ -1,14 +1,48 @@
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { useTranslations } from "../translations";
+import { useTranslations, useLanguage } from "../../translations";
+import { getDateStatus } from "../../data/availability";
 
-export default function Buchen() {
+export default function BuchenAnfrage() {
   const t = useTranslations();
+  const { language } = useLanguage();
+  const router = useRouter();
+  const datum = router.query.datum as string | undefined;
+
   const [formData, setFormData] = useState({
     package: "",
-    extras: [] as string[]
+    extras: [] as string[],
   });
+
+  // Redirect if no valid date
+  useEffect(() => {
+    if (!router.isReady) return;
+    if (!datum) {
+      router.replace("/buchen");
+      return;
+    }
+    // Validate date format and status
+    const parts = datum.split("-");
+    if (parts.length !== 3) {
+      router.replace("/buchen");
+      return;
+    }
+    const [y, m, d] = parts.map(Number);
+    const date = new Date(y, m - 1, d);
+    if (isNaN(date.getTime())) {
+      router.replace("/buchen");
+      return;
+    }
+    const status = getDateStatus(datum);
+    if (status === "booked") {
+      router.replace("/buchen");
+    }
+  }, [datum, router]);
+
+  if (!datum) return null;
 
   const handlePackageSelect = (pkg: string) => {
     setFormData({ ...formData, package: pkg });
@@ -16,58 +50,55 @@ export default function Buchen() {
 
   const handleExtraToggle = (extra: string) => {
     const newExtras = formData.extras.includes(extra)
-      ? formData.extras.filter(e => e !== extra)
+      ? formData.extras.filter((e) => e !== extra)
       : [...formData.extras, extra];
     setFormData({ ...formData, extras: newExtras });
   };
 
   const addons = t.angebot.addons;
+  const packages = t.angebot.packages as Array<{ name: string; price: string; duration: string; features: string[] }>;
+
+  // Parse "CHF 599" to 599
+  const parsePrice = (price: string) => parseInt(price.replace(/[^0-9]/g, ''), 10) || 0;
+
+  // Compute estimated total
+  const computeTotal = () => {
+    let total = 0;
+    // Find selected package price
+    const selectedPkgIndex = t.buchen.packages.indexOf(formData.package);
+    if (selectedPkgIndex >= 0 && packages[selectedPkgIndex]) {
+      total += parsePrice(packages[selectedPkgIndex].price);
+    }
+    // Add selected extras
+    for (const extraName of formData.extras) {
+      const addon = addons.find((a: { name: string; price: string }) => a.name === extraName);
+      if (addon) {
+        total += parsePrice(addon.price);
+      }
+    }
+    return total;
+  };
+
+  const estimatedTotal = computeTotal();
+
+  // Format date for display
+  const formatDate = (dateStr: string) => {
+    const [y, m, d] = dateStr.split("-").map(Number);
+    const date = new Date(y, m - 1, d);
+    return new Intl.DateTimeFormat(language === "de" ? "de-CH" : "en-CH", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  };
 
   return (
     <>
       <Head>
         <title>{t.buchen.meta.title}</title>
         <meta name="description" content={t.buchen.meta.description} />
-
-        {/* Open Graph / Social Media */}
-        <meta property="og:title" content="Zürioke – Jetzt buchen" />
-        <meta property="og:description" content="Buche jetzt deine mobile Karaoke Party in Zürich – einfach und schnell." />
-        <meta property="og:url" content="https://zuerioke.ch/buchen" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Zürioke Logo auf hellem Hintergrund" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Zürioke – Jetzt buchen" />
-        <meta name="twitter:description" content="Buche jetzt deine mobile Karaoke Party in Zürich – einfach und schnell." />
-        <meta name="twitter:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ContactPage",
-              "name": "Karaoke Buchungsanfrage",
-              "description": "Kontaktformular für mobile Karaoke Buchungen in Zürich",
-              "url": "https://zuerioke.ch/buchen",
-              "mainEntity": {
-                "@type": "LocalBusiness",
-                "name": "Zürioke",
-                "telephone": "+41791234567",
-                "email": "hello@zuerioke.ch",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "Zürich",
-                  "addressRegion": "ZH",
-                  "addressCountry": "CH"
-                }
-              }
-            })
-          }}
-        />
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
 
       <motion.div
@@ -76,22 +107,64 @@ export default function Buchen() {
         transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto"
       >
+        {/* Back link */}
+        <Link
+          href="/buchen"
+          className="inline-flex items-center text-[#D4AF37] hover:text-[#F4E5A3] transition-colors mb-8"
+        >
+          <svg
+            className="w-4 h-4 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          {t.buchen.backToCalendar}
+        </Link>
+
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
             <span className="gradient-text">{t.buchen.title}</span>
           </h1>
-          <p className="text-xl text-gray-300">
-            {t.buchen.subtitle}
-          </p>
+          <p className="text-xl text-gray-300">{t.buchen.subtitle}</p>
         </div>
 
         <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/10 rounded-3xl p-8 md:p-12">
-          <form 
-            className="space-y-8" 
-            action="https://formspree.io/f/mkgzqvdr" 
+          {/* Selected date badge */}
+          <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-[#D4AF37]/15 to-[#B8941F]/15 rounded-2xl p-5 border border-[#D4AF37]/30">
+            <div>
+              <p className="text-sm text-gray-400 mb-1">
+                {t.buchen.selectedDateLabel}
+              </p>
+              <p className="text-xl font-bold text-white">
+                {formatDate(datum)}
+              </p>
+            </div>
+            <Link
+              href="/buchen"
+              className="text-sm text-[#D4AF37] hover:text-[#F4E5A3] transition-colors underline underline-offset-2"
+            >
+              {t.buchen.changeDate}
+            </Link>
+          </div>
+
+          <form
+            className="space-y-8"
+            action="https://formspree.io/f/mkgzqvdr"
             method="POST"
           >
-            <input type="hidden" name="_redirect" value="https://zuerioke.ch/thank-you" />
+            <input
+              type="hidden"
+              name="_redirect"
+              value="https://zuerioke.ch/thank-you"
+            />
+            <input type="hidden" name="datum" value={datum} />
 
             {/* Package Selection */}
             <div>
@@ -99,10 +172,10 @@ export default function Buchen() {
                 {t.buchen.package}
               </label>
               <div className="grid md:grid-cols-3 gap-4">
-                {t.buchen.packages.map((pkg: string) => (
+                {t.buchen.packages.map((pkg: string, idx: number) => (
                   <label
                     key={pkg}
-                    className={`relative flex items-center justify-center p-4 rounded-xl border cursor-pointer transition-all ${
+                    className={`relative flex flex-col items-center justify-center p-4 rounded-xl border cursor-pointer transition-all ${
                       formData.package === pkg
                         ? "bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 border-[#D4AF37]"
                         : "bg-white/5 border-white/10 hover:border-[#D4AF37]/50"
@@ -117,14 +190,25 @@ export default function Buchen() {
                       className="sr-only"
                     />
                     <span className="text-white font-medium">{pkg}</span>
+                    {packages[idx] && (
+                      <span className="text-[#D4AF37] text-sm mt-1">{packages[idx].price}</span>
+                    )}
                     {formData.package === pkg && (
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         className="absolute top-2 right-2"
                       >
-                        <svg className="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        <svg
+                          className="w-5 h-5 text-[#D4AF37]"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
                         </svg>
                       </motion.div>
                     )}
@@ -156,28 +240,46 @@ export default function Buchen() {
                       onChange={() => handleExtraToggle(addon.name)}
                       className="sr-only"
                     />
-                    <span className="text-white font-medium text-sm">{addon.name}</span>
-                    <span className="text-[#D4AF37] text-xs mt-1">{addon.price}</span>
+                    <span className="text-white font-medium text-sm">
+                      {addon.name}
+                    </span>
+                    <span className="text-[#D4AF37] text-xs mt-1">
+                      {addon.price}
+                    </span>
                     {formData.extras.includes(addon.name) && (
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         className="absolute top-2 right-2"
                       >
-                        <svg className="w-4 h-4 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        <svg
+                          className="w-4 h-4 text-[#D4AF37]"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
                         </svg>
                       </motion.div>
                     )}
                   </label>
                 ))}
               </div>
-              <input type="hidden" name="extras_selected" value={formData.extras.join(', ')} />
+              <input
+                type="hidden"
+                name="extras_selected"
+                value={formData.extras.join(", ")}
+              />
             </div>
 
             {/* Contact Information */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">{t.buchen.contactTitle}</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">
+                {t.buchen.contactTitle}
+              </h3>
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -228,21 +330,12 @@ export default function Buchen() {
               </div>
             </div>
 
-            {/* Event Details */}
+            {/* Event Details (without date, only time + type + guests) */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">{t.buchen.eventDetailsTitle}</h3>
-              <div className="grid gap-6 md:grid-cols-2">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    {t.buchen.date} *
-                  </label>
-                  <input
-                    type="date"
-                    name="datum"
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                  />
-                </div>
+              <h3 className="text-lg font-semibold text-white mb-4">
+                {t.buchen.eventDetailsTitle}
+              </h3>
+              <div className="grid gap-6 md:grid-cols-3">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     {t.buchen.time} *
@@ -281,7 +374,9 @@ export default function Buchen() {
 
             {/* Location */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">{t.buchen.locationTitle}</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">
+                {t.buchen.locationTitle}
+              </h3>
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -347,6 +442,24 @@ export default function Buchen() {
               ></textarea>
             </div>
 
+            {/* Estimated Total */}
+            {estimatedTotal > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-2xl p-6 border border-[#D4AF37]/20"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-semibold text-white">
+                    {language === 'de' ? 'Geschätzter Gesamtpreis' : 'Estimated Total'}
+                  </span>
+                  <span className="text-2xl font-bold gradient-text">
+                    CHF {estimatedTotal}
+                  </span>
+                </div>
+              </motion.div>
+            )}
+
             {/* Submit Button */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <motion.button
@@ -368,25 +481,6 @@ export default function Buchen() {
             </div>
           </form>
         </div>
-
-        {/* Info Box */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 text-center"
-        >
-          <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#B8941F]/10 rounded-2xl p-6 backdrop-blur-sm border border-[#D4AF37]/20">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              {t.buchen.infoTitle}
-            </h3>
-            <ol className="text-sm text-gray-300 space-y-2 max-w-2xl mx-auto text-left list-decimal list-inside">
-              {t.buchen.infoSteps.map((step: string, i: number) => (
-                <li key={i}>{step}</li>
-              ))}
-            </ol>
-          </div>
-        </motion.div>
       </motion.div>
     </>
   );

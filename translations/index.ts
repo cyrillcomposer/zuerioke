@@ -91,10 +91,26 @@ export interface Translations {
     };
   };
 
+  // Calendar
+  calendar: {
+    title: string;
+    subtitle: string;
+    available: string;
+    limited: string;
+    booked: string;
+    months: string[];
+    weekdays: string[];
+    previousMonth: string;
+    nextMonth: string;
+  };
+
   // Buchen page
   buchen: {
     title: string;
     subtitle: string;
+    selectedDateLabel: string;
+    changeDate: string;
+    backToCalendar: string;
     package: string;
     packages: string[];
     extrasTitle: string;
@@ -465,9 +481,24 @@ export const translations: Record<Language, Translations> = {
       },
     },
 
+    calendar: {
+      title: 'Wunschdatum wählen',
+      subtitle: 'Wählen Sie einen verfügbaren Tag aus, um zur Buchungsanfrage zu gelangen.',
+      available: 'Verfügbar',
+      limited: 'Eingeschränkt verfügbar',
+      booked: 'Ausgebucht',
+      months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+      weekdays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+      previousMonth: 'Vorheriger Monat',
+      nextMonth: 'Nächster Monat',
+    },
+
     buchen: {
       title: 'Buchungsanfrage',
       subtitle: 'Füllen Sie das Formular aus – wir melden uns innerhalb von 24 Stunden bei Ihnen.',
+      selectedDateLabel: 'Gewähltes Datum',
+      changeDate: 'Datum ändern',
+      backToCalendar: 'Zurück zum Kalender',
       package: 'Gewünschtes Paket',
       packages: ['Basic (2h)', 'Party (3h)', 'Premium (4h)'],
       extrasTitle: 'Zusatzoptionen (optional)',
@@ -1283,9 +1314,24 @@ export const translations: Record<Language, Translations> = {
       },
     },
 
+    calendar: {
+      title: 'Choose your preferred date',
+      subtitle: 'Select an available day to proceed to the booking form.',
+      available: 'Available',
+      limited: 'Limited availability',
+      booked: 'Fully booked',
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      previousMonth: 'Previous month',
+      nextMonth: 'Next month',
+    },
+
     buchen: {
       title: 'Booking Request',
       subtitle: 'Fill out the form – we will contact you within 24 hours.',
+      selectedDateLabel: 'Selected date',
+      changeDate: 'Change date',
+      backToCalendar: 'Back to calendar',
       package: 'Desired package',
       packages: ['Basic (2h)', 'Party (3h)', 'Premium (4h)'],
       extrasTitle: 'Additional options (optional)',
