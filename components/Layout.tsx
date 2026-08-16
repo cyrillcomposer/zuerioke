@@ -1,8 +1,17 @@
 import { ReactNode } from "react";
+import { useRouter } from "next/router";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 
+const BARE_PATHS = ["/review"];
+
 export default function Layout({ children }: { children: ReactNode }) {
+  const { pathname } = useRouter();
+
+  if (BARE_PATHS.includes(pathname)) {
+    return <>{children}</>;
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-[#0a0a0a] to-black text-white antialiased overflow-x-hidden">
       <div className="fixed inset-0 z-0">
