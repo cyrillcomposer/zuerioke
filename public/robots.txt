@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /thank-you
+Disallow: /sing-admin
 
 Sitemap: https://zuerioke.ch/sitemap.xml

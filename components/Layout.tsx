@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 
-const BARE_PATHS = ["/review"];
+const BARE_PATHS = ["/review", "/sing", "/sing-admin", "/sing-screen"];
 
 export default function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useRouter();
