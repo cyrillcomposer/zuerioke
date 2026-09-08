@@ -104,6 +104,13 @@ export interface Translations {
     nextMonth: string;
   };
 
+  // Image carousel chrome
+  carousel: {
+    label: string;
+    slide: string;
+    showImage: string;
+  };
+
   // Buchen page
   buchen: {
     title: string;
@@ -295,6 +302,10 @@ interface EventPageContent {
     paragraph2: string;
   };
   imagePlaceholder: string;
+  /** Alt texts for the image carousel, when the page has one. */
+  gallery?: {
+    alt: string[];
+  };
   benefits: {
     title: string;
     items: Array<{
@@ -386,8 +397,8 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Unverbindliche Anfrage stellen',
       ctaFooter: 'Keine versteckten Kosten • Transparente Preise • Zufriedenheitsgarantie',
       meta: {
-        title: 'Karaoke Zürich mieten | Mobile Karaoke - Zürioke',
-        description: 'Mobile Karaoke in Zürich mieten für Firmenevent, Hochzeit & Party. Wir kommen zu Ihnen! ✓ 100.000+ Songs ✓ Profi-Equipment ✓ Ab CHF 599',
+        title: 'Karaoke Zürich mieten | Weihnachtsfeier & Firmenevent - Zürioke',
+        description: 'Mobile Karaoke-Anlage in Zürich mieten für Weihnachtsfeier, Firmenevent, Hochzeit & Geburtstag. Wir kommen zu Ihnen! ✓ 100.000+ Songs ✓ Profi-Equipment ✓ Ab CHF 599',
       },
     },
 
@@ -476,8 +487,8 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Jetzt anfragen',
       ctaEmail: 'E-Mail schreiben',
       meta: {
-        title: 'Karaoke Zürich Preise & Pakete | Ab CHF 599',
-        description: 'Karaoke mieten in Zürich: Basic, Party & Premium Pakete. Mobile Karaoke für Firmenevent, Hochzeit, Geburtstag. Transparente Preise ab CHF 599.',
+        title: 'Karaoke-Anlage mieten Zürich – Preise & Pakete | Ab CHF 599',
+        description: 'Karaoke-Anlage mieten in Zürich: Basic, Party & Premium Pakete. Mobile Karaoke für Weihnachtsfeier, Firmenevent, Hochzeit und Geburtstag. Transparente Preise ab CHF 599.',
       },
     },
 
@@ -491,6 +502,12 @@ export const translations: Record<Language, Translations> = {
       weekdays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
       previousMonth: 'Vorheriger Monat',
       nextMonth: 'Nächster Monat',
+    },
+
+    carousel: {
+      label: 'Bildergalerie',
+      slide: 'Bild {n} von {total}',
+      showImage: 'Bild {n} anzeigen',
     },
 
     buchen: {
@@ -748,6 +765,14 @@ export const translations: Record<Language, Translations> = {
           paragraph2: 'Unsere mobile Karaoke-Anlage ist perfekt für Geburtstagsfeiern aller Art – von intimen Zusammenkünften bis zu grossen Partys. Mit unserem Rundum-Service müssen Sie sich um nichts kümmern: Wir bauen auf, moderieren auf Wunsch und sorgen dafür, dass jeder Gast zum Star des Abends wird. Egal ob Sie 30, 40, 50 oder 60 werden – Karaoke bringt alle Generationen zusammen und schafft Erinnerungen, die bleiben.',
         },
         imagePlaceholder: 'Bild folgt',
+        gallery: {
+          alt: [
+            'Geburtstagsparty mit Karaoke – Gäste singen gemeinsam am Mikrofon',
+            'Gäste feiern an einer Karaoke-Geburtstagsparty in Zürich',
+            'Karaoke-Anlage von Zürioke an einer Geburtstagsfeier',
+            'Ausgelassene Stimmung an einer 40er-Geburtstagsparty mit Karaoke',
+          ],
+        },
         benefits: {
           title: 'Warum Karaoke perfekt für Geburtstage ist',
           items: [
@@ -819,10 +844,10 @@ export const translations: Record<Language, Translations> = {
 
       corporate: {
         meta: {
-          title: 'Karaoke für Firmenevents & Teambuilding | Zürioke',
-          description: 'Mobile Karaoke für Firmenevents, Team-Building und Weihnachtsfeiern in Zürich. Stärken Sie Ihr Team auf unterhaltsame Weise!',
-          ogTitle: 'Firmen Karaoke Zürich | Team Building Event',
-          ogDescription: 'Unvergessliche Firmenevents mit mobiler Karaoke. Stärken Sie den Teamgeist und bauen Sie Hierarchien spielerisch ab.',
+          title: 'Karaoke für Weihnachtsfeier, Firmenevents & Teambuilding | Zürioke',
+          description: 'Mobile Karaoke für die Firmenweihnachtsfeier, Firmenevents und Teambuilding in Zürich. Jetzt Termin im Advent sichern – wir kommen zu Ihnen!',
+          ogTitle: 'Firmen Karaoke Zürich | Weihnachtsfeier & Team Building',
+          ogDescription: 'Unvergessliche Firmenevents und Weihnachtsfeiern mit mobiler Karaoke. Stärken Sie den Teamgeist und bauen Sie Hierarchien spielerisch ab.',
         },
         hero: {
           title: 'Karaoke für Firmenevents & Teambuilding',
@@ -831,7 +856,7 @@ export const translations: Record<Language, Translations> = {
         description: {
           intro: 'Team-Building, das wirklich verbindet',
           paragraph1: 'Vergessen Sie langweilige Teambuilding-Events! Karaoke ist die perfekte Aktivität, um Ihr Team auf eine unterhaltsame und ungezwungene Weise zusammenzubringen. Wenn der Chef und die Praktikantin gemeinsam "Bohemian Rhapsody" singen, fallen Hierarchien ganz von selbst – und genau das macht Karaoke so wertvoll für Firmenevents.',
-          paragraph2: 'Ob Weihnachtsfeier, Teamausflug, Produktlancierung oder Firmenjubiläum – unsere mobile Karaoke-Anlage sorgt für Unterhaltung, die Ihre Mitarbeitenden noch lange in Erinnerung behalten. Wir bringen alles mit, was Sie brauchen, und passen uns flexibel an Ihre Räumlichkeiten an – ob im Büro, in einem gemieteten Raum oder an einem externen Event-Ort. Das Ergebnis: Ein unvergesslicher Abend, gestärkte Beziehungen und jede Menge neue Insider-Jokes fürs Büro.',
+          paragraph2: 'Ob Firmenweihnachtsfeier im Advent, Silvesterparty, Teamausflug, Produktlancierung oder Firmenjubiläum – unsere mobile Karaoke-Anlage sorgt für Unterhaltung, die Ihre Mitarbeitenden noch lange in Erinnerung behalten. Wir bringen alles mit, was Sie brauchen, und passen uns flexibel an Ihre Räumlichkeiten an – ob im Büro, in einem gemieteten Raum oder an einem externen Event-Ort. Das Ergebnis: Ein unvergesslicher Abend, gestärkte Beziehungen und jede Menge neue Insider-Jokes fürs Büro.',
         },
         imagePlaceholder: 'Bild folgt',
         benefits: {
@@ -866,12 +891,13 @@ export const translations: Record<Language, Translations> = {
         examples: {
           title: 'Perfekt für diese Firmenevents',
           items: [
-            'Weihnachtsfeiern & Jahresabschluss-Events',
+            'Firmenweihnachtsfeier & Weihnachtsessen im Advent',
+            'Silvesterparty & Neujahrsapéro',
             'Team-Building & Offsite-Events',
             'Produktlancierungen & Meilenstein-Feiern',
             'Onboarding-Events für neue Mitarbeitende',
             'Abteilungs-Feiern & After-Work-Partys',
-            'Firmenjubiläen',
+            'Firmenjubiläen & Sommerfeste',
           ],
         },
         faqs: {
@@ -1069,9 +1095,9 @@ export const translations: Record<Language, Translations> = {
 
       clubs: {
         meta: {
-          title: 'Karaoke für Vereinsanlässe & Dorffeste | Zürioke',
-          description: 'Mobile Karaoke für Vereinsanlässe, Dorffeste und Community-Events in Zürich. Für alle Generationen!',
-          ogTitle: 'Verein Karaoke Zürich | Dorffest Unterhaltung',
+          title: 'Karaoke für Vereinsfest, Dorffest & Sommerfest | Zürioke',
+          description: 'Mobile Karaoke für Vereinsanlässe, Vereinsfeste, Dorffeste und Sommerfeste in Zürich. Unterhaltung für alle Generationen – drinnen wie draussen!',
+          ogTitle: 'Verein Karaoke Zürich | Dorffest & Sommerfest Unterhaltung',
           ogDescription: 'Bringen Sie Ihre Community zusammen mit mobiler Karaoke für Vereinsanlässe, Dorffeste und Nachbarschaftsfeiern.',
         },
         hero: {
@@ -1219,8 +1245,8 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Submit inquiry',
       ctaFooter: 'No hidden costs • Transparent prices • Satisfaction guarantee',
       meta: {
-        title: 'Rent Karaoke Zurich | Mobile Karaoke - Zürioke',
-        description: 'Rent mobile karaoke in Zurich for corporate events, weddings & parties. We come to you! ✓ 100,000+ songs ✓ Professional equipment ✓ From CHF 599',
+        title: 'Rent Karaoke Zurich | Christmas & Corporate Parties - Zürioke',
+        description: 'Rent mobile karaoke in Zurich for Christmas parties, corporate events, weddings & birthdays. We come to you! ✓ 100,000+ songs ✓ Professional equipment ✓ From CHF 599',
       },
     },
 
@@ -1309,8 +1335,8 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Inquire now',
       ctaEmail: 'Send email',
       meta: {
-        title: 'Karaoke Zurich Prices & Packages | From CHF 599',
-        description: 'Rent karaoke in Zurich: Basic, Party & Premium packages. Mobile karaoke for corporate events, weddings, birthdays. Transparent prices from CHF 599.',
+        title: 'Rent a Karaoke System in Zurich – Prices & Packages | From CHF 599',
+        description: 'Rent a karaoke system in Zurich: Basic, Party & Premium packages. Mobile karaoke for Christmas parties, corporate events, weddings and birthdays. Transparent prices from CHF 599.',
       },
     },
 
@@ -1324,6 +1350,12 @@ export const translations: Record<Language, Translations> = {
       weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       previousMonth: 'Previous month',
       nextMonth: 'Next month',
+    },
+
+    carousel: {
+      label: 'Image gallery',
+      slide: 'Image {n} of {total}',
+      showImage: 'Show image {n}',
     },
 
     buchen: {
@@ -1581,6 +1613,14 @@ export const translations: Record<Language, Translations> = {
           paragraph2: 'Our mobile karaoke system is perfect for birthday parties of all kinds – from intimate gatherings to large celebrations. With our all-inclusive service, you don\'t need to worry about anything: We set up, host on request, and ensure every guest becomes the star of the evening. Whether you\'re turning 30, 40, 50, or 60 – karaoke brings all generations together and creates memories that last.',
         },
         imagePlaceholder: 'Image coming soon',
+        gallery: {
+          alt: [
+            'Birthday party with karaoke – guests singing together at the microphone',
+            'Guests celebrating at a karaoke birthday party in Zurich',
+            'Zürioke karaoke system set up at a birthday celebration',
+            'Lively atmosphere at a 40th birthday party with karaoke',
+          ],
+        },
         benefits: {
           title: 'Why Karaoke is Perfect for Birthdays',
           items: [
@@ -1652,10 +1692,10 @@ export const translations: Record<Language, Translations> = {
 
       corporate: {
         meta: {
-          title: 'Karaoke for Corporate Events & Team Building | Zürioke',
-          description: 'Mobile karaoke for corporate events, team building, and holiday parties in Zurich. Strengthen your team the fun way!',
-          ogTitle: 'Corporate Karaoke Zurich | Team Building Event',
-          ogDescription: 'Unforgettable corporate events with mobile karaoke. Strengthen team spirit and break down hierarchies naturally.',
+          title: 'Karaoke for Christmas Parties, Corporate Events & Team Building | Zürioke',
+          description: 'Mobile karaoke for your company Christmas party, corporate events and team building in Zurich. Secure your December date – we come to you!',
+          ogTitle: 'Corporate Karaoke Zurich | Christmas Party & Team Building',
+          ogDescription: 'Unforgettable corporate events and Christmas parties with mobile karaoke. Strengthen team spirit and break down hierarchies naturally.',
         },
         hero: {
           title: 'Karaoke for Corporate Events & Team Building',
@@ -1664,7 +1704,7 @@ export const translations: Record<Language, Translations> = {
         description: {
           intro: 'Team building that truly connects',
           paragraph1: 'Forget boring team-building events! Karaoke is the perfect activity to bring your team together in an entertaining and casual way. When the CEO and the intern sing "Bohemian Rhapsody" together, hierarchies naturally fall away – and that\'s exactly what makes karaoke so valuable for corporate events.',
-          paragraph2: 'Whether Christmas party, team outing, product launch, or company anniversary – our mobile karaoke system provides entertainment your employees will remember for a long time. We bring everything you need and adapt flexibly to your space – whether in the office, rented venue, or external event location. The result: An unforgettable evening, strengthened relationships, and plenty of new inside jokes for the office.',
+          paragraph2: 'Whether it\'s the company Christmas party, a New Year\'s Eve celebration, a team outing, product launch, or company anniversary – our mobile karaoke system provides entertainment your employees will remember for a long time. We bring everything you need and adapt flexibly to your space – whether in the office, rented venue, or external event location. The result: An unforgettable evening, strengthened relationships, and plenty of new inside jokes for the office.',
         },
         imagePlaceholder: 'Image coming soon',
         benefits: {
@@ -1699,12 +1739,13 @@ export const translations: Record<Language, Translations> = {
         examples: {
           title: 'Perfect for These Corporate Events',
           items: [
-            'Holiday Parties & Year-End Events',
+            'Company Christmas Parties & Year-End Events',
+            'New Year\'s Eve Parties & New Year Receptions',
             'Team Building & Offsite Events',
             'Product Launches & Milestone Celebrations',
             'Onboarding Events for New Employees',
             'Department Parties & After-Work Events',
-            'Company Anniversaries',
+            'Company Anniversaries & Summer Parties',
           ],
         },
         faqs: {
@@ -1902,9 +1943,9 @@ export const translations: Record<Language, Translations> = {
 
       clubs: {
         meta: {
-          title: 'Karaoke for Club Events & Village Festivals | Zürioke',
-          description: 'Mobile karaoke for club events, village festivals, and community events in Zurich. For all generations!',
-          ogTitle: 'Club Karaoke Zurich | Village Festival Entertainment',
+          title: 'Karaoke for Club Events, Village & Summer Festivals | Zürioke',
+          description: 'Mobile karaoke for club events, village festivals and summer parties in Zurich. Entertainment for all generations – indoors and outdoors!',
+          ogTitle: 'Club Karaoke Zurich | Village & Summer Festival Entertainment',
           ogDescription: 'Bring your community together with mobile karaoke for club events, village festivals, and neighborhood parties.',
         },
         hero: {

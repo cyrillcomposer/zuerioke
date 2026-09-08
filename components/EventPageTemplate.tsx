@@ -1,13 +1,20 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { useTranslations } from '../translations';
+import Carousel from './Carousel';
 
 interface EventPageTemplateProps {
   eventType: 'birthdays' | 'corporate' | 'weddings' | 'bachelor' | 'clubs';
 }
+
+const BIRTHDAY_GALLERY = [
+  '/birthday_party3.jpg',
+  '/gallery4.jpg',
+  '/gallery5.jpg',
+  '/gallery6.jpg',
+];
 
 export default function EventPageTemplate({ eventType }: EventPageTemplateProps) {
   const t = useTranslations();
@@ -53,6 +60,25 @@ export default function EventPageTemplate({ eventType }: EventPageTemplateProps)
             })
           }}
         />
+
+        {/* FAQ structured data – built from the same FAQs rendered below */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": content.faqs.items.map((faq) => ({
+                "@type": "Question",
+                "name": faq.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.a
+                }
+              }))
+            })
+          }}
+        />
       </Head>
 
       <motion.div
@@ -89,15 +115,16 @@ export default function EventPageTemplate({ eventType }: EventPageTemplateProps)
 
         {/* Image Section */}
         {eventType === 'birthdays' ? (
-          <div className="max-w-4xl mx-auto mb-16">
-            <Image
-              src="/birthday_party3.jpg"
-              alt="Birthday party karaoke celebration"
-              width={1920}
-              height={1080}
-              className="aspect-video rounded-2xl w-full h-auto object-cover"
-            />
-          </div>
+          <Carousel
+            images={BIRTHDAY_GALLERY.map((src, i) => ({
+              src,
+              alt: content.gallery?.alt[i] ?? content.hero.title,
+            }))}
+            fit="video"
+            className="max-w-4xl mx-auto mb-16"
+            viewportClassName="rounded-2xl"
+            sizes="(max-width: 1024px) 100vw, 896px"
+          />
         ) : (
           <div className="max-w-4xl mx-auto mb-16">
             <div className="aspect-video rounded-2xl border-2 border-[#D4AF37]/30 flex items-center justify-center bg-gradient-to-br from-black/50 to-[#D4AF37]/10">
