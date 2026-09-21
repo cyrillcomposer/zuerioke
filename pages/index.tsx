@@ -211,6 +211,18 @@ export default function Home() {
               {t.home.ctaSecondary}
             </Link>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="mt-5 text-sm text-gray-400"
+          >
+            {t.pricingTeaser.text}{' '}
+            <Link href="/angebot" className="text-[#D4AF37] font-semibold underline underline-offset-2 hover:opacity-80 transition-opacity">
+              {t.pricingTeaser.linkText}
+            </Link>
+          </motion.p>
         </div>
 
         {/* Stats */}

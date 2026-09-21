@@ -2,8 +2,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import { useTranslations } from '../translations';
+import { useTranslations, useLanguage } from '../translations';
 import Carousel from './Carousel';
+import PriceCards from './PriceCards';
 
 interface EventPageTemplateProps {
   eventType: 'birthdays' | 'corporate' | 'weddings' | 'bachelor' | 'clubs';
@@ -18,6 +19,7 @@ const BIRTHDAY_GALLERY = [
 
 export default function EventPageTemplate({ eventType }: EventPageTemplateProps) {
   const t = useTranslations();
+  const { language } = useLanguage();
   const router = useRouter();
   const content = t.eventPages[eventType];
 
@@ -88,7 +90,7 @@ export default function EventPageTemplate({ eventType }: EventPageTemplateProps)
       >
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 hyphens-auto break-words">
             <span className="gradient-text">{content.hero.title}</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -195,6 +197,40 @@ export default function EventPageTemplate({ eventType }: EventPageTemplateProps)
               </div>
             ))}
           </div>
+        </motion.div>
+
+        {/* Christmas cross-link (corporate page only) */}
+        {eventType === 'corporate' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto mb-20"
+          >
+            <div className="rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-br from-[#D4AF37]/10 to-transparent p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+              <p className="text-gray-200">{t.christmasCrossLink.text}</p>
+              <Link
+                href={language === 'de' ? '/weihnachtsfeier' : '/christmas-parties'}
+                className="shrink-0 px-6 py-3 rounded-full bg-gradient-to-r from-[#F4E5A3] to-[#D4AF37] text-black font-semibold hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 whitespace-nowrap"
+              >
+                {t.christmasCrossLink.linkText}
+              </Link>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Pricing Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="max-w-6xl mx-auto mb-20"
+        >
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.angebot.title}</h2>
+            <p className="text-gray-400">{t.angebot.subtitle}</p>
+          </div>
+          <PriceCards />
         </motion.div>
 
         {/* FAQ Section */}

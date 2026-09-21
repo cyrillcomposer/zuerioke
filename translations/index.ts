@@ -7,6 +7,7 @@ export interface Translations {
     angebot: string;
     angebotDropdown: {
       overview: string;
+      christmas: string;
       birthdays: string;
       corporate: string;
       weddings: string;
@@ -109,6 +110,37 @@ export interface Translations {
     label: string;
     slide: string;
     showImage: string;
+  };
+
+  // Cross-link from the corporate page to the Christmas landing page
+  christmasCrossLink: {
+    text: string;
+    linkText: string;
+  };
+
+  // Hero price teaser
+  pricingTeaser: {
+    text: string;
+    linkText: string;
+  };
+
+  // Seasonal banner
+  seasonBanner: {
+    text: string;
+    linkText: string;
+    dismiss: string;
+  };
+
+  // Weihnachtsfeier landing page
+  weihnachten: {
+    meta: { title: string; description: string; ogTitle: string; ogDescription: string };
+    hero: { title: string; subtitle: string };
+    description: { paragraph1: string; paragraph2: string };
+    benefits: { title: string; items: Array<{ title: string; description: string }> };
+    pricing: { title: string; subtitle: string; highlightLabel: string };
+    availability: { title: string; text: string; linkText: string };
+    faqs: { title: string; items: Array<{ q: string; a: string }> };
+    cta: { title: string; description: string; buttonText: string };
   };
 
   // Buchen page
@@ -336,9 +368,10 @@ export const translations: Record<Language, Translations> = {
   de: {
     nav: {
       home: 'Home',
-      angebot: 'Angebot',
+      angebot: 'Angebot & Preise',
       angebotDropdown: {
-        overview: 'Alle Pakete',
+        overview: 'Alle Pakete & Preise',
+        christmas: 'Weihnachtsfeier',
         birthdays: 'Geburtstagsfeiern',
         corporate: 'Firmenevents & Teambuilding',
         weddings: 'Hochzeiten & Jubiläen',
@@ -508,6 +541,100 @@ export const translations: Record<Language, Translations> = {
       label: 'Bildergalerie',
       slide: 'Bild {n} von {total}',
       showImage: 'Bild {n} anzeigen',
+    },
+
+    christmasCrossLink: {
+      text: 'Planen Sie eine Firmenweihnachtsfeier? Dafür haben wir eine eigene Seite mit allen Infos.',
+      linkText: 'Zur Weihnachtsfeier-Seite',
+    },
+
+    pricingTeaser: {
+      text: 'Alle Pakete inkl. Anlage, Aufbau und Anfahrt – ab CHF 599',
+      linkText: 'Preise ansehen',
+    },
+
+    seasonBanner: {
+      text: 'Weihnachtsfeier 2026 planen? Dezember-Termine werden knapp.',
+      linkText: 'Jetzt Termin sichern',
+      dismiss: 'Hinweis schliessen',
+    },
+
+    weihnachten: {
+      meta: {
+        title: 'Weihnachtsfeier Zürich mit Karaoke | Firmenweihnachtsfeier - Zürioke',
+        description: 'Karaoke für Ihre Firmenweihnachtsfeier in Zürich. Komplette Anlage, Aufbau und über 100.000 Songs inklusive – ab CHF 599. Jetzt Dezember-Termin sichern.',
+        ogTitle: 'Firmenweihnachtsfeier mit Karaoke in Zürich',
+        ogDescription: 'Die Weihnachtsfeier, über die das Team noch im Januar redet. Wir bringen alles mit – ab CHF 599.',
+      },
+      hero: {
+        title: 'Karaoke für Ihre Firmenweihnachtsfeier',
+        subtitle: 'Die Weihnachtsfeier, über die Ihr Team noch im Januar redet – wir bringen alles mit',
+      },
+      description: {
+        paragraph1: 'Die Weihnachtsfeier organisieren heisst meistens: Es soll allen gefallen, von der Geschäftsleitung bis zur Lernenden. Nur bleibt ein Abendessen allein selten in Erinnerung. Karaoke schon. Wir kommen mit der kompletten Anlage zu Ihnen ins Büro, ins Restaurant oder in die gemietete Location und machen aus dem Abend etwas, das im neuen Jahr noch Gesprächsthema ist.',
+        paragraph2: 'Vorbereiten müssen Sie nichts: Wir bringen Sound, Funkmikrofone, Grossleinwand und über 100.000 Songs mit, bauen auf und nach dem Fest wieder ab. Auf Wunsch moderieren wir den Abend, damit auch die zurückhaltenderen Kolleginnen und Kollegen zum Mikrofon greifen. Wir spielen für Teams von 10 bis 200 Personen – im Advent genauso wie beim Neujahrsapéro im Januar.',
+      },
+      benefits: {
+        title: 'Warum Karaoke an der Weihnachtsfeier funktioniert',
+        items: [
+          {
+            title: 'Kein Organisationsaufwand',
+            description: 'Anlage, Aufbau, Technik und Abbau sind inklusive. Sie reservieren den Raum, um den Rest kümmern wir uns.',
+          },
+          {
+            title: 'Alle machen mit',
+            description: 'Ob Mundart, Schlager, 80er oder aktuelle Charts: Bei über 100.000 Songs findet jede Abteilung und jede Generation etwas.',
+          },
+          {
+            title: 'Eisbrecher statt Smalltalk',
+            description: 'Wenn die Geschäftsleitung und das neuste Teammitglied zusammen singen, lösen sich Hierarchien von selbst auf.',
+          },
+          {
+            title: 'Planbares Budget',
+            description: 'Fixe Paketpreise ab CHF 599, inklusive Anfahrt, Auf- und Abbau. Keine versteckten Kosten, keine Überraschungen in der Abrechnung.',
+          },
+        ],
+      },
+      pricing: {
+        title: 'Unsere Pakete für Ihre Weihnachtsfeier',
+        subtitle: 'Alle Preise inklusive Anfahrt, Aufbau und Technik',
+        highlightLabel: 'Beliebt für Weihnachtsfeiern',
+      },
+      availability: {
+        title: 'Dezember-Termine werden knapp',
+        text: 'Die Wochen vor Weihnachten sind unsere gefragteste Zeit des Jahres. Im Kalender sehen Sie auf einen Blick, welche Daten noch frei sind.',
+        linkText: 'Verfügbarkeit ansehen',
+      },
+      faqs: {
+        title: 'Häufige Fragen von Firmenkunden',
+        items: [
+          {
+            q: 'Wie viel Platz brauchen Sie?',
+            a: 'Für die Anlage genügen rund 2 x 2 Meter plus eine normale Steckdose. Wir haben schon in Sitzungszimmern, Restaurants, Kantinen und Lagerhallen aufgebaut – melden Sie sich einfach, wenn Sie unsicher sind.',
+          },
+          {
+            q: 'Können wir Songs im Voraus auswählen?',
+            a: 'Ja, gerne. Schicken Sie uns vorab eine Wunschliste, dann bereiten wir die Playlist vor – auf Wunsch inklusive Weihnachtsklassiker für den Einstieg.',
+          },
+          {
+            q: 'Bis wann sollten wir buchen?',
+            a: 'Für Dezember-Termine empfehlen wir September bis Oktober. Kurzfristige Anfragen prüfen wir aber jederzeit gerne – der Kalender zeigt Ihnen, was aktuell noch frei ist.',
+          },
+          {
+            q: 'Funktioniert das auch, wenn wir zuerst essen?',
+            a: 'Sehr gut sogar. Viele Firmen starten mit dem Essen, und wir übernehmen ab dem Dessert. Wir richten uns nach Ihrem Ablauf.',
+          },
+          {
+            q: 'Was, wenn niemand singen will?',
+            a: 'Das hören wir vor fast jedem Firmenevent – und erleben es nie. Auf Wunsch moderieren wir und machen den Anfang. Nach zwei, drei Songs ist das Eis gebrochen.',
+          },
+        ],
+      },
+      cta: {
+        title: 'Dezember-Termin sichern',
+        description: 'Sagen Sie uns Datum, Ort und ungefähre Teilnehmerzahl – Sie erhalten innerhalb von 24 Stunden eine Rückmeldung.',
+        buttonText: 'Jetzt unverbindlich anfragen',
+      },
     },
 
     buchen: {
@@ -1184,9 +1311,10 @@ export const translations: Record<Language, Translations> = {
   en: {
     nav: {
       home: 'Home',
-      angebot: 'Packages',
+      angebot: 'Packages & Prices',
       angebotDropdown: {
-        overview: 'All Packages',
+        overview: 'All Packages & Prices',
+        christmas: 'Christmas Parties',
         birthdays: 'Birthday Parties',
         corporate: 'Corporate Events & Team Building',
         weddings: 'Weddings & Anniversaries',
@@ -1356,6 +1484,100 @@ export const translations: Record<Language, Translations> = {
       label: 'Image gallery',
       slide: 'Image {n} of {total}',
       showImage: 'Show image {n}',
+    },
+
+    christmasCrossLink: {
+      text: 'Planning a company Christmas party? We have a dedicated page with all the details.',
+      linkText: 'Go to the Christmas party page',
+    },
+
+    pricingTeaser: {
+      text: 'All packages include equipment, setup and travel – from CHF 599',
+      linkText: 'See prices',
+    },
+
+    seasonBanner: {
+      text: 'Planning your 2026 Christmas party? December dates are filling up.',
+      linkText: 'Secure your date',
+      dismiss: 'Dismiss notice',
+    },
+
+    weihnachten: {
+      meta: {
+        title: 'Christmas Party Zurich with Karaoke | Company Christmas Party - Zürioke',
+        description: 'Karaoke for your company Christmas party in Zurich. Full system, setup and 100,000+ songs included – from CHF 599. Secure your December date now.',
+        ogTitle: 'Company Christmas Party with Karaoke in Zurich',
+        ogDescription: 'The Christmas party your team still talks about in January. We bring everything – from CHF 599.',
+      },
+      hero: {
+        title: 'Karaoke for Your Company Christmas Party',
+        subtitle: 'The Christmas party your team still talks about in January – we bring everything',
+      },
+      description: {
+        paragraph1: 'Organising the Christmas party usually means pleasing everyone, from the management team to the newest apprentice. But a dinner on its own rarely stays in anyone’s memory. Karaoke does. We arrive with the complete system at your office, restaurant or rented venue and turn the evening into something people are still talking about in the new year.',
+        paragraph2: 'There is nothing for you to prepare: we bring the sound system, wireless microphones, a large screen and over 100,000 songs, set everything up and pack it down afterwards. On request we host the evening so that the quieter colleagues also reach for the microphone. We play for teams of 10 to 200 people – during Advent just as much as at the New Year reception in January.',
+      },
+      benefits: {
+        title: 'Why Karaoke Works at a Christmas Party',
+        items: [
+          {
+            title: 'No organisational effort',
+            description: 'Equipment, setup, tech support and teardown are all included. You book the room, we handle the rest.',
+          },
+          {
+            title: 'Everyone joins in',
+            description: 'Swiss German classics, schlager, 80s hits or current charts: with over 100,000 songs, every department and generation finds something.',
+          },
+          {
+            title: 'An icebreaker, not small talk',
+            description: 'When the management team and the newest hire sing together, hierarchies dissolve on their own.',
+          },
+          {
+            title: 'Predictable budget',
+            description: 'Fixed package prices from CHF 599, including travel, setup and teardown. No hidden costs, no surprises on the invoice.',
+          },
+        ],
+      },
+      pricing: {
+        title: 'Our Packages for Your Christmas Party',
+        subtitle: 'All prices include travel, setup and technical support',
+        highlightLabel: 'Popular for Christmas parties',
+      },
+      availability: {
+        title: 'December dates are filling up',
+        text: 'The weeks before Christmas are our busiest time of year. The calendar shows you at a glance which dates are still open.',
+        linkText: 'Check availability',
+      },
+      faqs: {
+        title: 'Frequently Asked by Corporate Clients',
+        items: [
+          {
+            q: 'How much space do you need?',
+            a: 'Around 2 x 2 metres plus a standard power socket is enough for the system. We have set up in meeting rooms, restaurants, canteens and warehouses – just ask if you are unsure.',
+          },
+          {
+            q: 'Can we choose songs in advance?',
+            a: 'Absolutely. Send us a wish list beforehand and we will prepare the playlist – including Christmas classics to get things started, if you like.',
+          },
+          {
+            q: 'How far ahead should we book?',
+            a: 'For December dates we recommend September to October. We are always happy to check short-notice requests too – the calendar shows what is currently still available.',
+          },
+          {
+            q: 'Does this work if we have dinner first?',
+            a: 'It works very well. Many companies start with dinner and we take over from dessert onwards. We adapt to your schedule.',
+          },
+          {
+            q: 'What if nobody wants to sing?',
+            a: 'We hear this before almost every corporate event – and never actually see it. On request we host and start things off ourselves. After two or three songs the ice is broken.',
+          },
+        ],
+      },
+      cta: {
+        title: 'Secure Your December Date',
+        description: 'Tell us the date, location and rough number of guests – you will receive a reply with a quote within 24 hours.',
+        buttonText: 'Send a no-obligation enquiry',
+      },
     },
 
     buchen: {

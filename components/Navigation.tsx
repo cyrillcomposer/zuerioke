@@ -25,6 +25,7 @@ export default function Navigation() {
   const getEventLinks = () => {
     const basePath = language === 'de' ? '/angebot' : '/packages';
     return [
+      { href: language === 'de' ? '/weihnachtsfeier' : '/christmas-parties', label: t.nav.angebotDropdown.christmas },
       { href: `${basePath}/${language === 'de' ? 'geburtstagsfeiern' : 'birthday-parties'}`, label: t.nav.angebotDropdown.birthdays },
       { href: `${basePath}/${language === 'de' ? 'firmenevents-teambuilding' : 'corporate-events-teambuilding'}`, label: t.nav.angebotDropdown.corporate },
       { href: `${basePath}/${language === 'de' ? 'hochzeiten-jubilaeen' : 'weddings-anniversaries'}`, label: t.nav.angebotDropdown.weddings },

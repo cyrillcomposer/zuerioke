@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { useRouter } from "next/router";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
+import SeasonBanner from "./SeasonBanner";
 
 const BARE_PATHS = ["/review", "/sing", "/sing-admin", "/sing-screen"];
 
@@ -30,6 +31,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         ></div>
       </div>
       <div className="relative z-10">
+        <SeasonBanner />
         <Navigation />
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           {children}
