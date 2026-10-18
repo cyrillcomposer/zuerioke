@@ -113,6 +113,7 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
         {/* Month navigation */}
         <div className="flex items-center justify-between mb-6">
           <button
+            type="button"
             onClick={goToPrevMonth}
             disabled={isCurrentMonth}
             className={`p-2 rounded-full transition-colors ${
@@ -130,6 +131,7 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
             {t.calendar.months[currentMonth]} {currentYear}
           </h3>
           <button
+            type="button"
             onClick={goToNextMonth}
             className="p-2 rounded-full text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors"
             aria-label={t.calendar.nextMonth}
@@ -171,6 +173,7 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
 
               return (
                 <motion.button
+                  type="button"
                   key={dateStr}
                   whileHover={styles.clickable ? { scale: 1.1 } : undefined}
                   whileTap={styles.clickable ? { scale: 0.95 } : undefined}
