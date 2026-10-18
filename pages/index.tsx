@@ -35,7 +35,7 @@ export default function Home() {
   ];
 
   const stats = [
-    { number: "500+", label: t.home.stats.events },
+    { number: "100+", label: t.home.stats.events },
     { number: "100K+", label: t.home.stats.songs },
     { number: "5★", label: t.home.stats.rating },
     { number: "24h", label: t.home.stats.support }

@@ -374,7 +374,7 @@ export const translations: Record<Language, Translations> = {
     },
 
     home: {
-      badge: 'Verfügbar für Events in Zürich',
+      badge: 'Für Events & Partys in Zürich und Umgebung',
       promoStamp: '',
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: 'Wir kommen zu dir!',
@@ -666,7 +666,7 @@ export const translations: Record<Language, Translations> = {
       story: [
         'Was als spontane Idee an einem lauen Sommerabend in Zürich begann, ist heute zu einer der gefragtesten mobilen Karaoke-Services der Region geworden.',
         'Marcel und Cyrill, beide leidenschaftliche Musikliebhaber, erkannten schnell, dass Karaoke mehr ist als nur Singen – es ist ein Erlebnis, das Menschen verbindet, Hemmungen abbaut und unvergessliche Momente schafft.',
-        'Mit dieser Vision starteten wir 2020 Zürioke. Seitdem haben wir über 500 Events begleitet und Tausende von Menschen zum Strahlen gebracht. Von intimen Geburtstagsfeiern bis zu grossen Firmenevents – jeder Auftritt ist für uns eine neue Chance, Magie zu erschaffen.',
+        'Mit dieser Vision starteten wir 2020 Zürioke. Seitdem haben wir über 100 Events begleitet und Tausende von Menschen zum Strahlen gebracht. Von intimen Geburtstagsfeiern bis zu grossen Firmenevents – jeder Auftritt ist für uns eine neue Chance, Magie zu erschaffen.',
       ],
       teamTitle: 'Das Team',
       team: [
@@ -705,7 +705,7 @@ export const translations: Record<Language, Translations> = {
       whyTitle: 'Warum',
       experienceTitle: 'Erfahrung & Expertise',
       experienceItems: [
-        '500+ erfolgreiche Events',
+        '100+ erfolgreiche Events',
         'Professionelles Equipment',
         'Geschultes Personal',
         'Flexible Lösungen',
@@ -722,7 +722,7 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Jetzt Kontakt aufnehmen',
       meta: {
         title: 'Mobile Karaoke Zürich Team | Über Zürioke',
-        description: 'Das Team hinter Zürioke: Mobile Karaoke in Zürich seit 2020. 500+ Events, professionelles Equipment, persönlicher Service für Ihren Anlass.',
+        description: 'Das Team hinter Zürioke: Mobile Karaoke in Zürich seit 2020. 100+ Events, professionelles Equipment, persönlicher Service für Ihren Anlass.',
       },
     },
 
@@ -772,8 +772,8 @@ export const translations: Record<Language, Translations> = {
       statsTitle: 'Zahlen, die für sich sprechen',
       stats: [
         { number: '98%', label: 'Zufriedene Kunden' },
-        { number: '500+', label: 'Erfolgreiche Events' },
-        { number: '4.9★', label: 'Google Bewertung' },
+        { number: '100+', label: 'Erfolgreiche Events' },
+        { number: '5.0★', label: 'Google Bewertung' },
         { number: '85%', label: 'Wiederbuchungen' },
       ],
       ctaTitle: 'Machen Sie Ihren Event unvergesslich',
@@ -781,7 +781,7 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Jetzt Ihre Party planen',
       meta: {
         title: 'Karaoke Zürich Bewertungen | Kundenstimmen',
-        description: 'Echte Bewertungen unserer Karaoke Events in Zürich. 500+ zufriedene Kunden, 5-Sterne Service für Firmenevents, Hochzeiten & Partys.',
+        description: 'Echte Bewertungen unserer Karaoke Events in Zürich. 100+ zufriedene Kunden, 5-Sterne Service für Firmenevents, Hochzeiten & Partys.',
       },
     },
 
@@ -1299,7 +1299,7 @@ export const translations: Record<Language, Translations> = {
     },
 
     home: {
-      badge: 'Available for events in Zurich',
+      badge: 'For events & parties in Zurich and surrounding areas',
       promoStamp: '',
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: "We come to you!",
@@ -1591,7 +1591,7 @@ export const translations: Record<Language, Translations> = {
       story: [
         'What started as a spontaneous idea on a mild summer evening in Zurich has become one of the most sought-after mobile karaoke services in the region.',
         'Marcel and Cyrill, both passionate music lovers, quickly realized that karaoke is more than just singing – it is an experience that connects people, breaks down inhibitions and creates unforgettable moments.',
-        "With this vision, we started Zürioke in 2020. Since then, we have accompanied over 500 events and made thousands of people shine. From intimate birthday parties to large corporate events – every performance is a new opportunity for us to create magic.",
+        "With this vision, we started Zürioke in 2020. Since then, we have accompanied over 100 events and made thousands of people shine. From intimate birthday parties to large corporate events – every performance is a new opportunity for us to create magic.",
       ],
       teamTitle: 'The Team',
       team: [
@@ -1630,7 +1630,7 @@ export const translations: Record<Language, Translations> = {
       whyTitle: 'Why',
       experienceTitle: 'Experience & Expertise',
       experienceItems: [
-        '500+ successful events',
+        '100+ successful events',
         'Professional equipment',
         'Trained staff',
         'Flexible solutions',
@@ -1647,7 +1647,7 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Contact us now',
       meta: {
         title: 'Mobile Karaoke Zurich Team | About Zürioke',
-        description: 'The team behind Zürioke: Mobile karaoke in Zurich since 2020. 500+ events, professional equipment, personal service for your occasion.',
+        description: 'The team behind Zürioke: Mobile karaoke in Zurich since 2020. 100+ events, professional equipment, personal service for your occasion.',
       },
     },
 
@@ -1697,8 +1697,8 @@ export const translations: Record<Language, Translations> = {
       statsTitle: 'Numbers that speak for themselves',
       stats: [
         { number: '98%', label: 'Satisfied customers' },
-        { number: '500+', label: 'Successful events' },
-        { number: '4.9★', label: 'Google rating' },
+        { number: '100+', label: 'Successful events' },
+        { number: '5.0★', label: 'Google rating' },
         { number: '85%', label: 'Rebookings' },
       ],
       ctaTitle: 'Make your event unforgettable',
@@ -1706,7 +1706,7 @@ export const translations: Record<Language, Translations> = {
       ctaButton: 'Plan your party now',
       meta: {
         title: 'Karaoke Zurich Reviews | Customer Testimonials',
-        description: 'Real reviews of our karaoke events in Zurich. 500+ satisfied customers, 5-star service for corporate events, weddings & parties.',
+        description: 'Real reviews of our karaoke events in Zurich. 100+ satisfied customers, 5-star service for corporate events, weddings & parties.',
       },
     },
 

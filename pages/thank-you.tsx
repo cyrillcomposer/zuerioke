@@ -221,7 +221,7 @@ export default function ThankYou() {
               ))}
             </div>
             <span className="text-sm text-gray-400 ml-3">
-              <span className="text-white font-semibold">500+</span> {t.thankYou.socialProof}
+              <span className="text-white font-semibold">100+</span> {t.thankYou.socialProof}
             </span>
           </motion.div>
         </motion.div>

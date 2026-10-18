@@ -16,7 +16,7 @@ export default function Testimonials() {
 
         {/* Open Graph / Social Media */}
         <meta property="og:title" content="Zürioke – Kundenstimmen" />
-        <meta property="og:description" content="Über 500 zufriedene Kunden – Erfahre, was unsere Kunden über ihre Karaoke-Events sagen." />
+        <meta property="og:description" content="Über 100 zufriedene Kunden – Erfahre, was unsere Kunden über ihre Karaoke-Events sagen." />
         <meta property="og:url" content="https://zuerioke.ch/testimonials" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
@@ -27,7 +27,7 @@ export default function Testimonials() {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Zürioke – Kundenstimmen" />
-        <meta name="twitter:description" content="Über 500 zufriedene Kunden – Erfahre, was unsere Kunden über ihre Karaoke-Events sagen." />
+        <meta name="twitter:description" content="Über 100 zufriedene Kunden – Erfahre, was unsere Kunden über ihre Karaoke-Events sagen." />
         <meta name="twitter:image" content="https://zuerioke.ch/og/zuerioke-share-1200x630.png" />
         <script
           type="application/ld+json"
@@ -39,7 +39,7 @@ export default function Testimonials() {
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "5",
-                "reviewCount": "500",
+                "reviewCount": "100",
                 "bestRating": "5",
                 "worstRating": "1"
               },
