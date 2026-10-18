@@ -776,8 +776,8 @@ export const translations: Record<Language, Translations> = {
         { number: '4.9★', label: 'Google Bewertung' },
         { number: '85%', label: 'Wiederbuchungen' },
       ],
-      ctaTitle: 'Werden Sie Teil unserer Erfolgsgeschichte',
-      ctaDescription: 'Lassen Sie uns gemeinsam Ihren Event zu einem unvergesslichen Erlebnis machen.',
+      ctaTitle: 'Machen Sie Ihren Event unvergesslich',
+      ctaDescription: 'Wir bringen Karaoke, Technik und Party-Stimmung direkt zu Ihnen.',
       ctaButton: 'Jetzt Ihre Party planen',
       meta: {
         title: 'Karaoke Zürich Bewertungen | Kundenstimmen',
@@ -1701,8 +1701,8 @@ export const translations: Record<Language, Translations> = {
         { number: '4.9★', label: 'Google rating' },
         { number: '85%', label: 'Rebookings' },
       ],
-      ctaTitle: 'Become part of our success story',
-      ctaDescription: "Let's make your event an unforgettable experience together.",
+      ctaTitle: 'Make your event unforgettable',
+      ctaDescription: 'We bring the karaoke, the equipment and the party atmosphere to you.',
       ctaButton: 'Plan your party now',
       meta: {
         title: 'Karaoke Zurich Reviews | Customer Testimonials',
