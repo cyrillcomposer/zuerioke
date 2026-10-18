@@ -1,6 +1,11 @@
 import availabilityData from './availability.json';
 
-export type AvailabilityStatus = 'available' | 'limited' | 'booked';
+export type AvailabilityStatus = 'available' | 'limited' | 'booked' | 'closed';
+
+// Date strings are YYYY-MM-DD, so plain string comparison orders them correctly.
+export function isClosed(dateStr: string): boolean {
+  return availabilityData.closures.some((c) => dateStr >= c.from && dateStr <= c.to);
+}
 
 export function getDateStatus(dateStr: string): AvailabilityStatus {
   const today = new Date();
@@ -11,6 +16,10 @@ export function getDateStatus(dateStr: string): AvailabilityStatus {
 
   if (date < today) {
     return 'booked';
+  }
+
+  if (isClosed(dateStr)) {
+    return 'closed';
   }
 
   const status = (availabilityData.dates as Record<string, string>)[dateStr];

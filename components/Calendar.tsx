@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getDateStatus, AvailabilityStatus } from '../data/availability';
+import { getDateStatus, isClosed, AvailabilityStatus } from '../data/availability';
 import { useTranslations } from '../translations';
 
 interface CalendarProps {
@@ -93,8 +93,17 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
           text: 'text-gray-500',
           clickable: false,
         };
+      case 'closed':
+        return {
+          bg: 'bg-white/5 border-white/10',
+          dot: 'bg-gray-400',
+          text: 'text-gray-500',
+          clickable: false,
+        };
     }
   }
+
+  const monthHasClosure = days.some((day) => day !== null && isClosed(formatDateStr(day)));
 
   const monthKey = `${currentYear}-${currentMonth}`;
 
@@ -193,6 +202,12 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
             <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
             <span className="text-xs text-gray-400">{t.calendar.booked}</span>
           </div>
+          {monthHasClosure && (
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-400" />
+              <span className="text-xs text-gray-400">{t.calendar.closed}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ export default function BuchenAnfrage() {
   useEffect(() => {
     if (!router.isReady) return;
     const d = router.query.datum;
-    if (typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d) && getDateStatus(d) !== "booked") {
+    if (typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d) && ["available", "limited"].includes(getDateStatus(d))) {
       setDatum(d);
     }
   }, [router.isReady, router.query.datum]);

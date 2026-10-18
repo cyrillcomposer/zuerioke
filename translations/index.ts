@@ -99,6 +99,7 @@ export interface Translations {
     available: string;
     limited: string;
     booked: string;
+    closed: string;
     months: string[];
     weekdays: string[];
     previousMonth: string;
@@ -520,6 +521,7 @@ export const translations: Record<Language, Translations> = {
       available: 'Verfügbar',
       limited: 'Eingeschränkt verfügbar',
       booked: 'Ausgebucht',
+      closed: 'Betriebsferien',
       months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
       weekdays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
       previousMonth: 'Vorheriger Monat',
@@ -1446,6 +1448,7 @@ export const translations: Record<Language, Translations> = {
       available: 'Available',
       limited: 'Limited availability',
       booked: 'Fully booked',
+      closed: 'Holiday break',
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       previousMonth: 'Previous month',
