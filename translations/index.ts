@@ -482,8 +482,8 @@ export const translations: Record<Language, Translations> = {
       addonsSubtitle: 'Erweitern Sie Ihr Paket mit unseren beliebten Extras',
       addons: [
         { name: 'Zusatzstunde', price: 'CHF 199' },
-        { name: 'Extra Mikrofon', price: 'CHF 49' },
-        { name: 'Nebelmaschine', price: 'CHF 79' },
+        { name: 'Extra Mikrofon', price: 'CHF 19' },
+        { name: 'Nebelmaschine', price: 'CHF 29' },
       ],
       faqTitle: 'Häufige Fragen',
       faqs: [
@@ -1408,8 +1408,8 @@ export const translations: Record<Language, Translations> = {
       addonsSubtitle: 'Enhance your package with our popular extras',
       addons: [
         { name: 'Extra hour', price: 'CHF 199' },
-        { name: 'Extra microphone', price: 'CHF 49' },
-        { name: 'Fog machine', price: 'CHF 79' },
+        { name: 'Extra microphone', price: 'CHF 19' },
+        { name: 'Fog machine', price: 'CHF 29' },
       ],
       faqTitle: 'Frequently Asked Questions',
       faqs: [
