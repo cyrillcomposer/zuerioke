@@ -147,43 +147,32 @@ export interface Translations {
   buchen: {
     title: string;
     subtitle: string;
-    selectedDateLabel: string;
-    changeDate: string;
-    backToCalendar: string;
-    package: string;
+    whatsappTitle: string;
+    whatsappSubtitle: string;
+    whatsappButton: string;
+    whatsappDefaultMessage: string;
+    whatsappDateLine: string;
+    whatsappLocationLine: string;
+    whatsappCommentLine: string;
+    whatsappPackageLine: string;
+    whatsappExtrasLine: string;
+    or: string;
+    contactLabel: string;
+    contactPlaceholder: string;
+    contactInvalid: string;
+    dateLabel: string;
+    clearDate: string;
+    locationLabel: string;
+    packageLabel: string;
     packages: string[];
-    extrasTitle: string;
-    contactTitle: string;
-    name: string;
-    email: string;
-    phone: string;
-    company: string;
-    namePlaceholder: string;
-    emailPlaceholder: string;
-    phonePlaceholder: string;
-    companyPlaceholder: string;
-    eventDetailsTitle: string;
-    date: string;
-    time: string;
-    eventType: string;
-    eventTypePlaceholder: string;
-    guestCount: string;
-    guestCountPlaceholder: string;
-    locationTitle: string;
-    locationName: string;
-    locationNamePlaceholder: string;
-    address: string;
-    addressPlaceholder: string;
-    plz: string;
-    plzPlaceholder: string;
-    city: string;
-    cityPlaceholder: string;
-    message: string;
-    messagePlaceholder: string;
+    extrasLabel: string;
+    estimatedTotal: string;
+    estimatedTotalNote: string;
+    commentLabel: string;
     submitButton: string;
-    resetButton: string;
-    infoTitle: string;
-    infoSteps: string[];
+    sending: string;
+    sendFailed: string;
+    trust: string[];
     meta: {
       title: string;
       description: string;
@@ -638,51 +627,34 @@ export const translations: Record<Language, Translations> = {
     },
 
     buchen: {
-      title: 'Buchungsanfrage',
-      subtitle: 'Füllen Sie das Formular aus – wir melden uns innerhalb von 24 Stunden bei Ihnen.',
-      selectedDateLabel: 'Gewähltes Datum',
-      changeDate: 'Datum ändern',
-      backToCalendar: 'Zurück zum Kalender',
-      package: 'Gewünschtes Paket',
+      title: 'Unverbindlich anfragen',
+      subtitle: 'Kurz Kontakt hinterlassen – wir melden uns innerhalb von 24 Stunden.',
+      whatsappTitle: 'Per WhatsApp anfragen',
+      whatsappSubtitle: 'Der schnellste Weg: Schreib uns direkt.',
+      whatsappButton: 'WhatsApp öffnen',
+      whatsappDefaultMessage: 'Hallo Zürioke, ich interessiere mich für eure mobile Karaoke.',
+      whatsappDateLine: 'Datum',
+      whatsappLocationLine: 'Ort',
+      whatsappCommentLine: 'Kommentar',
+      whatsappPackageLine: 'Paket',
+      whatsappExtrasLine: 'Extras',
+      or: 'oder',
+      contactLabel: 'E-Mail oder Telefon',
+      contactPlaceholder: 'z. B. name@beispiel.ch oder 079 123 45 67',
+      contactInvalid: 'Bitte gib eine gültige E-Mail-Adresse oder Telefonnummer an.',
+      dateLabel: 'Datum (optional)',
+      clearDate: 'Datum entfernen',
+      locationLabel: 'Ort / Location (optional)',
+      packageLabel: 'Gewünschtes Paket (optional)',
       packages: ['Basic (2h)', 'Party (3h)', 'Premium (4h)'],
-      extrasTitle: 'Zusatzoptionen (optional)',
-      contactTitle: 'Kontaktdaten',
-      name: 'Name',
-      email: 'E-Mail',
-      phone: 'Telefon',
-      company: 'Firma (optional)',
-      namePlaceholder: 'Ihr Name',
-      emailPlaceholder: 'ihre.email@beispiel.ch',
-      phonePlaceholder: '+41 79 123 45 67',
-      companyPlaceholder: 'Firmenname',
-      eventDetailsTitle: 'Event-Details',
-      date: 'Datum',
-      time: 'Uhrzeit',
-      eventType: 'Art des Events',
-      eventTypePlaceholder: 'z.B. Firmenevent, Geburtstag, Hochzeit...',
-      guestCount: 'Anzahl Gäste (ca.)',
-      guestCountPlaceholder: '50',
-      locationTitle: 'Veranstaltungsort',
-      locationName: 'Name der Location',
-      locationNamePlaceholder: 'Restaurant, Club, Privatadresse...',
-      address: 'Strasse und Hausnummer',
-      addressPlaceholder: 'Musterstrasse 123',
-      plz: 'PLZ',
-      plzPlaceholder: '8000',
-      city: 'Ort',
-      cityPlaceholder: 'Zürich',
-      message: 'Nachricht / Spezielle Wünsche',
-      messagePlaceholder: 'Teilen Sie uns Ihre besonderen Wünsche oder Fragen mit...',
+      extrasLabel: 'Zusatzoptionen (optional)',
+      estimatedTotal: 'Richtpreis',
+      estimatedTotalNote: 'unverbindlich',
+      commentLabel: 'Kommentar (optional)',
       submitButton: 'Anfrage senden',
-      resetButton: 'Formular zurücksetzen',
-      infoTitle: 'Was passiert nach Ihrer Anfrage?',
-      infoSteps: [
-        'Wir prüfen Ihre Anfrage und die Verfügbarkeit',
-        'Sie erhalten innerhalb von 24 Stunden eine Rückmeldung',
-        'Wir besprechen alle Details telefonisch oder per E-Mail',
-        'Sie erhalten ein massgeschneidertes Angebot',
-        'Nach Ihrer Bestätigung ist der Termin fix gebucht',
-      ],
+      sending: 'Wird gesendet…',
+      sendFailed: 'Das hat leider nicht geklappt. Bitte versuche es nochmals oder schreib uns per WhatsApp.',
+      trust: ['Unverbindlich anfragen', '24h Antwort', 'Keine Zahlung notwendig'],
       meta: {
         title: 'Karaoke Zürich buchen | Anfrage & Kontakt',
         description: 'Mobile Karaoke in Zürich buchen für Ihr Event. Einfache Online-Anfrage, Antwort in 24h. Für Firmenevents, Hochzeiten & private Feiern.',
@@ -1581,51 +1553,34 @@ export const translations: Record<Language, Translations> = {
     },
 
     buchen: {
-      title: 'Booking Request',
-      subtitle: 'Fill out the form – we will contact you within 24 hours.',
-      selectedDateLabel: 'Selected date',
-      changeDate: 'Change date',
-      backToCalendar: 'Back to calendar',
-      package: 'Desired package',
+      title: 'Request without obligation',
+      subtitle: 'Just leave your contact – we will get back to you within 24 hours.',
+      whatsappTitle: 'Ask via WhatsApp',
+      whatsappSubtitle: 'The fastest way: message us directly.',
+      whatsappButton: 'Open WhatsApp',
+      whatsappDefaultMessage: 'Hi Zürioke, I am interested in your mobile karaoke.',
+      whatsappDateLine: 'Date',
+      whatsappLocationLine: 'Location',
+      whatsappCommentLine: 'Comment',
+      whatsappPackageLine: 'Package',
+      whatsappExtrasLine: 'Extras',
+      or: 'or',
+      contactLabel: 'Email or phone',
+      contactPlaceholder: 'e.g. name@example.com or 079 123 45 67',
+      contactInvalid: 'Please enter a valid email address or phone number.',
+      dateLabel: 'Date (optional)',
+      clearDate: 'Remove date',
+      locationLabel: 'Location (optional)',
+      packageLabel: 'Desired package (optional)',
       packages: ['Basic (2h)', 'Party (3h)', 'Premium (4h)'],
-      extrasTitle: 'Additional options (optional)',
-      contactTitle: 'Contact information',
-      name: 'Name',
-      email: 'Email',
-      phone: 'Phone',
-      company: 'Company (optional)',
-      namePlaceholder: 'Your name',
-      emailPlaceholder: 'your.email@example.com',
-      phonePlaceholder: '+41 79 123 45 67',
-      companyPlaceholder: 'Company name',
-      eventDetailsTitle: 'Event details',
-      date: 'Date',
-      time: 'Time',
-      eventType: 'Type of event',
-      eventTypePlaceholder: 'e.g. Corporate event, birthday, wedding...',
-      guestCount: 'Number of guests (approx.)',
-      guestCountPlaceholder: '50',
-      locationTitle: 'Event venue',
-      locationName: 'Name of location',
-      locationNamePlaceholder: 'Restaurant, club, private address...',
-      address: 'Street and number',
-      addressPlaceholder: 'Sample Street 123',
-      plz: 'ZIP code',
-      plzPlaceholder: '8000',
-      city: 'City',
-      cityPlaceholder: 'Zurich',
-      message: 'Message / Special requests',
-      messagePlaceholder: 'Share your special requests or questions with us...',
+      extrasLabel: 'Additional options (optional)',
+      estimatedTotal: 'Estimated price',
+      estimatedTotalNote: 'non-binding',
+      commentLabel: 'Comment (optional)',
       submitButton: 'Send request',
-      resetButton: 'Reset form',
-      infoTitle: 'What happens after your inquiry?',
-      infoSteps: [
-        'We check your inquiry and availability',
-        'You will receive a response within 24 hours',
-        'We discuss all details by phone or email',
-        'You receive a customized offer',
-        'After your confirmation, the date is firmly booked',
-      ],
+      sending: 'Sending…',
+      sendFailed: 'Sorry, that did not work. Please try again or message us on WhatsApp.',
+      trust: ['No obligation', 'Reply within 24h', 'No payment required'],
       meta: {
         title: 'Book Karaoke Zurich | Inquiry & Contact',
         description: 'Book mobile karaoke in Zurich for your event. Simple online inquiry, response in 24h. For corporate events, weddings & private celebrations.',

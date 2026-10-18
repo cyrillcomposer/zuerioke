@@ -187,6 +187,15 @@ export default function ThankYou() {
           >
             <p className="mb-2">{t.thankYou.urgentText}</p>
             <a
+              href="https://wa.me/41798135848"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#D4AF37] hover:text-[#F4E5A3] transition-colors"
+            >
+              WhatsApp
+            </a>
+            <span className="mx-2 text-gray-600">·</span>
+            <a
               href="mailto:hello@zuerioke.ch"
               className="text-[#D4AF37] hover:text-[#F4E5A3] transition-colors"
             >

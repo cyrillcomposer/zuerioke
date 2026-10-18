@@ -73,7 +73,7 @@ export default function Home() {
               "image": "/zurioke-logo.png",
               "@id": "https://zuerioke.ch",
               "url": "https://zuerioke.ch",
-              "telephone": "+41791234567",
+              "telephone": "+41798135848",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Zürich",
