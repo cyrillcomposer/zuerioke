@@ -29,7 +29,6 @@ export default function BuchenAnfrage() {
   const [ort, setOrt] = useState("");
   const [nachricht, setNachricht] = useState("");
   const [paket, setPaket] = useState("");
-  const [extras, setExtras] = useState<string[]>([]);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
@@ -55,24 +54,17 @@ export default function BuchenAnfrage() {
 
   const b = t.buchen;
   const packages = t.angebot.packages as Array<{ price: string }>;
-  const addons = t.angebot.addons as Array<{ name: string; price: string }>;
 
   // "CHF 599" -> 599
   const parsePrice = (price: string) => parseInt(price.replace(/[^0-9]/g, ""), 10) || 0;
   const paketIndex = b.packages.indexOf(paket);
-  const estimatedTotal =
-    (paketIndex >= 0 && packages[paketIndex] ? parsePrice(packages[paketIndex].price) : 0) +
-    extras.reduce((sum, name) => sum + parsePrice(addons.find((a) => a.name === name)?.price ?? ""), 0);
-
-  const toggleExtra = (name: string) =>
-    setExtras((prev) => (prev.includes(name) ? prev.filter((e) => e !== name) : [...prev, name]));
+  const estimatedTotal = paketIndex >= 0 && packages[paketIndex] ? parsePrice(packages[paketIndex].price) : 0;
 
   const whatsappText = [
     b.whatsappDefaultMessage,
     datum && `${b.whatsappDateLine}: ${formatDate(datum)}`,
     ort.trim() && `${b.whatsappLocationLine}: ${ort.trim()}`,
     paket && `${b.whatsappPackageLine}: ${paket}`,
-    extras.length > 0 && `${b.whatsappExtrasLine}: ${extras.join(", ")}`,
     nachricht.trim() && `${b.whatsappCommentLine}: ${nachricht.trim()}`,
   ]
     .filter(Boolean)
@@ -111,7 +103,6 @@ export default function BuchenAnfrage() {
           datum: datum ? formatDate(datum) : "",
           ort: ort.trim(),
           dauer: paket,
-          extras_selected: extras.join(", "),
           richtpreis: estimatedTotal ? `CHF ${estimatedTotal}` : "",
           nachricht: nachricht.trim(),
           sprache: language,
@@ -350,33 +341,6 @@ export default function BuchenAnfrage() {
                   >
                     <span className="text-white font-medium text-sm sm:text-base">{pkg}</span>
                     {packages[idx] && <span className="text-[#D4AF37] text-xs sm:text-sm mt-0.5">{packages[idx].price}</span>}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Extras (optional) */}
-          <div>
-            <p className="block text-sm font-semibold text-white mb-2">{b.extrasLabel}</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
-              {addons.map((addon) => {
-                const selected = extras.includes(addon.name);
-                return (
-                  <button
-                    key={addon.name}
-                    type="button"
-                    role="checkbox"
-                    aria-checked={selected}
-                    onClick={() => toggleExtra(addon.name)}
-                    className={`flex sm:flex-col items-center sm:items-start justify-between sm:justify-center gap-1 px-4 py-3 rounded-xl border text-left transition-all ${
-                      selected
-                        ? "bg-gradient-to-r from-[#D4AF37]/20 to-[#B8941F]/20 border-[#D4AF37]"
-                        : "bg-white/5 border-white/10 hover:border-[#D4AF37]/50"
-                    }`}
-                  >
-                    <span className="text-white font-medium text-sm">{addon.name}</span>
-                    <span className="text-[#D4AF37] text-xs">{addon.price}</span>
                   </button>
                 );
               })}

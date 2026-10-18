@@ -156,7 +156,6 @@ export interface Translations {
     whatsappLocationLine: string;
     whatsappCommentLine: string;
     whatsappPackageLine: string;
-    whatsappExtrasLine: string;
     or: string;
     contactLabel: string;
     contactPlaceholder: string;
@@ -166,7 +165,6 @@ export interface Translations {
     locationLabel: string;
     packageLabel: string;
     packages: string[];
-    extrasLabel: string;
     estimatedTotal: string;
     estimatedTotalNote: string;
     commentLabel: string;
@@ -381,7 +379,7 @@ export const translations: Record<Language, Translations> = {
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: 'Wir kommen zu dir!',
       heroDescription: 'Verwandeln Sie Ihren Event in eine unvergessliche Karaoke-Party. Wir bringen alles mit: Profi-Equipment, 100.000+ Songs und gute Stimmung - direkt zu Ihrer Location.',
-      ctaPrimary: 'Jetzt Verfügbarkeit prüfen',
+      ctaPrimary: 'Jetzt Kontakt aufnehmen',
       ctaSecondary: 'Pakete ansehen',
       stats: {
         events: 'Events',
@@ -594,7 +592,7 @@ export const translations: Record<Language, Translations> = {
       availability: {
         title: 'Dezember-Termine werden knapp',
         text: 'Die Wochen vor Weihnachten sind unsere gefragteste Zeit des Jahres. Im Kalender sehen Sie auf einen Blick, welche Daten noch frei sind.',
-        linkText: 'Verfügbarkeit ansehen',
+        linkText: 'Jetzt Kontakt aufnehmen',
       },
       faqs: {
         title: 'Häufige Fragen von Firmenkunden',
@@ -639,7 +637,6 @@ export const translations: Record<Language, Translations> = {
       whatsappLocationLine: 'Ort',
       whatsappCommentLine: 'Kommentar',
       whatsappPackageLine: 'Paket',
-      whatsappExtrasLine: 'Extras',
       or: 'oder',
       contactLabel: 'E-Mail oder Telefon',
       contactPlaceholder: 'z. B. name@beispiel.ch oder 079 123 45 67',
@@ -649,7 +646,6 @@ export const translations: Record<Language, Translations> = {
       locationLabel: 'Ort / Location (optional)',
       packageLabel: 'Gewünschtes Paket (optional)',
       packages: ['Basic (2h)', 'Party (3h)', 'Premium (4h)'],
-      extrasLabel: 'Zusatzoptionen (optional)',
       estimatedTotal: 'Richtpreis',
       estimatedTotalNote: 'unverbindlich',
       commentLabel: 'Kommentar (optional)',
@@ -1308,7 +1304,7 @@ export const translations: Record<Language, Translations> = {
       heroTitle1: 'Mobile Karaoke',
       heroTitle2: "We come to you!",
       heroDescription: 'Transform your event into an unforgettable karaoke party. We bring everything: professional equipment, 100,000+ songs and a great atmosphere - directly to your location.',
-      ctaPrimary: 'Check availability now',
+      ctaPrimary: 'Contact us now',
       ctaSecondary: 'View packages',
       stats: {
         events: 'Events',
@@ -1521,7 +1517,7 @@ export const translations: Record<Language, Translations> = {
       availability: {
         title: 'December dates are filling up',
         text: 'The weeks before Christmas are our busiest time of year. The calendar shows you at a glance which dates are still open.',
-        linkText: 'Check availability',
+        linkText: 'Contact us',
       },
       faqs: {
         title: 'Frequently Asked by Corporate Clients',
@@ -1566,7 +1562,6 @@ export const translations: Record<Language, Translations> = {
       whatsappLocationLine: 'Location',
       whatsappCommentLine: 'Comment',
       whatsappPackageLine: 'Package',
-      whatsappExtrasLine: 'Extras',
       or: 'or',
       contactLabel: 'Email or phone',
       contactPlaceholder: 'e.g. name@example.com or 079 123 45 67',
@@ -1576,7 +1571,6 @@ export const translations: Record<Language, Translations> = {
       locationLabel: 'Location (optional)',
       packageLabel: 'Desired package (optional)',
       packages: ['Basic (2h)', 'Party (3h)', 'Premium (4h)'],
-      extrasLabel: 'Additional options (optional)',
       estimatedTotal: 'Estimated price',
       estimatedTotalNote: 'non-binding',
       commentLabel: 'Comment (optional)',
