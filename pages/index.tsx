@@ -360,7 +360,9 @@ export default function Home() {
           ></motion.div>
           <div className="relative bg-black/50 backdrop-blur-sm rounded-3xl p-12 md:p-16 border border-[#D4AF37]/20 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t.home.ctaTitle.split('beste Karaoke-Party')[0]}<span className="gradient-text">{t.home.ctaTitle.includes('beste Karaoke-Party') ? 'beste Karaoke-Party' : 'best karaoke party'}</span>{t.home.ctaTitle.split('beste Karaoke-Party')[1] || t.home.ctaTitle.split('best karaoke party')[1]}
+              {t.home.ctaTitle.split(/(beste Karaoke-Party|best karaoke party)/).map((part: string, i: number) =>
+                i === 1 ? <span key={i} className="gradient-text">{part}</span> : part
+              )}
             </h2>
             <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
               {t.home.ctaDescription}

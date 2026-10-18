@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { track } from "@vercel/analytics";
 import { useTranslations, useLanguage } from "../../translations";
 import Calendar from "../../components/Calendar";
-import { getDateStatus } from "../../data/availability";
+import { isSelectable } from "../../data/availability";
 
 const FORMSPREE_URL = "https://formspree.io/f/mkgzqvdr";
 const WHATSAPP_NUMBER = "41798135848";
@@ -37,7 +37,7 @@ export default function BuchenAnfrage() {
   useEffect(() => {
     if (!router.isReady) return;
     const d = router.query.datum;
-    if (typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d) && ["available", "limited"].includes(getDateStatus(d))) {
+    if (typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d) && isSelectable(d)) {
       setDatum(d);
     }
   }, [router.isReady, router.query.datum]);
@@ -292,6 +292,7 @@ export default function BuchenAnfrage() {
                 >
                   <div className="pt-3">
                     <Calendar
+                      selectedDate={datum}
                       onDateSelect={(d) => {
                         setDatum(d);
                         setCalendarOpen(false);

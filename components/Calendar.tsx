@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getDateStatus, isClosed, AvailabilityStatus } from '../data/availability';
+import { getDateStatus, isClosed, isSelectable, SHOW_AVAILABILITY, AvailabilityStatus } from '../data/availability';
 import { useTranslations } from '../translations';
+
+type DisplayStatus = AvailabilityStatus | 'neutral';
 
 interface CalendarProps {
   onDateSelect: (date: string) => void;
+  selectedDate?: string;
 }
 
-export default function Calendar({ onDateSelect }: CalendarProps) {
+export default function Calendar({ onDateSelect, selectedDate }: CalendarProps) {
   const t = useTranslations();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -62,7 +65,7 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
     return date < today;
   }
 
-  function getStatusStyles(status: AvailabilityStatus, past: boolean) {
+  function getStatusStyles(status: DisplayStatus, past: boolean) {
     if (past) {
       return {
         bg: '',
@@ -72,6 +75,13 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
       };
     }
     switch (status) {
+      case 'neutral':
+        return {
+          bg: 'bg-white/5 hover:bg-[#D4AF37]/15 border-white/10 hover:border-[#D4AF37]/40',
+          dot: '',
+          text: 'text-white',
+          clickable: true,
+        };
       case 'available':
         return {
           bg: 'bg-emerald-500/15 hover:bg-emerald-500/25 border-emerald-500/40',
@@ -168,8 +178,20 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
 
               const dateStr = formatDateStr(day);
               const past = isPast(day);
-              const status = past ? 'booked' : getDateStatus(dateStr);
-              const styles = getStatusStyles(status, past);
+              const realStatus = getDateStatus(dateStr);
+              const status: DisplayStatus =
+                !SHOW_AVAILABILITY && realStatus !== 'closed' ? 'neutral' : realStatus;
+              const baseStyles = getStatusStyles(status, past);
+              const selectable = isSelectable(dateStr);
+              const selected = dateStr === selectedDate;
+              const styles = {
+                ...baseStyles,
+                clickable: selectable,
+                ...(selected && {
+                  bg: 'bg-[#D4AF37]/25 border-[#D4AF37]',
+                  text: 'text-white',
+                }),
+              };
 
               return (
                 <motion.button
@@ -178,40 +200,47 @@ export default function Calendar({ onDateSelect }: CalendarProps) {
                   whileHover={styles.clickable ? { scale: 1.1 } : undefined}
                   whileTap={styles.clickable ? { scale: 0.95 } : undefined}
                   onClick={() => styles.clickable && onDateSelect(dateStr)}
+                  aria-pressed={selected}
                   disabled={!styles.clickable}
                   className={`aspect-square rounded-xl border flex flex-col items-center justify-center gap-1 transition-all duration-200 ${
                     styles.clickable ? 'cursor-pointer' : 'cursor-not-allowed'
                   } ${styles.bg} ${styles.text}`}
                 >
                   <span className="text-sm font-medium">{day}</span>
-                  <span className={`w-1.5 h-1.5 rounded-full ${styles.dot}`} />
+                  {styles.dot && <span className={`w-1.5 h-1.5 rounded-full ${styles.dot}`} />}
                 </motion.button>
               );
             })}
           </motion.div>
         </AnimatePresence>
 
-        {/* Legend */}
-        <div className="flex flex-wrap justify-center gap-4 mt-6 pt-4 border-t border-white/10">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-            <span className="text-xs text-gray-400">{t.calendar.available}</span>
+        {/* Legend: availability colours only when enabled; closures whenever visible */}
+        {(SHOW_AVAILABILITY || monthHasClosure) && (
+          <div className="flex flex-wrap justify-center gap-4 mt-6 pt-4 border-t border-white/10">
+            {SHOW_AVAILABILITY && (
+              <>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                  <span className="text-xs text-gray-400">{t.calendar.available}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                  <span className="text-xs text-gray-400">{t.calendar.limited}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                  <span className="text-xs text-gray-400">{t.calendar.booked}</span>
+                </div>
+              </>
+            )}
+            {monthHasClosure && (
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-gray-400" />
+                <span className="text-xs text-gray-400">{t.calendar.closed}</span>
+              </div>
+            )}
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-            <span className="text-xs text-gray-400">{t.calendar.limited}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-            <span className="text-xs text-gray-400">{t.calendar.booked}</span>
-          </div>
-          {monthHasClosure && (
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-400" />
-              <span className="text-xs text-gray-400">{t.calendar.closed}</span>
-            </div>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

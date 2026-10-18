@@ -500,7 +500,7 @@ export const translations: Record<Language, Translations> = {
         },
         {
           q: 'Wie viel Platz wird benötigt?',
-          a: 'Für unser Basic-Setup reichen etwa 4m². Für grössere Setups mit Lichtshow empfehlen wir 10-15m².',
+          a: 'Wir brauchen nur etwa 4m². Auch mit Lichtshow braucht es nicht mehr Platz, denn die Lichter platzieren wir rund um den Raum.',
         },
       ],
       ctaTitle: 'Noch Fragen zu unseren Paketen?',
@@ -599,7 +599,7 @@ export const translations: Record<Language, Translations> = {
         items: [
           {
             q: 'Wie viel Platz brauchen Sie?',
-            a: 'Für die Anlage genügen rund 2 x 2 Meter plus eine normale Steckdose. Wir haben schon in Sitzungszimmern, Restaurants, Kantinen und Lagerhallen aufgebaut – melden Sie sich einfach, wenn Sie unsicher sind.',
+            a: 'Für die Anlage genügen rund 2 x 2 Meter plus eine normale Steckdose, die Lichter platzieren wir rund um den Raum. Wir haben schon in Sitzungszimmern, Restaurants, Kantinen und Lagerhallen aufgebaut – melden Sie sich einfach, wenn Sie unsicher sind.',
           },
           {
             q: 'Können wir Songs im Voraus auswählen?',
@@ -923,7 +923,7 @@ export const translations: Record<Language, Translations> = {
             },
             {
               q: 'Wie viel Platz benötigt ihr?',
-              a: 'Für unser Basic-Setup reichen etwa 4m². Wenn Sie eine Grossleinwand und Lichteffekte möchten, empfehlen wir 10-15m². Wir passen uns flexibel an Ihre Räumlichkeiten an.',
+              a: 'Wir brauchen nur etwa 4m². Auch mit Lichteffekten braucht es nicht mehr Platz, denn die Lichter platzieren wir rund um den Raum. Wir passen uns flexibel an Ihre Räumlichkeiten an.',
             },
             {
               q: 'Bietet ihr auch Moderation an?',
@@ -1425,7 +1425,7 @@ export const translations: Record<Language, Translations> = {
         },
         {
           q: 'How much space is needed?',
-          a: 'For our basic setup, about 4m² is sufficient. For larger setups with light show, we recommend 10-15m².',
+          a: 'We only need about 4m². Even with a light show you do not need more space, as we place the lights around the room.',
         },
       ],
       ctaTitle: 'Questions about our packages?',
@@ -1524,7 +1524,7 @@ export const translations: Record<Language, Translations> = {
         items: [
           {
             q: 'How much space do you need?',
-            a: 'Around 2 x 2 metres plus a standard power socket is enough for the system. We have set up in meeting rooms, restaurants, canteens and warehouses – just ask if you are unsure.',
+            a: 'Around 2 x 2 metres plus a standard power socket is enough for the system, and we place the lights around the room. We have set up in meeting rooms, restaurants, canteens and warehouses – just ask if you are unsure.',
           },
           {
             q: 'Can we choose songs in advance?',
@@ -1848,7 +1848,7 @@ export const translations: Record<Language, Translations> = {
             },
             {
               q: 'How much space do you need?',
-              a: 'For our basic setup, about 4m² is sufficient. If you want a large screen and light effects, we recommend 10-15m². We adapt flexibly to your space.',
+              a: 'We only need about 4m². Even with light effects you do not need more space, as we place the lights around the room. We adapt flexibly to your space.',
             },
             {
               q: 'Do you provide hosting?',
